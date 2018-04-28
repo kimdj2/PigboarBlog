@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pigboar</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+  <div id = "title">
+    <%= image_tag "title.png", width: 960, height: 170 %>
+  </div>
+
+    <%= tinymce_assets %>
+    <%= yield %>
+
+    
+  <div id = "footer">
+    <% if user_signed_in? %>
+      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+    <% else %>
+      <p><%= link_to "ログイン", "/users/sign_in", method: :get %></p>
+    <% end %>  
+  </div> 
+  </body>
+</html>

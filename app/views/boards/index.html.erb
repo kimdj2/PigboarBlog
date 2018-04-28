@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Boards</h1>
+<%= link_to 'New Board', new_board_path %>
+
+<% @boards.each do |board| %>
+<p>
+  <strong>Title:</strong>
+  <%= board.title %>
+</p>
+<p>
+  <strong>Author:</strong>
+  <%= board.author %>
+</p>
+<p>
+  <strong>Contents:</strong>
+  <%= content_tag(:div, board.contents.html_safe, :class => "panel-body") %>
+</p>
+<% if user_signed_in? && current_user.username == board.author%>
+  <%= link_to 'Edit', edit_board_path(board) %> 
+  <%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<br>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @board.title %>
+</p>
+
+<p>
+  <strong>Contents:</strong>
+  <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @board.author %>
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
