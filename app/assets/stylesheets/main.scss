@@ -1,3 +1,51 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+#main_title {
+    width:100%;
+    margin-right: 0px;
+    margin-left : 0px;
+    margin-top: 19px;
+}
+#footer {
+    width:100%;
+    margin-bottom : -19px;
+    bottom: 0;
+}
+#title {
+    margin:-19px;
+    bottom: 0;
+}
+#menu_slide{
+    float:right;
+    height:100%;
+    width:auto;
+    position: relative;
+    margin:2px;
+    margin-bottom: 4px;
+}
+#page-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 80%;
+}
+#page-top a {
+    background: #666;
+    text-decoration: none;
+    color: #fff;
+    width: 100px;
+    padding: 25px 0;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+}
+#page-top a:hover {
+    text-decoration: none;
+    background: #999;
+}
+.panel{
+    height: 200px;
+}
