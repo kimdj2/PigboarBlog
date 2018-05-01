@@ -7,21 +7,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>"  style="background-color:lavender;">
-  <div class="well" style="background-color:gray;position:fixed;width:100%;height:60px;z-index:10;padding:2px;">
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" style="background-color:#f8f9fa;">
+  <div id = "header" class="well" style="background-color:gray;position:fixed;width:100%;height:60px;z-index:10;padding:2px;">
     <%= image_tag "menu_icon.png", id:"menu_slide" %>
   </div>
   <br><br>
-  <div class="container" >
-    <div class="well" id = "title" style="background-color:lavender;">
-        <%=link_to(image_tag("title.png", id:"main_title", class:"img-thumbnail"),"/") %>
+  <div class="well" id = "title">
+    <div class="container" >
+      <%=link_to(image_tag("title.png", id:"main_title"),"/") %>
     </div>
+  </div>
+
+  <div class="container" style="margin-top:19px;">
     <%= tinymce_assets %>
   <div id="main">
     <%= yield %>
   </div>
   </div>
-  <p id="page-top"><a href="#">PAGE TOP</a></p>
+  <p id="page-top"><a href="javascript:;">PAGE TOP</a></p>
   <div id = "footer" class="well">
       <center><p>© Pig&Boar All Rights Reserved.</p></center>
       <% if user_signed_in? %>
