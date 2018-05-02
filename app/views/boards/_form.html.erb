@@ -10,23 +10,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, id: :board_title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :author %><%= current_user.username %>
-    <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
-  </div>
-  <div class="field">
-    <%= f.label :内容 %>
-    <%= tinymce %>
-    <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "35" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, id: :board_title, class:"form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :author %><%= current_user.username %>
+      <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
+    </div>
+    <div class="field">
+      <%= f.label :内容 %>
+      <%= tinymce %>
+      <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>
+    </div>
+    <div class="actions">
+      <%= f.submit @buttonName, class: "follow_submit btn btn-info"%> 
+    </div>
   </div>
 <% end %>

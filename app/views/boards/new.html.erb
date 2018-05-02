@@ -1,5 +1,6 @@
-<h1>New Board</h1>
-
+<h3><span class="label label-default">New</span>スレッド作成</h3>
+<hr>
 <%= render 'form', board: @board %>
-
-<%= link_to 'Back', boards_path %>
+<%= link_to(boards_path) do %>
+    <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">戻る</button>
+<% end %>

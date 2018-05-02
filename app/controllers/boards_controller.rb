@@ -15,10 +15,12 @@ class BoardsController < ApplicationController
   # GET /boards/new
   def new
     @board = Board.new
+    @buttonName = "作成"
   end
 
   # GET /boards/1/edit
   def edit
+    @buttonName = "修正"
   end
 
   # POST /boards

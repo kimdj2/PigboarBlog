@@ -5,3 +5,22 @@
     max-width : 100%;
     max-height : 100%;
 }
+.board_title{
+    margin-top : 10px;
+    margin-left : 10px;
+}
+.board_date{
+    float:left;
+    margin-left : 15px;
+}
+.board_username{
+    float:right;
+    margin-right : 10px;
+}
+input.follow_submit {
+    @extend .btn !optional;
+    @extend .btn-large !optional;
+    @extend .btn-primary !optional;
+    float:right;
+    margin-bottom: 20px;
+}

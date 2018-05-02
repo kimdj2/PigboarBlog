@@ -1,24 +1,41 @@
 <p id="notice"><%= notice %></p>
+<div style="margin-top:20px;">
+  <h3 style="display:inline;">スレッド<span class="label label-default">New</span></h3>
+  <% if user_signed_in? %>
+    <%= link_to(new_board_path) do %>
+        <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-9" style="background-color:white;">
+    <% @boards.each do |board| %>
+      <br>
+      <h2 class="board_title">
+        <%= board.title %>
+      </h2>
+      <span class="board_date"><%= board.created_at.strftime('%Y/%m/%d %H:%M')  %></span>
+      <span class="board_username"><%= board.author %></span>
+      <br>
+      <%= content_tag(:div, board.contents.html_safe, :class => "panel-body") %>
+      <% if user_signed_in? && current_user.username == board.author%>
+        <%= link_to(board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
+          <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
+        <% end %>
+        <%= link_to(edit_board_path(board)) do %>
+          <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
+        <% end %>
+        <br>
+      <% end %>
+      <hr>
+    <% end %>
+  </div>
+  <div class="col-sm-3" style="background-color:white;">
+    <% @boards.each do |board| %>
+      <%= board.title %>
+      <br>
+    <% end %>
+  </div>
+</div>
 
-<h1>Boards</h1>
-<%= link_to 'New Board', new_board_path %>
-
-<% @boards.each do |board| %>
-<p>
-  <strong>Title:</strong>
-  <%= board.title %>
-</p>
-<p>
-  <strong>Author:</strong>
-  <%= board.author %>
-</p>
-<p>
-  <strong>Contents:</strong>
-  <%= content_tag(:div, board.contents.html_safe, :class => "panel-body") %>
-</p>
-<% if user_signed_in? && current_user.username == board.author%>
-  <%= link_to 'Edit', edit_board_path(board) %> 
-  <%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-<br>
-<% end %>

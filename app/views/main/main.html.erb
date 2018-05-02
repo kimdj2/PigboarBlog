@@ -49,18 +49,22 @@
                 <div class="panel-heading">紹介</div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-arrow-right"></span>自己紹介</a>
+                        <%= link_to({controller: :intro}, id: :link, class: :menu, class:"list-group-item") do %>
+                            <span class="glyphicon glyphicon-arrow-right"></span>自己紹介
+                        <% end %>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="panel panel-default">
-                <div class="panel-heading">掲示板</div>
+                <div class="panel-heading">スレッド</div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <%= link_to '掲示板', {controller: :boards}, id: :link, class: :menu, class:"list-group-item" %>
-                        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-arrow-right">Second item</a>
+                        <%= link_to({controller: :boards}, id: :link, class: :menu, class:"list-group-item") do %>
+                            <span class="glyphicon glyphicon-arrow-right">スレッド
+                        <% end %>
+                        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-arrow-right">Third item</a>
                         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-arrow-right">Third item</a>
                     </ul>
                 </div>

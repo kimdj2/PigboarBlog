@@ -1,7 +1,18 @@
-toolbar: forecolor | bold italic | alignleft aligncenter alignright | fontselect | code | link | uploadimage | table |
+menubar: false
+browser_spellcheck : true
+paste_merge_formats: true
+paste_retain_style_properties: all
+body_class: tinymce-editor
+language : ja
+toolbar: 
+  - forecolor | bold italic | alignleft aligncenter alignright | fontselect |
+  - searchreplace | code | link | uploadimage | table | media |
+
 plugins:
   - link
   - textcolor
   - code
   - table
   - uploadimage
+  - media
+  - searchreplace

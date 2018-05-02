@@ -1,6 +1,7 @@
-<h1>Editing Board</h1>
-
+<h3><span class="label label-default">Edit</span>スレッド修正</h3>
+<hr>
 <%= render 'form', board: @board %>
 
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+<%= link_to(boards_path) do %>
+    <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">戻る</button>
+<% end %>
