@@ -2,7 +2,7 @@
 <div style="margin-top:20px;">
   <h3 style="display:inline;">スレッド<span class="label label-default">New</span></h3>
   <% if user_signed_in? %>
-    <%= link_to(new_board_path) do %>
+    <%= link_to(new_board_path,'data-no-turbolink' => true) do %>
         <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
     <% end %>
   <% end %>
@@ -23,7 +23,7 @@
         <%= link_to(board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
           <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
         <% end %>
-        <%= link_to(edit_board_path(board)) do %>
+        <%= link_to(edit_board_path(board),'data-no-turbolink' => true) do %>
           <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
         <% end %>
         <br>

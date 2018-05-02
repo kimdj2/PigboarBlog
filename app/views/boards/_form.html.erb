@@ -20,6 +20,11 @@
       <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
     </div>
     <div class="field">
+      <%= link_to("https://www.google.co.jp/maps/", 
+      :onclick=>"window.open(this.href,'hoge', 'height=740, width=1024');return false;", class:"google_map") do %>
+        <button type="button" class="btn btn-sm"><span class="glyphicon glyphicon-globe"></span>&nbsp;GoogleMap</button>
+      <% end %>
+      <br>
       <%= f.label :内容 %>
       <%= tinymce %>
       <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>
