@@ -1,7 +1,8 @@
+@import "bootstrap";
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Sawarabi Gothic", verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
   margin-right: auto;
@@ -52,9 +53,7 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  @extend .has-error;
 }
 
 #footer {

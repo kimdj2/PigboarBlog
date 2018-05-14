@@ -1,7 +1,7 @@
 menubar: false
 toolbar: 
   - forecolor | bold italic | alignleft aligncenter alignright | fontselect | table | searchreplace |
-  - code | link | uploadimage | media |
+  - code | link | uploadimage image | media |
 plugins:
   - link
   - textcolor
@@ -10,6 +10,9 @@ plugins:
   - uploadimage
   - media
   - searchreplace
+  - imagetools
+  - image
+media_live_embeds: true
 paste_merge_formats: true
 paste_retain_style_properties: all
 body_class: tinymce-editor

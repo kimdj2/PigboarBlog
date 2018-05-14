@@ -1,10 +1,21 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :destroy]
+
+  PER = 1
+
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all.order(id: "DESC")
+      #@boards = Board.all.order(id: "DESC").page(params[:page]).per(PER)
+      if params[:tag]
+        @title = params[:tag]
+        @boards = Board.tagged_with(params[:tag])
+      else
+        @title = "全体"
+        @boards = Board.all
+      end
+      @boards = @boards.order(id: "DESC").page(params[:page]).per(PER)
   end
 
   # GET /boards/1
@@ -21,18 +32,20 @@ class BoardsController < ApplicationController
   # GET /boards/1/edit
   def edit
     @buttonName = "修正"
+    @page = params[:page]
   end
 
   # POST /boards
   # POST /boards.json
   def create
     @board = Board.new(board_params)
-
+    
     respond_to do |format|
       if @board.save
-        format.html { redirect_to action: :index }
+        format.html { redirect_to action: :index}
         format.json { render :index, status: :created, location: @board }
       else
+        @buttonName = "作成"
         format.html { render :new }
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
@@ -47,6 +60,7 @@ class BoardsController < ApplicationController
         format.html { redirect_to action: :index}
         format.json { render :index, status: :ok, location: @board }
       else
+        @buttonName = "修正"
         format.html { render :edit }
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
@@ -56,9 +70,10 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
+    
     @board.destroy
     respond_to do |format|
-      format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
+      format.html { redirect_to action: :index, notice: 'Board was successfully destroyed.'}
       format.json { head :no_content }
     end
   end
@@ -68,9 +83,8 @@ class BoardsController < ApplicationController
     def set_board
       @board = Board.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, :contents, :author)
+      params.require(:board).permit(:title, :contents, :author, :tag_list)
     end
 end

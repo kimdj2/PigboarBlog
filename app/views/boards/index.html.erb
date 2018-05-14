@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div style="margin-top:20px;">
-  <h3 style="display:inline;">スレッド<span class="label label-default">New</span></h3>
+  <h3 style="display:inline;"><%=@title%><span class="label label-default">New</span></h3>
   <% if user_signed_in? %>
-    <%= link_to(new_board_path,'data-no-turbolink' => true) do %>
+    <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
         <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
     <% end %>
   <% end %>
@@ -10,25 +10,37 @@
 <hr>
 <div class="row">
   <div class="col-sm-9" style="background-color:white;">
-    <% @boards.each do |board| %>
-      <br>
-      <h2 class="board_title">
-        <%= board.title %>
-      </h2>
-      <span class="board_date"><%= board.created_at.strftime('%Y/%m/%d %H:%M')  %></span>
-      <span class="board_username"><%= board.author %></span>
-      <br>
-      <%= content_tag(:div, board.contents.html_safe, :class => "panel-body") %>
-      <% if user_signed_in? && current_user.username == board.author%>
-        <%= link_to(board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
-          <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
-        <% end %>
-        <%= link_to(edit_board_path(board),'data-no-turbolink' => true) do %>
-          <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
-        <% end %>
+    <% if @boards.count == 0 %>
+      <h4>作成されているスレッドがありません。</h4>
+    <% else %>
+      <% @boards.each do |board| %>
         <br>
+        <h2 class="board_title">
+          <%= board.title %>
+        </h2>
+        <% board.tag_list.map do |tag| %> 
+          <%= link_to(tag_path(tag)) do %>
+            <button type="button" class="btn btn-info btn-xs"><%=tag%></button>
+          <% end %>  
+        <% end %>
+        <span class="board_date"><%= board.created_at.strftime('%Y/%m/%d %H:%M')  %></span><br>
+        <span class="board_username"><%= board.author %></span>
+          
+        <br>
+        <%= content_tag(:div, board.contents.html_safe, :class => "panel-body") %>
+        <%= social_share_button_tag(board.title, desc: board.title) %>
+        <% if user_signed_in? && current_user.username == board.author%>
+          <%= link_to(board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
+            <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
+          <% end %>
+          <%= link_to(edit_board_path(board, :page => @page), 'data-no-turbolink' => true) do %>
+            <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
+          <% end %>
+          <br>
+        <% end %>
+        <hr>
       <% end %>
-      <hr>
+      <%= paginate @boards %>
     <% end %>
   </div>
   <div class="col-sm-3" style="background-color:white;">

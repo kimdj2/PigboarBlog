@@ -3,17 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/earlyaccess/sawarabigothic.css');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+
 #main_title {
     width:100%;
-    margin-right: 0px;
-    margin-left : 0px;
-    margin-top: 19px;
+    margin:0;
 }
 #footer {
     width:100%;
+    position: relative;
     margin-bottom : -19px;
+    background-color: gray;
     bottom: 0;
 }
+
 #title {
     width:100%;
     margin:-19px;
@@ -66,3 +70,7 @@
     top: 0;
     min-height: 450px;
 }
+.font_merri{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+.wf-sawarabigothic { font-family: "Sawarabi Gothic"; }

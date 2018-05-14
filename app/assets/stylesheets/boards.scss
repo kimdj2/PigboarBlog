@@ -7,11 +7,10 @@
 }
 .board_title{
     margin-top : 10px;
-    margin-left : 10px;
 }
 .board_date{
-    float:left;
-    margin-left : 15px;
+    float: right;
+    margin-right : 10px;
 }
 .board_username{
     float:right;
@@ -26,4 +25,7 @@ input.follow_submit {
 }
 .google_map {
     float:right;
+}
+.bootstrap-tagsinput {
+    width: 100% !important;
 }

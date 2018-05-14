@@ -6,32 +6,33 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" style="background-color:#f8f9fa;">
-
-    <div id = "header" class="well" style="background-color:gray;position:fixed;width:100%;height:60px;z-index:10;padding:2px;">
+  <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+    <!--<div id = "header" class="well" style="background-color:gray;position:fixed;width:100%;height:60px;z-index:10;padding:2px;">
       <%= image_tag "menu_icon.png", id:"menu_slide" %>
     </div>
-    <br><br>
-    <div class="well" id = "title" style="background-color:#f8f9fa;">
+    <br><br>-->
+    <div class="well" id = "title" style="background-color:#ffffff;">
       <div class="container" style="background-color:#ffffff;">
         <%=link_to(image_tag("title.png", id:"main_title"),"/") %>
       </div>
     </div>
-
+    <%= tinymce_assets %>
     <div class="container" style="margin-top:19px;background-color:#ffffff;">
       <div id="main">
-        <%= tinymce_assets %>
         <%= yield %>
       </div>
     </div>
     <p id="page-top"><a href="javascript:;">PAGE TOP</a></p>
-    <div id = "footer" class="well">
+  </body>
+  <footer id = "footer">
+    <div class="container" style="background-color:#gray;">
       <center><p>© Pig&Boar All Rights Reserved.</p></center>
       <% if user_signed_in? %>
         <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
       <% else %>
         <p><%= link_to "ログイン", "/users/sign_in", method: :get %></p>
       <% end %>  
-    </div> 
-  </body>
+      <p><%= link_to "カテゴリー", "/categories", method: :get %></p>
+    </div>      
+  </footer> 
 </html>

@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
+gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
@@ -38,7 +40,13 @@ gem 'carrierwave'
 gem 'devise'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'sass-rails', '~> 5.0'
-gem 'bcrypt', '~> 3.1.11'
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'sanitize'
+gem 'social-share-button'
+gem 'bootstrap-tagsinput-rails'
+gem 'acts-as-taggable-on'
+gem 'ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

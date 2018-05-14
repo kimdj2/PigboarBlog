@@ -1,14 +1,17 @@
 <%= form_with(model: board, local: true) do |f| %>
   <% if board.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
-
-      <ul>
-      <% board.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% board.errors.messages.each_key do |key|%>
+        <% if key == :title %>
+          <div class="alert alert-danger">
+            <strong>エラー！！</strong> タイトルが入力されていません。
+          </div>      
+        <% end %>
+        <% if key == :contents %>
+          <div class="alert alert-danger">
+            <strong>エラー！！</strong> 内容が入力されていません。
+          </div>      
+        <% end %>
       <% end %>
-      </ul>
-    </div>
   <% end %>
   <div class="form-group">
     <div class="field">
@@ -20,6 +23,10 @@
       <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
     </div>
     <div class="field">
+      <%= f.label :tag_list, class: "sr-only control-label" %>
+      <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
+    </div>
+    <div class="field">
       <%= link_to("https://www.google.co.jp/maps/", 
       :onclick=>"window.open(this.href,'hoge', 'height=740, width=1024');return false;", class:"google_map") do %>
         <button type="button" class="btn btn-sm"><span class="glyphicon glyphicon-globe"></span>&nbsp;GoogleMap</button>
@@ -29,6 +36,7 @@
       <%= tinymce %>
       <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>
     </div>
+    <%= f.hidden_field :page, value: @page, id: :page %>
     <div class="actions">
       <%= f.submit @buttonName, class: "follow_submit btn btn-info"%> 
     </div>
