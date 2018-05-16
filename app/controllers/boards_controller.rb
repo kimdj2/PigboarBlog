@@ -1,22 +1,24 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :destroy]
-
   PER = 1
 
   # GET /boards
   # GET /boards.json
   def index
       #@boards = Board.all.order(id: "DESC").page(params[:page]).per(PER)
-      if params[:tag]
+      if params[:search]
+        @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
+      elsif params[:tag]
         @title = params[:tag]
         @boards = Board.tagged_with(params[:tag])
-      else
-        @title = "全体"
+      else 
         @boards = Board.all
       end
       @boards = @boards.order(id: "DESC").page(params[:page]).per(PER)
   end
+
+  
 
   # GET /boards/1
   # GET /boards/1.json

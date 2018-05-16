@@ -38,66 +38,42 @@
             <span class="sr-only">Next</span>
             </a> 
 </div>
-<hr>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">紹介</div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <%= link_to({controller: :intro}, id: :link, class: :menu, class:"list-group-item") do %> <span class="glyphicon glyphicon-arrow-right"></span>自己紹介
-            <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">スレッド</div>
-      <div class="panel-body">
-        <ul class="list-group">
-                    <%= link_to({controller: :boards, action: :index}, id: :link, class: :menu, class:"list-group-item") do %> <span class="glyphicon glyphicon-arrow-right">全体
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        </div>        
-        <div class="col-sm-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">その他</div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item">First item</a>
-                        <a href="#" class="list-group-item">Second item</a>
-                        <a href="#" class="list-group-item">Third item</a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>   
-    <hr>
+    <hr style="margin-bottom:0;">
     <div class="row">
-      <% index = 1 %>
-      <% @boards.each do |board| %>
-        <div class="col-sm-12">
-          <div class="font_merri">  
-            <h2 class="board_title">
-              <%= link_to({controller: :boards, action: :index, :page => index}, id: :link, class: :menu) do %>
-                <%= board.title %>
-              <% end %>
-            </h2>
-            <% index += 1 %>
-            <span class="board_date">
-              <h4><%= "Post on "+board.created_at.strftime('%Y-%m-%d') %></h4>
-            </span> 
-            <br>
-            <br>
-            <br>
-            <div class="wf-sawarabigothic">
-              <h5><%= Sanitize.clean(board.contents) %></h5>
+      <div class="col-sm-9">
+      <h2 class="title-font">Recent Posts</h2>
+        <% index = 1 %>
+        <% @boards.each do |board| %>
+            <div class="font_merri jumbotron">  
+              <h2 class="board_title title-font">
+                <%= link_to({controller: :boards, action: :index, :page => index}, id: :link, class: :menu) do %>
+                  <%= board.title %>
+                <% end %>
+              </h2>
+              <div class="italic-font">
+                <h4><%= "Post on "+board.created_at.strftime('%Y-%m-%d') %></h4>
+              </div> 
+              <div class="wf-sawarabigothic">
+                <h5><%= Sanitize.clean(board.contents) %></h5>
+              </div>
+              <% index += 1 %>  
+              <br>        
             </div>
             <hr> 
-          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+        <h2 class="title-font">Tags</h2>
+        <div class="font_merri">
+        <% @tags.each do |tag| %>
+          <%= link_to(tag_path(tag.name)) do %>
+            <span class="margin-5px">
+              <button type="button" class="btn btn-primary btn-xs margin-topbottom-2px">
+                <%=tag.name%>&nbsp;<span class="badge"><%=tag.taggings_count%></span>
+              </button>
+            </span>
+          <% end %> 
+        <%end%>
         </div>
-      <% end %>
+      </div>
     </div>

@@ -23,14 +23,12 @@ pre {
 
 a {
   color: #000;
-
   &:visited {
-    color: #666;
+    color: #000;
   }
-
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #0085a1;
+    text-decoration:none;
   }
 }
 
@@ -86,4 +84,14 @@ div {
 
 label {
   display: block;
+}
+::-moz-selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
+}
+::selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
 }

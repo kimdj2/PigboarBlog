@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div style="margin-top:20px;">
-  <h3 style="display:inline;"><%=@title%><span class="label label-default">New</span></h3>
+  <h2 class="title-font" style="display:inline;">Posts&nbsp;<%=@title%></h2>
   <% if user_signed_in? %>
     <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
         <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>

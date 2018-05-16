@@ -4,9 +4,11 @@ class CreateBoards < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :contents
       t.string :author
+      t.string :image_id
 
       t.timestamps
     end
     execute "ALTER TABLE boards ADD FOREIGN KEY (author) references users(username);"
+    execute "ALTER TABLE boards ADD FOREIGN KEY (image_id) references images(id);"
   end
 end

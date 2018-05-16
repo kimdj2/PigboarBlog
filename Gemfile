@@ -39,6 +39,7 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'carrierwave'
 gem 'devise'
 gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bootstrap', '~> 4.1.1'
 gem 'sass-rails', '~> 5.0'
 gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap', '~> 3.0.1'
@@ -47,6 +48,12 @@ gem 'social-share-button'
 gem 'bootstrap-tagsinput-rails'
 gem 'acts-as-taggable-on'
 gem 'ransack'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'rails_admin'
+gem 'cancan'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
