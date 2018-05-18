@@ -1,0 +1,29 @@
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20180516-6264-1nbi3yc.rb extconf.rb
+creating Makefile
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR="
+generating bcrypt_ext-x64-mingw32.def
+compiling bcrypt_ext.c
+bcrypt_ext.c: In function 'bcrypt_wrapper':
+bcrypt_ext.c:27:19: warning: implicit declaration of function 'ruby_bcrypt'; did you mean 'ruby_script'? [-Wimplicit-function-declaration]
+     return (VALUE)ruby_bcrypt(args->output, args->key, args->salt);
+                   ^~~~~~~~~~~
+                   ruby_script
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+In file included from wrapper.c:27:0:
+C:/Ruby24-x64/include/ruby-2.4.0/ruby/backward/util.h:2:2: warning: #warning use "ruby/util.h" instead of bare "util.h" [-Wcpp]
+ #warning use "ruby/util.h" instead of bare "util.h"
+  ^~~~~~~
+linking shared-object bcrypt_ext.so
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20180516-6264-ym44tt

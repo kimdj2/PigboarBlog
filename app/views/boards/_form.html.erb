@@ -26,12 +26,8 @@
       <%= f.label :tag_list, class: "sr-only control-label" %>
       <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
     </div>
+    <%= f.hidden_field :image_path, id: :board_image_path %>
     <div class="field">
-      <%= link_to("https://www.google.co.jp/maps/", 
-      :onclick=>"window.open(this.href,'hoge', 'height=740, width=1024');return false;", class:"google_map") do %>
-        <button type="button" class="btn btn-sm"><span class="glyphicon glyphicon-globe"></span>&nbsp;GoogleMap</button>
-      <% end %>
-      <br>
       <%= f.label :内容 %>
       <%= tinymce %>
       <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>

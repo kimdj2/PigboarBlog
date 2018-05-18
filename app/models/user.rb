@@ -5,10 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
   devise :omniauthable, omniauth_providers: [:facebook,:twitter]
-  belongs_to :role
-
   validates :username,
   uniqueness: { case_sensitive: :false }
+  has_and_belongs_to_many :roles
+
+  def has_role?(name)
+    self.roles.where(name: name).length > 0
+  end
+
   #length: { minimum: 4, maximum: 20 }
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

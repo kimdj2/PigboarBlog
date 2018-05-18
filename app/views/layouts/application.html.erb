@@ -40,36 +40,35 @@
     </div>
     <%= tinymce_assets %>
     <div class="container" style="background-color:#ffffff;">
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
       <div id="main">
         <%= yield %>
       </div>
     </div>
     <p id="page-top"><a href="javascript:;">PAGE TOP</a></p>
+    
   </body>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-<footer id = "footer">
-  <div class="container">
-    <center><p>© Pig&Boar All Rights Reserved.</p>
-      <div class="social">
-        <ul>
-          <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
-          <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
-          <li><a href="#"><i class="fa fa-lg fa-rss"></i></a></li>
-        </ul>
-        <%= link_to "ログイン", "/users/sign_in", method: :get %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
-    </center>
-      <!--<% if user_signed_in? %>
-        <p></p>
-      <% else %>
-        <p><%= link_to "ログイン", "/users/sign_in", method: :get %></p>
-      <% end %>  
-      <p><%= link_to "カテゴリー", "/categories", method: :get %></p>
-      <p><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></p>
-      <p><%= link_to "Sign in with twitter", user_twitter_omniauth_authorize_path %></p>-->
-  </div>    
-</footer>
+    <footer id = "footer">
+        <center style="background-color: #777777;">
+          <br>
+          <p>© Pig&Boar All Rights Reserved.</p>
+          <div class="social">
+            <ul>
+              <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-rss"></i></a></li>
+            </ul>
+          </div>
+          <%= link_to "ログイン", "/users/sign_in", method: :get %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </center>
+    </footer>
 </html>

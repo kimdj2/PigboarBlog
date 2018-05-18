@@ -19,7 +19,7 @@
       footerHeight = $('#footer').height()
       bottomHeight = footerHeight + height + scrollTop + bottomY - documentHeight
       if scrollTop >= documentHeight - height - footerHeight + bottomY
-        $('#page-top').css bottom: bottomHeight - bottomY + 20
+        $('#page-top').css bottom: bottomHeight - bottomY + 60
       else
         $('#page-top').css bottom: bottomY
     #スクロールしてトップ

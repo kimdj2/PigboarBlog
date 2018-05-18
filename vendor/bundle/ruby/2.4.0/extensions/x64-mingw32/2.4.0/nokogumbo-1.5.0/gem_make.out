@@ -1,0 +1,34 @@
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20180516-6264-gofjf.rb extconf.rb
+checking for xmlNewDoc() in -lxml2... no
+checking for gumbo_parse() in -lgumbo... no
+checking for GumboErrorType with error.h... not found
+checking for GumboInsertionMode with insertion_mode.h... not found
+checking for GumboParser with parser.h... not found
+checking for GumboStringBuffer with string_buffer.h... not found
+checking for GumboTokenType with token_type.h... not found
+creating Makefile
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
+make "DESTDIR=" clean
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
+make "DESTDIR="
+generating nokogumboc-x64-mingw32.def
+compiling attribute.c
+compiling char_ref.c
+compiling error.c
+compiling nokogumbo.c
+compiling parser.c
+compiling string_buffer.c
+compiling string_piece.c
+compiling tag.c
+compiling tokenizer.c
+compiling utf8.c
+compiling util.c
+compiling vector.c
+linking shared-object nokogumboc.so
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 nokogumboc.so ./.gem.20180516-6264-enwng1

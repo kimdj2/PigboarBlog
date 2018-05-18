@@ -1,7 +1,7 @@
 menubar: true
 toolbar: 
   - forecolor | bold italic | alignleft aligncenter alignright | fontselect | table | searchreplace |
-  - code | link | uploadimage image | media |
+  - code | link | uploadimage image | media | googlemap |
 plugins:
   - link
   - textcolor
@@ -13,6 +13,7 @@ plugins:
   - imagetools
   - image
   - autoresize
+  - googlemap
 media_live_embeds: true
 autoresize_min_height: 350
 paste_merge_formats: true

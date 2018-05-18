@@ -44,20 +44,23 @@
       <h2 class="title-font">Recent Posts</h2>
         <% index = 1 %>
         <% @boards.each do |board| %>
-            <div class="font_merri jumbotron">  
-              <h2 class="board_title title-font">
-                <%= link_to({controller: :boards, action: :index, :page => index}, id: :link, class: :menu) do %>
-                  <%= board.title %>
-                <% end %>
-              </h2>
-              <div class="italic-font">
-                <h4><%= "Post on "+board.created_at.strftime('%Y-%m-%d') %></h4>
-              </div> 
-              <div class="wf-sawarabigothic">
-                <h5><%= Sanitize.clean(board.contents) %></h5>
-              </div>
-              <% index += 1 %>  
-              <br>        
+            <div class="font_merri jumbotron">
+              <% if board.image_path %>
+                <span><%= image_tag(board.image_path, :alt => "アイコン", class:"img-thumbnail float-left",style:"max-width:200px;max-height:200px;") %></span>
+              <% end %>  
+                <h2 class="board_title title-font">
+                  <%= link_to({controller: :boards, action: :index, :page => index}, id: :link, class: :menu) do %>
+                    <%= board.title %>
+                  <% end %>
+                </h2>
+                <div class="italic-font">
+                  <h4><%= "Post on "+board.created_at.strftime('%Y-%m-%d') %></h4>
+                </div> 
+                <div class="wf-sawarabigothic">
+                  <h5><%= Sanitize.clean(board.contents) %></h5>
+                </div>
+                <% index += 1 %>  
+                <br>        
             </div>
             <hr> 
         <% end %>

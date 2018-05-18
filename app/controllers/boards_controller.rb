@@ -87,6 +87,6 @@ class BoardsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, :contents, :author, :tag_list)
+      params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path)
     end
 end

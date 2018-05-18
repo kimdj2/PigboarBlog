@@ -6,7 +6,7 @@ class TinymceAssetsController < ApplicationController
    
       render json: {
         image: {
-          url: image.file.url
+          url: image.file.url,
         }
       }, content_type: "text/html"
     end
