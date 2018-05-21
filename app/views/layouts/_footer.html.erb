@@ -1,0 +1,19 @@
+     <p id="page-top"><a href="javascript:;">PAGE TOP</a></p>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <footer id = "footer" style="color:#ffffff;">
+        <center style="background-color: #343a40;">
+          <br>
+          <p>© Pig&Boar All Rights Reserved.</p>
+          <div class="social">
+            <ul>
+              <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-lg fa-rss"></i></a></li>
+            </ul>
+          </div>
+          <%= link_to "ログイン", "/users/sign_in", method: :get %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </center>
+    </footer>

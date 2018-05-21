@@ -13,7 +13,7 @@ var map_info="";
           file : url + '/googleMap.html',
           width : 650 + ed.getLang('googlemap.delta_width', 0),
           height : 500 + ed.getLang('googlemap.delta_height', 0),
-          inline : 1,
+          inline : 2,
           title: ed.translate('Insert an image from your computer'),
           buttons: [
             {
@@ -25,6 +25,10 @@ var map_info="";
               text: ed.translate('Cancel'),
               onclick: ed.windowManager.close
             }
+          ],
+          body: [
+            {type: 'textbox', name: 'width'},
+            {type: 'textbox', name: 'height'},
           ],
         }, {
           plugin_url: url
@@ -91,14 +95,14 @@ var map_info="";
       // Add a button that opens a window
       editor.addButton('googlemap', {
         tooltip: ed.translate('Insert an image from your computer'),
-        icon : 'image',
+        icon : 'link',
         onclick: showDialog
       });
 
       // Adds a menu item to the tools menu
       editor.addMenuItem('googlemap', {
         text: ed.translate('Insert an image from your computer'),
-        icon : 'image',
+        icon : 'link',
         context: 'insert',
         onclick: showDialog
       });

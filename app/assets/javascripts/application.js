@@ -13,9 +13,11 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require jquery3
+//= require popper
 //= require tinymce
 //= require tinymce-jquery
 //= require social-share-button
 //= require bootstrap-tagsinput
+//= require bootstrap-sprockets
 //= require_tree .

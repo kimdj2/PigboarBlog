@@ -129,9 +129,7 @@ $(function() {
         if(target.document || target.contentDocument) {
           var doc = target.contentDocument || target.contentWindow.document;
           handleResponse(doc.getElementsByTagName("body")[0].innerHTML);
-          if(doc.$("img")[0].attr("src").val()){
-            $("#board_image_path").val(doc.$("img")[0].attr("src").val());
-          }
+          
         } else {
           handleError("Didn't get a response from the server");
         }
@@ -140,7 +138,6 @@ $(function() {
       function handleResponse(ret) {
         try {
           var json = tinymce.util.JSON.parse(ret);
-
           if(json["error"]) {
             handleError(json["error"]["message"]);
           } else {
@@ -178,9 +175,6 @@ $(function() {
       }
 
       function buildHTML(json) {
-        if(!$("#board_image_path").val()){
-          $("#board_image_path").val(json["image"]["url"] );
-        }
         var default_class = ed.getParam("uploadimage_default_img_class", "");
         var figure = ed.getParam("uploadimage_figure", false);
         var alt_text = getInputValue("alt");

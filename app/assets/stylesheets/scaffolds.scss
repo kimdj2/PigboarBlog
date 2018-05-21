@@ -1,18 +1,12 @@
-@import "bootstrap";
+
 body {
-  background-color: #fff;
+  background-color: #f1f1f1  !important;
   color: #333;
-  font-family: "Sawarabi Gothic", verdana, arial, helvetica, sans-serif;
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 13px;
   line-height: 18px;
   margin-right: auto;
   margin-left : auto;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
 }
 
 pre {
@@ -23,6 +17,7 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none !important;
   &:visited {
     color: #000;
   }
@@ -51,7 +46,7 @@ div {
 }
 
 .field_with_errors {
-  @extend .has-error;
+  @extend .has-danger !optional;
 }
 
 #footer {
@@ -94,4 +89,12 @@ label {
   color: white;
   text-shadow: none;
   background: #0085a1;
+}
+.btn-xs {
+  padding  : .20rem .4rem !important;
+  font-size  : .675rem !important;
+  line-height  : .4 !important;
+  border-radius : .2rem !important;
+  padding : 0.6em 0.6em !important;
+  margin : 1px;
 }

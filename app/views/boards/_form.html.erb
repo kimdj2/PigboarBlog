@@ -1,40 +1,40 @@
-<%= form_with(model: board, local: true) do |f| %>
-  <% if board.errors.any? %>
-      <% board.errors.messages.each_key do |key|%>
-        <% if key == :title %>
-          <div class="alert alert-danger">
-            <strong>エラー！！</strong> タイトルが入力されていません。
-          </div>      
+  <%= form_with(model: board, local: true) do |f| %>
+    <% if board.errors.any? %>
+        <% board.errors.messages.each_key do |key|%>
+          <% if key == :title %>
+            <div class="alert alert-danger">
+              <strong>エラー！！</strong> タイトルが入力されていません。
+            </div>      
+          <% end %>
+          <% if key == :contents %>
+            <div class="alert alert-danger">
+              <strong>エラー！！</strong> 内容が入力されていません。
+            </div>      
+          <% end %>
         <% end %>
-        <% if key == :contents %>
-          <div class="alert alert-danger">
-            <strong>エラー！！</strong> 内容が入力されていません。
-          </div>      
-        <% end %>
-      <% end %>
+    <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title, id: :board_title, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :author %><%= current_user.username %>
+        <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
+      </div>
+      <div class="field">
+        <%= f.label :tag_list, class: "sr-only control-label" %>
+        <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
+      </div>
+      <%= f.hidden_field :image_path, id: :board_image_path %>
+      <div class="field">
+        <%= f.label :内容 %>
+        <%= tinymce %>
+        <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>
+      </div>
+      <%= f.hidden_field :page, value: @page, id: :page %>
+      <div class="actions" onclick="setImagePath();">
+        <%= f.submit @buttonName, class: "follow_submit btn btn-info", :onclick => "setImagePath();"%> 
+      </div>
+    </div>
   <% end %>
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title, id: :board_title, class:"form-control" %>
-    </div>
-    <div class="field">
-      <%= f.label :author %><%= current_user.username %>
-      <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
-    </div>
-    <div class="field">
-      <%= f.label :tag_list, class: "sr-only control-label" %>
-      <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
-    </div>
-    <%= f.hidden_field :image_path, id: :board_image_path %>
-    <div class="field">
-      <%= f.label :内容 %>
-      <%= tinymce %>
-      <%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>
-    </div>
-    <%= f.hidden_field :page, value: @page, id: :page %>
-    <div class="actions">
-      <%= f.submit @buttonName, class: "follow_submit btn btn-info"%> 
-    </div>
-  </div>
-<% end %>

@@ -6,12 +6,12 @@ class Ability
       can :read, :all
       can :access, :rails_admin
       can :dashboard
-      if user.has_role?('superadmin')
-        can :manage, :all
-      else
-        can :manage, [] # A
-      end
+    elsif user.has_role?('superadmin')
+      can :read, :all
+      can :access, :rails_admin
+      can :manage, :all
     else
+      can :manage, [] # A
       can :read, [] # B
       can :create, [] # C
     end

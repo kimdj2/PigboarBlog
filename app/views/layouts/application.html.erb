@@ -4,6 +4,7 @@
     <title>Pigboar</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
@@ -11,35 +12,9 @@
       <%= image_tag "menu_icon.png", id:"menu_slide" %>
     </div>
     <br><br>-->
-    <div class="well" id = "title" style="background-color:#ffffff;">
-      <div class="container" style="background-color:#ffffff;">
-        <%=link_to(image_tag("title.png", id:"main_title"),"/") %>
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <%= link_to("/",class:"navbar-brand") do %>
-                Pig&Boar Blog
-              <% end %>
-            </div>
-            <ul class="nav navbar-nav">
-              <li>
-                <%= link_to("/intro", id: :link, class: :menu) do %>About<% end %>
-              </li>         
-              <li>
-                <%= link_to("/boards", id: :link, class: :menu) do %>Posts<% end %>
-              </li>
-              <li><a href="#">GuestBook</a></li>
-            </ul>
-            <%= form_tag("boards", :method => "get", class:"navbar-form navbar-right") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control" %>
-              <%= submit_tag "検索", :name => nil, class:"btn btn-default" %>
-            <% end %>
-          </div>
-        </nav>    
-      </div>
-    </div>
+
+    <%= render "layouts/header" %>
     <%= tinymce_assets %>
-    <div class="container" style="background-color:#ffffff;">
       <% if notice %>
         <p class="alert alert-notice"><%= notice %></p>
       <% end %>
@@ -49,26 +24,7 @@
       <div id="main">
         <%= yield %>
       </div>
-    </div>
-    <p id="page-top"><a href="javascript:;">PAGE TOP</a></p>
-    
+      <script id="dsq-count-scr" src="//pigboar.disqus.com/count.js" async></script>
   </body>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <footer id = "footer">
-        <center style="background-color: #777777;">
-          <br>
-          <p>© Pig&Boar All Rights Reserved.</p>
-          <div class="social">
-            <ul>
-              <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-rss"></i></a></li>
-            </ul>
-          </div>
-          <%= link_to "ログイン", "/users/sign_in", method: :get %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </center>
-    </footer>
+  <%= render "layouts/footer" %>
 </html>

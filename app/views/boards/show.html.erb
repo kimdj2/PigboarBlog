@@ -1,19 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
-
-<p>
-  <strong>Contents:</strong>
-  <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @board.author %>
-</p>
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+ <div class="container" style="background-color:#ffffff;">
+ <br>
+ <div class="row">
+    <div class="col-sm-9" style="background-color:white;">
+          <h2 class="board_title">
+            <%= @board.title %>
+          </h2>
+          <span class="board_date"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %></span><br>
+          <span class="board_username"><%= @board.author %></span>
+            
+          <br>
+          <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
+          <%= social_share_button_tag(@board.title, desc: @board.title) %>
+          <% if user_signed_in? && current_user.username == @board.author%>
+            <%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
+              <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
+            <% end %>
+            <%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
+              <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
+            <% end %>
+            <br>
+          <% end %>
+          <hr>
+          <h3>Tags</h3>
+          <% @board.tag_list.map do |tag| %> 
+            <%= link_to(tag_path(tag)) do %>
+              <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
+            <% end %>  
+          <% end %>
+          <hr>
+          <h3>Comments</h3>
+          <%= render partial: 'layouts/disqus'%>
+      </div>
+    </div>
+</div>

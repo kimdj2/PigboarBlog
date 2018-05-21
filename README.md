@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails Blog Project
 
-Things you may want to cover:
+Development Language
+- Ruby2.4
+- Rails5.1
+- Postgresql10
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Gems
+- tinymce-rails
+- tinymce-rails-langs
+- tinymce-rails-imageupload
+- carrierwave
+- devise
+- bootstrap
+- sass-rails
+- kaminari
+- kaminari-bootstrap
+- sanitize
+- social-share-button
+- bootstrap-tagsinput-rails
+- acts-as-taggable-on
+- ransack
+- omniauth
+- omniauth-facebook
+- omniauth-twitter
+- cancancan
+- rails_admin
+	
+2018/05/21
+- add disqus Comments

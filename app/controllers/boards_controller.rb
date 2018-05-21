@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
       else 
         @boards = Board.all
       end
-      @boards = @boards.order(id: "DESC").page(params[:page]).per(PER)
+      @boards = @boards.order(id: "DESC").page(params[:page]).per(10)
   end
 
   
@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @board = Board.find(params[:id])
   end
 
   # GET /boards/new

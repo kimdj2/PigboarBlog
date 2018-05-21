@@ -1,7 +1,10 @@
-<h3><span class="label label-default">Edit</span>スレッド修正</h3>
-<hr>
-<%= render 'form', board: @board %>
-
-<%= link_to(boards_path) do %>
-    <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">戻る</button>
-<% end %>
+<div class="container" style="background-color:#ffffff;">
+    <h3><span class="badge badge-secondary">Edit</span>スレッド修正</h3>
+    <hr>
+    <%= render 'form', board: @board %>
+    <%= link_to(boards_path) do %>
+        <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">戻る</button>
+    <% end %>
+    <br>
+    <br>
+</div>
