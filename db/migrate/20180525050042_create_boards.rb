@@ -9,5 +9,6 @@ class CreateBoards < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     execute "ALTER TABLE boards ADD FOREIGN KEY (author) references users(username);"
+
   end
 end

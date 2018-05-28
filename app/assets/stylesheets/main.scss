@@ -225,18 +225,18 @@
     margin:0;
     position:fixed;
     width:100%;
-    z-index:20;
+    z-index:501;
     height:100px;
     transition: height 0.3s;
 }
 #header_image {
     position: fixed;
-    top:-100px;
+    top:-300px;
     margin-top:20px;
     left: 50%;
-    z-index:21;
+    z-index:502;
     transform: translateX(-50%);
-    transition: top 0.3s;
+    transition: top 0.5s;
 }
 #header_image_image{
     width:175px;
@@ -258,6 +258,8 @@
     height: 175px;/* トリミングしたい枠の高さ */
     position: relative;
     padding:0 !important;
+    margin-top:15px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .list_image img {
     position: absolute;
@@ -278,5 +280,15 @@
 .container{
     padding-top:20px;
     padding-bottom:10px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1)
+    background-color: #f1f1f1;
+}
+.card{
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+.card.left_side{
+    margin-left:-15px;
+    padding:20px;
+}
+.card.right_side{
+    margin-right:-15px;
 }

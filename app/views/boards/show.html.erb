@@ -1,8 +1,12 @@
- <div class="container" style="background-color:#ffffff;">
+ <div class="container container-large">
  <br>
  <div class="row">
-    <div class="col-sm-9" style="background-color:white;">
-          <h2 class="board_title">
+    <div class="col-sm-9" style="background-color:white;box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);">
+          <div class="cp_ribbon08">
+		        <span><%= @board.category.category_name %></span>
+	        </div>
+          <br><br>
+          <h2 class="show_title">
             <%= @board.title %>
           </h2>
           <span class="board_date"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %></span><br>
@@ -31,5 +35,6 @@
           <h3>Comments</h3>
           <%= render partial: 'layouts/disqus'%>
       </div>
+      <%= render "layouts/menu" %>
     </div>
 </div>

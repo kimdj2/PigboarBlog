@@ -9,5 +9,6 @@
         else
             contents = ''
         $('#board_image_path').val(contents)
+        document.forms[0].commit
         return true
     return

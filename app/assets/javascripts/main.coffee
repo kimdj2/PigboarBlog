@@ -1,7 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-  $ ->  
+$(document).on 'turbolinks:load', ->
     topBtn = $('#page-top')
     footer = $('#footer')
     mainNav = $('#main_nav')
@@ -37,7 +37,7 @@
       if document.body.scrollTop > 20 or document.documentElement.scrollTop > 20
         mainNav.css({height:"50px"})
         mainTitle.css({"margin-top":"50px"})
-        headerImage.css({"top":"-100px"})
+        headerImage.css({"top":"-250px"})
       else
         mainNav.css({height:"100px"})
         mainTitle.css({"margin-top":"100px"})

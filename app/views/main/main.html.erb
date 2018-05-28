@@ -1,65 +1,27 @@
-<div class="container" style="background-color:#ffffff;padding:0;">
-    <!-- Wrapper for slides -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ul class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ul>
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag "pig1.jpg", style:"width:100%;" %>
-            <div class="carousel-caption" style="opacity: 0.5;background-color:black">
-              <h3>New York</h3>
-              <p>We love the Big Apple!</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "pig1.jpg", style:"width:100%;" %>
-            <div class="carousel-caption" style="opacity: 0.5;background-color:black">
-              <h3>New York</h3>
-              <p>We love the Big Apple!</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag "pig1.jpg", style:"width:100%;" %>
-            <div class="carousel-caption" style="opacity: 0.5;background-color:black">
-              <h3>New York</h3>
-              <p>We love the Big Apple!</p>
-            </div>
-        </div>
-      </div>
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a> 
-      <a class="carousel-control-next" href="#myCarousel" data-slide="next">                                                                                   
-        <span class="carousel-control-next-icon"></span>
-      </a> 
-    </div>
-</div>
 <br>
-<div class="container" style="background-color:#ffffff;">
+<div class="container container-large">  
     <div class="row" style="padding-top:20px;padding-bottom:20px;">
       <div class="col-sm-9">
       <h2 class="title-font">Recent Posts</h2>
         <% index = 1 %>
         <% @boards.each do |board| %>
-            <div class="font_merri jumbotron padding20 padding-left40">
+            <div class="card left_side">
+              <div class="cp_ribbon09">
+		            <span><%= board.category.category_name %></span>
+	            </div>
+            <div class-"card-body">
               <div class="row">
-                  <% if !board.image_path.blank? %>
+                  <% if !get_content_img(board.contents).blank? %>
                     <div class="col-sm-3 list_image">
-                      <%= image_tag(board.image_path, :alt => "アイコン", class:"rounded") %>
+                      <%= image_tag(get_content_img(board.contents), :alt => "アイコン") %>
                     </div>
                   <% end %>
-                  <% if !board.image_path.blank? %>  
+                  <% if !get_content_img(board.contents).blank? %>  
                     <div class="col-sm-9">
                   <% else %>
                     <div class="col-sm-12">
                   <% end %>  
-                    <h2 class="board_title title-font">
+                    <h2 class="board_title title-font content_title">
                       <%= link_to(board_path(board.id)) do %>
                         <%= board.title %>
                       <% end %>
@@ -74,21 +36,12 @@
                   </div>
                   <br>        
               </div>
-            </div>
             <hr> 
+            </div>
+            </div>
+            <br>
         <% end %>
       </div>
-      <div class="col-sm-3">
-        <h2 class="title-font">Tags</h2>
-        <div class="font_merri jumbotron padding20">
-          <% @tags.each do |tag| %>
-            <%= link_to(tag_path(tag.name)) do %>
-                <button type="button" class="btn btn-dark btn-xs">
-                  <%=tag.name%>&nbsp;<span class="badge badge-light" style="padding:0;font-size:.675rem !important;"><%=tag.taggings_count%></span>
-                </button>
-            <% end %> 
-          <%end%>
-        </div>
-      </div>
+      <%= render "layouts/menu" %>
     </div>
     </div>

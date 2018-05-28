@@ -29,3 +29,109 @@ input.follow_submit {
 .bootstrap-tagsinput {
     width: 100% !important;
 }
+.content_title {
+    position: relative;
+    padding: .25em 0 .5em .75em;
+    border-left: 6px solid #ccc;
+    margin-bottom:5px;
+}
+.content_title::before {
+    position: absolute;
+    left: -6px;
+    bottom: 0;
+    content: '';
+    width: 6px;
+    height: 50%;
+    background-color: #343a40;
+}
+.content_title::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #ccc;
+}
+h2.show_title{
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 5px;
+	font-size:35px;
+}
+h2.show_title::before,
+h2.show_title::after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+}
+h2.show_title:before{
+	border-bottom: 3px solid #343a40;
+	width: 100%;
+}
+h2.show_title:after{
+	border-bottom: 3px solid #D8D8D8;
+	width: 100%;
+}
+.cp_ribbon08 {
+	line-height: 50px;
+	position: absolute;
+	top: -25px;
+	left: -8px;
+	width: 150px;
+	height: 50px;
+	padding-left: 15px;
+	color: #ffffff;
+	background: #343a40;
+}
+.cp_ribbon08:before, .cp_ribbon08:after {
+	position: absolute;
+	content: '';
+}
+.cp_ribbon08:before {
+	top: 50px;
+	left: 0.1px;
+	width: 0;
+	height: 0;
+	border-top: 9px solid #000000;
+	border-left: 9px solid transparent;
+}
+.cp_ribbon08:after {
+	right: -14.5px;
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-left: 15px solid #343a40;
+}
+.cp_ribbon09 {
+	line-height: 50px;
+	position: absolute;
+	top: -5.5px;
+	right: -8px;
+	width: 150px;
+	height: 50px;
+	padding-left: 15px;
+	color: #ffffff;
+	background: #343a40;
+}
+.cp_ribbon09:before, .cp_ribbon08:after {
+	position: absolute;
+	content: '';
+}
+.cp_ribbon09:before {
+	top: 50px;
+	right: 0.1px;
+	width: 0;
+	height: 0;
+	border-top: 9px solid #000000;
+	border-right: 9px solid transparent;
+}
+.cp_ribbon09:after {
+	right: -14.5px;
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-right: 15px solid #343a40;
+}

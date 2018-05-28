@@ -1,5 +1,5 @@
-<div class="container" style="background-color:#ffffff;">
-  <h2 class="title-font" style="display:inline;">Posts&nbsp;<%=@title%></h2>
+<div class="container container-large">
+  <h2 class="title-font" style="display:inline;">&nbsp;<%=@title%></h2>
   <% if user_signed_in? %>
     <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
        <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
@@ -7,51 +7,17 @@
   <% end %>
   <hr>
   <div class="row">
-    <div class="col-sm-9" style="background-color:white;">
+    <div class="col-sm-9">
       <% if @boards.count == 0 %>
         <h4>作成されているスレッドがありません。</h4>
       <% else %>
-        <% index = 1 %>
-        <% @boards.each do |board| %>
-            <div class="font_merri jumbotron padding20 padding-left40">
-              <div class="row">
-                  <% if !board.image_path.blank? %>
-                    <div class="col-sm-3 list_image">
-                      <%= image_tag(board.image_path, :alt => "アイコン", class:"rounded") %>
-                    </div>
-                  <% end %>
-                  <% if !board.image_path.blank? %>  
-                    <div class="col-sm-9">
-                  <% else %>
-                    <div class="col-sm-12">
-                  <% end %>  
-                    <h2 class="board_title title-font">
-                      <%= link_to(board_path(board.id)) do %>
-                        <%= board.title %>
-                      <% end %>
-                    </h2>
-                    <div class="italic-font">
-                      <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                    </div> 
-                    <div class="wf-sawarabigothic">
-                      <h7><%= Sanitize.clean(board.contents) %></h7>
-                    </div>
-                    <% index += 1 %>  
-                  </div>
-                  <br>        
-              </div>
-            </div>
-            <hr> 
-        <% end %>
-        <%= paginate @boards %>
+        <div id="article">
+          <%= render 'article' %>
+        </div>
+        <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'more_link', class:"btn btn-dark btn-block"%>
       <% end %>
     </div>
-    <div class="col-sm-3" style="background-color:white;">
-      <% @boards.each do |board| %>
-        <%= board.title %>
-        <br>
-      <% end %>
-    </div>
+    <%= render "layouts/menu" %>
   </div>
 </div>
 

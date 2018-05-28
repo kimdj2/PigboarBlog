@@ -5,10 +5,10 @@
             <% end %>
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <%= link_to("/intro", id: :link, class: :menu, class:"nav-link") do %>About<% end %>
+                <%= link_to("/intro", class: :menu, class:"nav-link") do %>About<% end %>
               </li>         
               <li class="nav-item">
-                <%= link_to("/boards", id: :link, class: :menu, class:"nav-link") do %>Posts<% end %>
+                <%= link_to("/boards", class: :menu, class:"nav-link") do %>Posts<% end %>
               </li>
               <li class="nav-item"><a href="#", class="nav-link">GuestBook</a></li>
             </ul>
@@ -32,7 +32,7 @@
           <%=image_tag("hello_170924.png", class:"rounded-circle", id:"header_image_image")%>
         </div>
 
-    <div class="container" style="padding:0">
+    <div class="container container-large" style="padding:0">
       <%=link_to(image_tag("title.png", id:"main_title",),"/") %>
     </div>
   </div>

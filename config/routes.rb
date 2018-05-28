@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   get 'intro', to:'intro#index'
 
   post '/tinymce_assets' => 'tinymce_assets#create'
+  post '/image_upload' => 'images#create'
+
   get 'tags/:tag', to: 'boards#index', as: :tag
+  get 'categories/:category', to:'boards#index', as: :category
 
   root "main#index"
 

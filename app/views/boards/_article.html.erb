@@ -1,0 +1,35 @@
+<% index = 1 %>
+        <% @boards.each do |board| %>
+            <div class="card left_side">
+            <div class-"card-body">
+              <div class="row">
+                  <% if !get_content_img(board.contents).blank? %>
+                    <div class="col-sm-3 list_image">
+                      <%= image_tag(get_content_img(board.contents), :alt => "アイコン") %>
+                    </div>
+                  <% end %>
+                  <% if !get_content_img(board.contents).blank? %>  
+                    <div class="col-sm-9">
+                  <% else %>
+                    <div class="col-sm-12">
+                  <% end %>  
+                    <h2 class="board_title title-font content_title">
+                      <%= link_to(board_path(board.id)) do %>
+                        <%= board.title %>
+                      <% end %>
+                    </h2>
+                    <div class="italic-font">
+                      <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
+                    </div> 
+                    <div class="wf-sawarabigothic">
+                      <h7><%= Sanitize.clean(board.contents) %></h7>
+                    </div>
+                    <% index += 1 %>  
+                  </div>
+                  <br>        
+              </div>
+            <hr> 
+            </div>
+            </div>
+            <br>
+        <% end %>

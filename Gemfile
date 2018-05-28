@@ -52,6 +52,16 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'cancancan'
 gem 'rails_admin'
+gem 'ancestry'
+gem "font-awesome-rails"
+gem 'bootstrap-sass'
+gem 'summernote-rails', '~> 0.8.10.0'
+gem 'jquery-turbolinks'
+gem 'simple_form', '~> 3.5.1'
+gem 'codemirror-rails'
+gem 'paperclip'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
