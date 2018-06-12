@@ -1,31 +1,17 @@
       <div class="col-sm-3">
-      <h2 class="title-font">Categories</h2>
-      <div class="card right_side">
-      <div class="card-body">        
-        <% @categories.arrange.map do |group, categories| %>        
-          <dl>
-           <dt>
-              <%= link_to("/categories/"+group.id.to_s) do %>
-                <%=group.category_name%>
-              <% end %>
-            </dt>
-            <% if categories.length != 0 %>
-                <% categories.map do |key,value| %>
-                  <dd>  
-                    <%= link_to("/categories/"+key.id.to_s) do %>
-                      &nbsp;&nbsp;<i class="fa fa-comment"></i><%= key.category_name %>
-                    <% end %>
-                  </dd>
-                <% end %>
-            <% end %> 
-          </dl>
-        <% end %>
-      </div>
-      </div>
-      <br>
       <h2 class="title-font">Tags</h2>
-      <div class="card right_side">
-      <div class="card-body">         
+      <div class="list-group" style="margin-right:-15px;">
+        <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
+          全体を見る
+        <% end %>
+        <% @tags.each do |tag| %>
+          <%= link_to(tag_path(tag.name), class:"list-group-item list-group-item-action") do %>
+            <%=tag.name%><span class="badge badge-dark" style="float:right;"><%=tag.taggings_count%></span>
+          <% end %> 
+        <%end%>
+      </div>
+      <!--<div class="card right_side">
+        <div class="card-body">         
           <% @tags.each do |tag| %>
             <%= link_to(tag_path(tag.name)) do %>
                 <button type="button" class="btn btn-dark btn-xs">
@@ -33,6 +19,12 @@
                 </button>
             <% end %> 
           <%end%>
+        </div>
+      </div>-->
+      <br>
+      <div class="card right_side">
+        <div class="card-body"> 
+          <a class="twitter-timeline" href="https://twitter.com/inoshishi30?ref_src=twsrc%5Etfw">Tweets by inoshishi30</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
     </div>

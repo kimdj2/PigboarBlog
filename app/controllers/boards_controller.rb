@@ -1,6 +1,5 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, only: [:edit, :new]
   before_action :authenticate_user!, only: [:edit, :new, :destroy]
   before_action :setTagAndCategory, only: [:show, :index]
   PER = 1
@@ -15,13 +14,6 @@ class BoardsController < ApplicationController
       elsif params[:tag]
         @title = "Tag:"+params[:tag]
         @boards = Board.tagged_with(params[:tag])
-      elsif params[:category] 
-        if is_parent
-          @boards = Board.includes(:category).where(categories: {ancestry: params[:category]})
-        else 
-          @boards = Board.includes(:category).where(categories: {id: params[:category]})
-        end
-        @title = Category.find(params[:category]).category_name
       else 
         @boards = Board.all
         @title = "Posts"
@@ -109,14 +101,8 @@ class BoardsController < ApplicationController
         return false
       end  
     end
-    def set_category
-      @categories = Category.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
-      }.sort {|x,y| x.ancestry <=> y.ancestry 
-      }.map{ |c| ["\xA0\xA0" * (c.depth - 1) + c.category_name,c.id] 
-      }.unshift(["-- none --", nil])    
-    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path, :categories_id)
+      params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path)
     end
 end

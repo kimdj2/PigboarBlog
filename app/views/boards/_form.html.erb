@@ -1,38 +1,26 @@
   <%= form_with(model: board, local: true) do |f| %>
-    <% if board.errors.any? %>
-        <% board.errors.messages.each_key do |key|%>
-          <% if key == :title %>
-            <div class="alert alert-danger">
-              <strong>エラー！！</strong> タイトルが入力されていません。
-            </div>      
-          <% end %>
-          <% if key == :contents %>
-            <div class="alert alert-danger">
-              <strong>エラー！！</strong> 内容が入力されていません。
-            </div>      
-          <% end %>
-        <% end %>
-    <% end %>
     <div class="container" style="background-color:#ffffff;">
+      <% if board.errors.any? %>
+          <% board.errors.messages.each_key do |key|%>
+            <% if key == :title %>
+              <div class="alert alert-danger">
+                <strong>エラー！！</strong> タイトルが入力されていません。
+              </div>      
+            <% end %>
+            <% if key == :contents %>
+              <div class="alert alert-danger">
+                <strong>エラー！！</strong> 内容が入力されていません。
+              </div>      
+            <% end %>
+          <% end %>
+      <% end %>
       <div class="content_title">Title</div>
       <div class="field">
         <%= f.text_field :title, id: :board_title, class:"form-control" %>
       </div>
       <hr>
-    </div>
     <br>
-    <div class="container" style="background-color:#ffffff;">
-      <div class="field">
-        <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
-      </div>
-      <div class="content_title">Category</div>
-      <div class="field">
-        <%= f.select :categories_id, @categories, {} ,{:class => "form-control",:selected => board.categories_id} %>
-      </div>
-      <hr>
-    </div>
-    <br>
-    <div class="container" style="background-color:#ffffff;">
+      <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
       <%= f.hidden_field :image_path, id: :board_image_path %>
       <div class="content_title">Content</div>
       <div class="field">
@@ -41,16 +29,12 @@
         <!--<%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>-->
       </div>
       <hr>
-    </div>
     <br>
-    <div class="container" style="background-color:#ffffff;">
       <div class="content_title">Tags</div>
       <div class="field">
         <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
       </div>
-    </div>
     <br>
-    <div class="container" style="background-color:#ffffff;">
       <div class="actions" onclick="setImagePath();">
         <%= f.submit @buttonName, class: "follow_submit btn btn-info", :onclick => "setImagePath();"%> 
       </div>

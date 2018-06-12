@@ -5,7 +5,7 @@
             <% end %>
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <%= link_to("/intro", class: :menu, class:"nav-link") do %>About<% end %>
+                <a href="javascript:void(0);" class="nav-link" id="aboutBtn">About</a>
               </li>         
               <li class="nav-item">
                 <%= link_to("/boards", class: :menu, class:"nav-link") do %>Posts<% end %>
@@ -29,7 +29,6 @@
               <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
             </ul>
           </div>
-          <%=image_tag("hello_170924.png", class:"rounded-circle", id:"header_image_image")%>
         </div>
 
     <div class="container container-large" style="padding:0">

@@ -149,6 +149,9 @@
       specialChar: {
         specialChar: 'SPECIAL CHARACTERS',
         select: 'Select Special characters'
+      },
+      mapButton: {
+        tooltop: 'map'
       }
     }
   });

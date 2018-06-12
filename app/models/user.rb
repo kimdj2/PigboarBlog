@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :username,
   uniqueness: { case_sensitive: :false }
   has_and_belongs_to_many :roles
+  has_many :comments, dependent: :destroy
 
   def has_role?(name)
     self.roles.where(name: name).length > 0
@@ -16,13 +17,14 @@ class User < ActiveRecord::Base
   #length: { minimum: 4, maximum: 20 }
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-
+    puts auth
     unless user
       user = User.create(
         uid:      auth.uid,
         provider: auth.provider,
         email:    User.dummy_email(auth),
-        username: auth.info.nickname,
+        image:    auth.info.image,
+        username: auth.extra.raw_info.name,
         password: Devise.friendly_token[0, 20]
       )
     end

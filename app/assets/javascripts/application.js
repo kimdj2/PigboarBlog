@@ -18,15 +18,16 @@
 //= require tinymce
 //= require tinymce-jquery
 //= require social-share-button
-//= require jquery.turbolinks
-//= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require popper
 //= require codemirror
 //= require codemirror/modes/ruby
 //= require summernote/summernote-bs4.min
+//= require summernote/summernote-google
 //= require bootstrap-tagsinput
 //= require bootstrap-sprockets
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
 

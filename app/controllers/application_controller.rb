@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
 
   def setTagAndCategory
     @tags = ActsAsTaggableOn::Tag.all
-    @categories = Category.all
   end 
 
   

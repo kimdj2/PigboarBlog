@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
     topBtn = $('#page-top')
+    aboutBtn = $('#aboutBtn')
     footer = $('#footer')
     mainNav = $('#main_nav')
     mainTitle = $('#main_title')
@@ -46,6 +47,10 @@ $(document).on 'turbolinks:load', ->
     #スクロールしてトップ
     topBtn.click ->
       $('body,html').animate { scrollTop: 0 }, 300
+
+    #スクロールしてトップ
+    aboutBtn.click ->
+      $('body,html').animate { scrollTop: $("#aboutUs").offset().top - 100 }, 300  
     return
 
 

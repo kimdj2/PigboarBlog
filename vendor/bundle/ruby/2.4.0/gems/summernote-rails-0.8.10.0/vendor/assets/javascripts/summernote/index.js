@@ -1,1 +1,2 @@
-//= require ./summernote.min
+//= require ./summernote
+//= require ./summernote-google

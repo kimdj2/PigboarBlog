@@ -1,0 +1,19 @@
+<div class="card left_side">
+  <div class-"card-body" id="comments-widget-of-commentable-<%= commentable.id %>">
+    <h2>
+      Comments <small id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></small>
+    </h2>
+    <br>
+    <hr>
+    <div class="comments-list">
+      <%= render commentable.comments.where(parent_id: nil) %>
+      <!-- comment-form -->
+    </div>
+    <hr>
+    <h2>
+      Your Comments
+    </h2>
+    <%= render "comments/form", comment: commentable.comments.build  %>
+  <br>
+  </div>
+</div> 

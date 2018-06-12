@@ -1,11 +1,9 @@
- <div class="container container-large">
- <br>
- <div class="row">
-    <div class="col-sm-9" style="background-color:white;box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);">
-          <div class="cp_ribbon08">
-		        <span><%= @board.category.category_name %></span>
-	        </div>
-          <br><br>
+<div class="container container-large">
+  <br>
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="card left_side">
+        <div class-"card-body">
           <h2 class="show_title">
             <%= @board.title %>
           </h2>
@@ -14,7 +12,7 @@
             
           <br>
           <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
-          <%= social_share_button_tag(@board.title, desc: @board.title) %>
+          <%= social_share_button_tag(@board.title) %>
           <% if user_signed_in? && current_user.username == @board.author%>
             <%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
               <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
@@ -22,19 +20,20 @@
             <%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
               <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
             <% end %>
-            <br>
+          <br>
           <% end %>
           <hr>
-          <h3>Tags</h3>
           <% @board.tag_list.map do |tag| %> 
             <%= link_to(tag_path(tag)) do %>
               <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
             <% end %>  
           <% end %>
-          <hr>
-          <h3>Comments</h3>
-          <%= render partial: 'layouts/disqus'%>
+          <!--<%= render partial: 'layouts/disqus'%>-->
+        </div>
       </div>
-      <%= render "layouts/menu" %>
+      <br>
+      <%= render "comments/widget", commentable: @board %>
     </div>
+    <%= render "layouts/menu" %>
+  </div>
 </div>
