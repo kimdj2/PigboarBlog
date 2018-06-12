@@ -4,7 +4,7 @@ Rails Blog Project
 
 Development Language
 - Ruby2.4
-- Rails5.1
+- Rails5.1 → 5.2
 - Postgresql10
 
 Gems
@@ -30,3 +30,6 @@ Gems
 	
 2018/05/21
 - add disqus Comments
+
+2018/06/12
+- disqusコメント→自作コメントに変更
