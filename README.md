@@ -33,3 +33,8 @@ Gems
 
 2018/06/12
 - disqusコメント→自作コメントに変更
+
+2018/06/12
+- メニュー画面修正
+- summernote highlight機能追加
+- facebook認証修正
