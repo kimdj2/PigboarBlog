@@ -6,9 +6,18 @@
 
 #main_title {
     width:100%;
-    margin-top:100px;
-    opacity: 0.3;
-    transition: margin-top 0.3s;
+    //margin-left : 0px;
+    //margin-right: 0px;
+    position: absolute;
+    //top:50%;
+    //left:50%;
+    background:#ddd url(2.jpg) no-repeat center center;
+    background-size:cover;
+    //transform:translate(-50%,-50%);
+
+    //margin-top:100px;
+    //opacity: 0.3;
+    //transition: margin-top 0.3s;
 }
 #footer {
     width:100%;
@@ -39,16 +48,15 @@
 }
 #page-top {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 80%;
+    right: 15px;
+    font-size: 75%;
 }
 #page-top a {
     background: #666;
     text-decoration: none;
     color: #fff;
-    width: 100px;
-    padding: 25px 0;
+    width: 80px;
+    padding: 15px 0;
     text-align: center;
     display: block;
     border-radius: 10px;
@@ -227,6 +235,10 @@
     width:100%;
     z-index:501;
     height:100px;
+    background-color: transparent !important;
+    transition: height 0.3s;
+    //background-color: transparent;
+    transition: background-color 0.3s;
     transition: height 0.3s;
 }
 #header_image {
@@ -322,4 +334,71 @@
 	line-height: 1.0em;
 	color: #343a40;
     background-color: #f1f1f1;
+}
+#main_image{
+    //position: absolute;
+    //top:50%;
+    //left:50%;
+    //height: 0;
+    padding-top: 50%;
+    width:100%;
+    background: url(2.jpg) no-repeat center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    //position:fixed;
+}
+#main_message{
+    background-color: rgba(0,0,0,0.7);
+    margin-top:-40%;
+    background-attachment: fixed;
+}
+#main_massege_contents{
+    z-index: 1;
+}
+#main_container{
+    //position: fixed;
+    width:100%;
+    height: 100vh;
+    z-index:1;
+}
+.main_contents{
+    width:100%;
+    background-color: #f1f1f1;
+    z-index: 3;
+}
+#top_image{
+    padding-top:15%;
+    width:100%;
+    background: url(2.jpg) no-repeat center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#top_container{
+    //position: fixed;
+    width:100%;
+    height: 25vh;
+    z-index:1;
+}
+#top_message{
+    background-color: transparent;
+    margin-top:-7%;
+}
+.nav-link{
+    color: rgba(255,255,255,2.5) !important;
+}
+#main_image_about{
+    padding-top: 50%;
+    width:100%;
+    background: url(3.jpg) no-repeat center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    overflow: hidden;
+}
+#main_message_about{
+    background-color: rgba(0,0,0,0.7);
+    margin-top:-45%;
+    background-attachment: fixed;
 }

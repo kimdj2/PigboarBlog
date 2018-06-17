@@ -14,18 +14,15 @@
     <br><br>-->
 
     <%= render "layouts/header" %>
-      <% if notice %>
-        <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
-      <% end %>
+    <% if controller_name != 'main' %>
+      <%= render "layouts/contents_header" %>
+    <% end %>
       <div id="main">
         <%= yield %>
       </div>
-      <br>
-      <%= render "layouts/about" %>
-      <div id="fb-root"></div>
+    <br>
+    <%= render "layouts/about" %>
+    <div id="fb-root"></div>
   </body>
   <%= render "layouts/footer" %>
 </html>

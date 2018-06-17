@@ -39,7 +39,7 @@ $(document).on 'turbolinks:load', ->
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
                 ['insert', ['link', 'picture', 'video', 'map']],
-                ['view', ['fullscreen', 'codeview', 'help']]
+                ['view', ['fullscreen', 'codeview','highlight', 'help']]
             ]
 
     $('[data-provider="summernote2"]').each ->
@@ -61,6 +61,8 @@ $(document).on 'turbolinks:load', ->
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
                 ['insert', ['link']],
-                ['view', ['help']]
-            ]
+                ['view', ['help']],
+                ['highlight', ['highlight']]
+
+            ]            
     return

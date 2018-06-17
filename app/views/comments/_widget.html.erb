@@ -14,6 +14,16 @@
       Your Comments
     </h2>
     <%= render "comments/form", comment: commentable.comments.build  %>
+    <br><br>
+    <%= link_to '/users/auth/twitter', class: "btn btn-block btn-social btn-twitter" do %>
+      <span class="fa fa-twitter"></span> Twitterアカウントでログイン
+    <% end %>
+    <%= link_to '/users/auth/facebook', class: "btn btn-block btn-social btn-facebook" do %>
+      <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+    <% end %>
+    <%= link_to '/users/auth/facebook', class: "btn btn-block btn-social btn-google" do %>
+      <span class="fa fa-google"></span> Googleアカウントでログイン
+    <% end %>
   <br>
   </div>
 </div> 

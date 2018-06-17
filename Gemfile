@@ -61,6 +61,7 @@ gem 'jquery-turbolinks'
 gem 'simple_form', '~> 3.5.1'
 gem 'codemirror-rails'
 gem 'paperclip'
+gem 'bootstrap-social-rails'
 
 
 

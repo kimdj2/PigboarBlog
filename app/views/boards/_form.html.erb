@@ -1,5 +1,6 @@
   <%= form_with(model: board, local: true) do |f| %>
-    <div class="container" style="background-color:#ffffff;">
+  <section class="main_contents">
+    <div class="container container-large">
       <% if board.errors.any? %>
           <% board.errors.messages.each_key do |key|%>
             <% if key == :title %>
@@ -44,4 +45,5 @@
       <br>
       <br>
     </div>
+    </section>
   <% end %>

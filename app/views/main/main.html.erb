@@ -1,50 +1,98 @@
-<br>
-<hr class="hr-text" data-content="Recent Posts">
-<div class="container container-large">  
-    <div class="row" style="padding-top:20px;padding-bottom:20px;">
-      <div class="col-sm-12">
-        <% index = 1 %>
-        <% @boards.each do |board| %>
-            <div class="card left_side">
-            <div class-"card-body">
-              <div class="row">
-                  <% if !get_content_img(board.contents).blank? %>
-                    <div class="col-sm-3 list_image">
-                      <%= image_tag(get_content_img(board.contents), :alt => "アイコン") %>
-                    </div>
-                  <% end %>
-                  <% if !get_content_img(board.contents).blank? %>  
-                    <div class="col-sm-9">
-                  <% else %>
-                    <div class="col-sm-12">
-                  <% end %>  
-                    <h2 class="board_title title-font content_title">
-                      <%= link_to(board_path(board.id)) do %>
-                        <%= board.title %>
-                      <% end %>
-                    </h2>
-                    <div class="italic-font">
-                      <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                    </div>
-                    <div>
-                      <% board.tag_list.map do |tag| %> 
-                        <%= link_to(tag_path(tag)) do %>
-                          <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
-                        <% end %>  
-                      <% end %>
-                    </div> 
-                    <div class="wf-sawarabigothic">
-                      <h7><%= Sanitize.clean(board.contents) %></h7>
-                    </div>
-                    <% index += 1 %>  
+<!--<div class="container container-large" style="padding:0;">
+  <%=link_to(image_tag("2.jpg", id:"main_title",),"/") %>
+</div>-->
+<div id="main_container">
+  <div id="main_image" class="text-white text-center">
+    <div class="container" id="main_message">
+          <br>
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <h1 class="mb-5">Welcome to Pig&Boar Blog!</h1>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"  id="main_massege_contents" >
+              <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
+                <div class="form-row" style="width:100%;">
+                  <div class="col-12 col-md-9 mb-2 mb-md-0" style="width:100%;">
+                    <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"form-control form-control-lg",style:"width:100%;" %>
                   </div>
-                  <br>        
+                  <div class="col-12 col-md-3">
+                    <%= submit_tag "検索", :name => nil, class:"btn btn-block btn-lg btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+              <br>
+              <h4>Recent Posts</h4>
+              <% @boards.each do |board| %>
+                  <div style="width:100%;color:white">
+                    <%= link_to(board_path(board.id)) do %>
+                      <%= board.title %>&nbsp;
+                      <%= board.created_at.strftime('%Y-%m-%d') %>
+                    <% end %>
+                  </div>  
+              <% end %>
+            </div>
+            <div class="col-xl-4 mx-auto">
+              <div class="card">
+                <div class="card-body"> 
+                  <a class="twitter-timeline" href="https://twitter.com/inoshishi30?ref_src=twsrc%5Etfw">Tweets by inoshishi30</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
               </div>
-            <hr> 
-            </div>
-            </div>
-            <br>
-        <% end %>
+            </div>  
+          </div>
+          <br>
+          <br>
+        </div>
+  </div>
+</div>
+<br>
+<section class="main_contents">
+  <hr class="hr-text" data-content="Recent Posts">
+  <div class="container container-large">  
+      <div class="row" style="padding-top:20px;padding-bottom:20px;">
+        <div class="col-sm-12">
+          <% index = 1 %>
+          <% @boards.each do |board| %>
+              <div class="card left_side">
+              <div class-"card-body">
+                <div class="row">
+                    <% if !get_content_img(board.contents).blank? %>
+                      <div class="col-sm-3 list_image">
+                        <%= image_tag(get_content_img(board.contents), :alt => "アイコン") %>
+                      </div>
+                    <% end %>
+                    <% if !get_content_img(board.contents).blank? %>  
+                      <div class="col-sm-9">
+                    <% else %>
+                      <div class="col-sm-12">
+                    <% end %>  
+                      <h2 class="board_title title-font content_title">
+                        <%= link_to(board_path(board.id)) do %>
+                          <%= board.title %>
+                        <% end %>
+                      </h2>
+                      <div class="italic-font">
+                        <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
+                      </div>
+                      <div>
+                        <% board.tag_list.map do |tag| %> 
+                          <%= link_to(tag_path(tag)) do %>
+                            <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
+                          <% end %>  
+                        <% end %>
+                      </div> 
+                      <div class="wf-sawarabigothic">
+                        <h7><%= Sanitize.clean(board.contents) %></h7>
+                      </div>
+                      <% index += 1 %>  
+                    </div>
+                    <br>        
+                </div>
+              <hr> 
+              </div>
+              </div>
+              <br>
+          <% end %>
+        </div>
       </div>
     </div>
-    </div>
+  </section>

@@ -8,15 +8,23 @@ $(document).on 'turbolinks:load', ->
     mainNav = $('#main_nav')
     mainTitle = $('#main_title')
     headerImage = $('#header_image')
+    navSearch = $('#nav-search')
+    main_contents = $('.main_contents')[0]
     topBtn.hide()
-    if document.body.scrollTop > 20 or document.documentElement.scrollTop > 20
+    if document.body.scrollTop > main_contents.offsetTop or document.documentElement.scrollTop > main_contents.offsetTop
         mainNav.css({height:"50px"})
         mainTitle.css({"margin-top":"50px"})
-        headerImage.css({"top":"-100px"})
+        mainNav.css('cssText', 'background-color: #343a40 !important;');
+        navSearch.show()
     else
         mainNav.css({height:"100px"})
         mainTitle.css({"margin-top":"100px"})
-        headerImage.css({"top":"0px"})
+        mainNav.css('cssText', 'background-color: transparent !important;');
+        navSearch.hide()
+    if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
+        headerImage.css({"top":"-250px"})
+    else
+        headerImage.css({"top":"20px"})
     #スクロールが500に達したらボタン表示
     $(window).scroll (e)->
       if $(this).scrollTop() > 50
@@ -24,7 +32,7 @@ $(document).on 'turbolinks:load', ->
       else
         topBtn.fadeOut()
 
-      bottomY = 30
+      bottomY = 15
       $window = $(e.currentTarget)
       height = $window.height()
       scrollTop = document.documentElement.scrollTop
@@ -32,17 +40,23 @@ $(document).on 'turbolinks:load', ->
       footerHeight = $('#footer').height()
       bottomHeight = footerHeight + height + scrollTop + bottomY - documentHeight
       if scrollTop >= documentHeight - height - footerHeight + bottomY
-        $('#page-top').css bottom: bottomHeight - bottomY + 60
+        $('#page-top').css bottom: bottomHeight - bottomY + 45
       else
         $('#page-top').css bottom: bottomY
-      if document.body.scrollTop > 20 or document.documentElement.scrollTop > 20
+      if document.body.scrollTop > main_contents.offsetTop - 20 or document.documentElement.scrollTop > main_contents.offsetTop - 20 
+        mainNav.css('cssText', 'background-color: #343a40 !important;')
         mainNav.css({height:"50px"})
         mainTitle.css({"margin-top":"50px"})
-        headerImage.css({"top":"-250px"})
+        navSearch.show()
       else
+        mainNav.css('cssText', 'background-color: transparent !important;')
         mainNav.css({height:"100px"})
         mainTitle.css({"margin-top":"100px"})
-        headerImage.css({"top":"0px"})
+        navSearch.hide()
+      if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
+        headerImage.css({"top":"-250px"})
+      else
+        headerImage.css({"top":"20px"})
       return
     #スクロールしてトップ
     topBtn.click ->
@@ -50,7 +64,7 @@ $(document).on 'turbolinks:load', ->
 
     #スクロールしてトップ
     aboutBtn.click ->
-      $('body,html').animate { scrollTop: $("#aboutUs").offset().top - 100 }, 300  
+      $('body,html').animate { scrollTop: $("#main_image_about").offset().top  }, 300  
     return
 
 
