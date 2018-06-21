@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/image_upload' => 'images#create'
 
   get 'tags/:tag', to: 'boards#index', as: :tag
+  get 'created/:created', to: 'boards#index', as: :created
   get 'categories/:category', to:'boards#index', as: :category
 
   root "main#index"

@@ -43,7 +43,7 @@ $(document).on 'turbolinks:load', ->
         $('#page-top').css bottom: bottomHeight - bottomY + 45
       else
         $('#page-top').css bottom: bottomY
-      if document.body.scrollTop > main_contents.offsetTop - 20 or document.documentElement.scrollTop > main_contents.offsetTop - 20 
+      if document.body.scrollTop > main_contents.offsetTop - 70 or document.documentElement.scrollTop > main_contents.offsetTop - 70 
         mainNav.css('cssText', 'background-color: #343a40 !important;')
         mainNav.css({height:"50px"})
         mainTitle.css({"margin-top":"50px"})

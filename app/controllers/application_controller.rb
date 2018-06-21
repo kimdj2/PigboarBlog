@@ -33,7 +33,8 @@ class ApplicationController < ActionController::Base
   end
 
   def setTagAndCategory
-    @tags = ActsAsTaggableOn::Tag.all
+    @tags = ActsAsTaggableOn::Tag.where("taggings_count <> 0").order(name: "ASC")
+    @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month')
   end 
 
   

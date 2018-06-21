@@ -12,6 +12,15 @@
           <% end %> 
         <%end%>
       </div>
+      <br>
+      <h2 class="title-font">Archive</h2>
+      <div class="list-group" style="margin-right:-15px;">
+        <% @board_month.each do |board_month| %>
+          <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>
+            <%=board_month.month.strftime('%Y-%m')%><span class="badge badge-dark" style="float:right;"><%=board_month.total_month%></span>
+          <% end %> 
+        <%end%>
+      </div>
       <!--<div class="card right_side">
         <div class="card-body">         
           <% @tags.each do |tag| %>

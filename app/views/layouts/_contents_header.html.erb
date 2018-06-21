@@ -3,7 +3,7 @@
     <div class="container" id="top_message">
           <div class="row">
              <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"  id="main_massege_contents" >
-                <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
+                <%= form_tag("/boards", :method => "get", class:"form-inline nav-right") do %>
                     <div class="form-row" style="width:100%;">
                     <div class="col-12 col-md-9 mb-2 mb-md-0" style="width:100%;">
                         <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"form-control form-control-lg",style:"width:100%;" %>
@@ -18,4 +18,3 @@
         </div>
   </div>
 </div>
-<br>

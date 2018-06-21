@@ -14,15 +14,19 @@
     <br><br>-->
 
     <%= render "layouts/header" %>
-    <% if controller_name != 'main' %>
+    <% if controller_name == 'main' %>
+      <%= render "layouts/main_header" %>
+    <% else %>
       <%= render "layouts/contents_header" %>
     <% end %>
       <div id="main">
+        <%= breadcrumbs style: :bootstrap, separator: "&nbsp;&rsaquo;&nbsp;"  %>
         <%= yield %>
       </div>
     <br>
     <%= render "layouts/about" %>
     <div id="fb-root"></div>
+    <%= breadcrumbs style: :bootstrap, separator: "&nbsp;&rsaquo;&nbsp;"  %>
   </body>
   <%= render "layouts/footer" %>
 </html>

@@ -14,6 +14,9 @@ class BoardsController < ApplicationController
       elsif params[:tag]
         @title = "Tag:"+params[:tag]
         @boards = Board.tagged_with(params[:tag])
+      elsif params[:created]
+        @title = "Archive:"+params[:created]
+        @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
       else 
         @boards = Board.all
         @title = "Posts"
