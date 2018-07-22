@@ -35,6 +35,10 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @board = Board.find(params[:id])
+    @before_post = @board.before_post
+    @next_post = @board.next_post
+    puts @before_post
+    puts @next_post
   end
 
   # GET /boards/new

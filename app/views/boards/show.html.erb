@@ -35,8 +35,19 @@
       </div>
       <br>
       <%= render "comments/widget", commentable: @board %>
+      <% if @before_post != nil %>
+        <%= link_to(board_path(@before_post.id)) do %>
+          前へ
+        <% end %>
+      <% end %>
+      <% if @next_post != nil %>
+        <%= link_to(board_path(@next_post.id)) do %>
+          次へ
+        <% end %>
+      <% end %>
     </div>
     <%= render "layouts/menu" %>
   </div>
+  
 </div>
 </section>
