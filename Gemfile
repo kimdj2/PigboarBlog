@@ -63,7 +63,6 @@ gem 'codemirror-rails'
 gem 'paperclip'
 gem 'bootstrap-social-rails'
 gem 'gretel'
-gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
