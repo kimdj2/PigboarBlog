@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
     private
    
     def image_params
-      params.require(:upload).permit(
+      params.require(:image).permit(
         :file,
         :hint,
         :alt,
