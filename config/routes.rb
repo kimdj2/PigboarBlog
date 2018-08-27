@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get 'main', to:'main#index'
   get 'intro', to:'intro#index'
 
-  post '/image_upload' => 'tinymce_assets#create'
-  #post '/image_upload' => 'images#create'
+  post '/tinymce_assets' => 'tinymce_assets#create'
+  post '/image_upload' => 'images#create'
 
   get 'tags/:tag', to: 'boards#index', as: :tag
   get 'created/:created', to: 'boards#index', as: :created
