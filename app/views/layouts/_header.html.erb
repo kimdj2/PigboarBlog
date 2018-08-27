@@ -1,8 +1,12 @@
     <div id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main_nav">
+          <div class="container">
             <%= link_to("/",class:"navbar-brand mb-0 h1") do %>
                 Pig&Boar Blog
             <% end %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <ul class="navbar-nav mr-auto mb-0">
               <li class="nav-item">
                 <a href="javascript:void(0);" class="nav-link" id="aboutBtn">About</a>
@@ -20,6 +24,7 @@
               <% end %>
               </li>
             </ul>
+            </div>
         </nav>
         <div id="header_image">
           <div class="social">
