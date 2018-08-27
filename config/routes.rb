@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'main', to:'main#index'
   get 'intro', to:'intro#index'
 
-  post '/tinymce_assets' => 'tinymce_assets#create'
+  post '/image_upload' => 'tinymce_assets#create'
   #post '/image_upload' => 'images#create'
 
   get 'tags/:tag', to: 'boards#index', as: :tag
