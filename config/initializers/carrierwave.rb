@@ -10,10 +10,7 @@ CarrierWave.configure do |config|
     config.fog_directory  = ENV['S3_BUCKET']              # required
     config.fog_public     = true                                              # optional, defaults to true
     config.fog_attributes = { } # optional, defaults to {}
-    config.cache_dir = "#{Rails.root}/tmp/uploads" #for Heroku
-    config.cache_storage = :fog #キャッシュの場所をS3に変更
 
-    config.remove_previously_stored_files_after_update = true
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
