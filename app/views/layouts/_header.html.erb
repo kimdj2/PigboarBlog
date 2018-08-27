@@ -7,23 +7,25 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <ul class="navbar-nav mr-auto mb-0">
-              <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link" id="aboutBtn">About</a>
-              </li>         
-              <li class="nav-item">
-                <%= link_to("/boards", class: :menu, class:"nav-link") do %>Posts<% end %>
-              </li>
-              <li class="nav-item"><a href="#", class="nav-link">GuestBook</a></li>
-            </ul>
-            <ul class="navbar-nav" id="nav-search">
-              <li class="nav-item">
-              <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control mr-sm-2 " %>
-                <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
-              <% end %>
-              </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav mr-auto mb-0">
+                <li class="nav-item">
+                  <a href="javascript:void(0);" class="nav-link" id="aboutBtn">About</a>
+                </li>         
+                <li class="nav-item">
+                  <%= link_to("/boards", class: :menu, class:"nav-link") do %>Posts<% end %>
+                </li>
+                <li class="nav-item"><a href="#", class="nav-link">GuestBook</a></li>
+              </ul>
+              <ul class="navbar-nav" id="nav-search">
+                <li class="nav-item">
+                <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control mr-sm-2 " %>
+                  <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
+                <% end %>
+                </li>
+              </ul>
+            </div>
             </div>
         </nav>
         <div id="header_image">
