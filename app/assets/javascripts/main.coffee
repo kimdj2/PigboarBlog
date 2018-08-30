@@ -6,20 +6,20 @@ $(document).on 'turbolinks:load', ->
     aboutBtn = $('#aboutBtn')
     footer = $('#footer')
     mainNav = $('#main_nav')
+    navToggle = $('#navToggle')
     mainTitle = $('#main_title')
     headerImage = $('#header_image')
     navSearch = $('#nav-search')
     main_contents = $('.main_contents')[0]
     topBtn.hide()
-    if document.body.scrollTop > main_contents.offsetTop or document.documentElement.scrollTop > main_contents.offsetTop
-        mainNav.css({height:"50px"})
-        mainTitle.css({"margin-top":"50px"})
+    if document.body.scrollTop > main_contents.offsetTop or document.documentElement.scrollTop > main_contents.offsetTop 
         mainNav.css('cssText', 'background-color: #343a40 !important;');
         navSearch.show()
     else
-        mainNav.css({height:"100px"})
-        mainTitle.css({"margin-top":"100px"})
-        mainNav.css('cssText', 'background-color: transparent !important;');
+        if navToggle.attr('aria-expanded') == 'false'
+          mainNav.css('cssText', 'background-color: transparent !important;');
+        else
+          mainNav.css('cssText', 'background-color: #343a40 !important;');
         navSearch.hide()
     if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
         headerImage.css({"top":"-250px"})
@@ -43,15 +43,14 @@ $(document).on 'turbolinks:load', ->
         $('#page-top').css bottom: bottomHeight - bottomY + 45
       else
         $('#page-top').css bottom: bottomY
-      if document.body.scrollTop > main_contents.offsetTop - 70 or document.documentElement.scrollTop > main_contents.offsetTop - 70 
+      if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0         
         mainNav.css('cssText', 'background-color: #343a40 !important;')
-        mainNav.css({height:"50px"})
-        mainTitle.css({"margin-top":"50px"})
         navSearch.show()
       else
-        mainNav.css('cssText', 'background-color: transparent !important;')
-        mainNav.css({height:"100px"})
-        mainTitle.css({"margin-top":"100px"})
+        if navToggle.attr('aria-expanded') == 'false'
+          mainNav.css('cssText', 'background-color: transparent !important;')
+        else
+          mainNav.css('cssText', 'background-color: #343a40 !important;')        
         navSearch.hide()
       if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
         headerImage.css({"top":"-250px"})
@@ -65,6 +64,18 @@ $(document).on 'turbolinks:load', ->
     #スクロールしてトップ
     aboutBtn.click ->
       $('body,html').animate { scrollTop: $("#main_image_about").offset().top  }, 300  
+
+    navToggle.click ->
+      if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0          
+        mainNav.css('cssText', 'background-color: #343a40 !important;')
+        navSearch.show()
+      else
+        if navToggle.attr('aria-expanded') == 'false'
+          mainNav.css('cssText', 'background-color: #343a40 !important;')        
+        else
+          mainNav.css('cssText', 'background-color: transparent !important;')
+        navSearch.hide()
+
     return
 
 

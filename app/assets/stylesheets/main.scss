@@ -242,6 +242,11 @@
     transition: background-color 0.3s;
     transition: height 0.3s;
 }
+#navbarNavDropdown{
+    background-color:rgb(52, 58, 64) !important;
+    width:100%;
+    top:0;
+}
 #header_image {
     position: fixed;
     top:-300px;
