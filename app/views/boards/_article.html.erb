@@ -24,7 +24,7 @@
                     <div>
                       <% board.tag_list.map do |tag| %> 
                         <%= link_to(tag_path(tag)) do %>
-                          <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
+                          <span class="wf-sawarabigothic maintag">#<%=tag%></span>
                         <% end %>  
                       <% end %>
                     </div> 
