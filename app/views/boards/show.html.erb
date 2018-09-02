@@ -13,7 +13,8 @@
             
           <br>
           <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
-          <%= social_share_button_tag(@board.title) %>
+          <!--<%= social_share_button_tag(@board.title) %>-->
+          <%= social_share_button_tag(@board.contents.html_safe, :url => board_url(@board), desc: @board.title)%>
           <% if user_signed_in? && current_user.username == @board.author%>
             <%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
               <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
