@@ -13,7 +13,7 @@
                   <% else %>
                     <div class="col-sm-12">
                   <% end %>  
-                    <h2 class="board_title title-font content_title">
+                    <h2 class="board_title title-font content_title article_title">
                       <%= link_to(board_path(board.id)) do %>
                         <%= board.title %>
                       <% end %>
@@ -28,7 +28,7 @@
                         <% end %>  
                       <% end %>
                     </div> 
-                    <div class="wf-sawarabigothic">
+                    <div class="wf-sawarabigothic article_content">
                       <h7><%= Sanitize.clean(board.contents) %></h7>
                     </div>
                     <% index += 1 %>  
