@@ -18,22 +18,28 @@
               </ul>
               <ul class="navbar-nav" id="nav-search">
                 <li class="nav-item">
-                <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
-                  <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control mr-sm-2 " %>
-                  <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
-                <% end %>
+                  <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
+                    <div class="row">
+                      <div class="col-9 col-md-9 mb-2 mb-md-0" style="float:right">
+                        <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control",style:"float:right" %>
+                      </div>
+                      <div class="col-3 col-md-3">
+                        <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
+                      </div>
+                    </div>
+                  <% end %>
                 </li>
               </ul>
             </div>
-            <div id="header_image">
-          <div class="social">
-            <ul>
-              <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
-            </ul>
-          </div>
-            </div>
+            <!--<div id="header_image">
+              <div class="social">
+                <ul>
+                  <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
+                </ul>
+              </div>
+            </div>-->
         </nav>
         
   </div>

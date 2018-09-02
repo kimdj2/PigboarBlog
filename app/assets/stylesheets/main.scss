@@ -49,7 +49,22 @@
 #page-top {
     position: fixed;
     right: 15px;
-    font-size: 75%;
+    /* Extra small devices (phones, up to 480px) */
+    @media screen and (max-width: 767px) {
+        font-size:0.75rem;
+    }
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991px) {
+        font-size:0.75rem;
+    }
+    /* tablets/desktops and up ----------- */
+    @media (min-width: 992px) and (max-width: 1199px) {
+        font-size:1rem;
+    }
+    /* large desktops and up ----------- */
+    @media screen and (min-width: 1200px) {
+        font-size:1rem;
+    }
 }
 #page-top a {
     background: #666;
@@ -246,9 +261,6 @@
     width:100%;
     top:0;
 }
-#nav-search{
-    float: right;
-}
 #header_image {
     position: fixed;
     top:-300px;
@@ -259,7 +271,26 @@
     transition: top 0.5s;
 }
 #header_image_image{
-    width:175px;
+    /* Extra small devices (phones, up to 480px) */
+    @media screen and (max-width: 767px) {
+        width:125px;
+        height:125px;
+    }
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991px) {
+        width:125px;
+        height:125px;
+    }
+    /* tablets/desktops and up ----------- */
+    @media (min-width: 992px) and (max-width: 1199px) {
+        width:175px;
+        height:175px;
+    }
+    /* large desktops and up ----------- */
+    @media screen and (min-width: 1200px) {
+        width:175px;
+        height:175px;
+    }
     border: 5px solid #343434
 }
 .carousel .carousel-item {
@@ -413,6 +444,15 @@
 #main_image_about{
     padding-top: 50%;
     width:100%;
+    //background: url(asset-path('3.jpg')) no-repeat center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    overflow: hidden;
+}
+#main_image_taglist{
+    padding-top: 50%;
+    width:100%;
     background: url(asset-path('3.jpg')) no-repeat center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -423,6 +463,14 @@
     background-color: rgba(0,0,0,0.7);
     margin-top:-45%;
     background-attachment: fixed;
+}
+#main_message_taglist{
+    background-color: rgba(0,0,0,0.7);
+    margin-top:-45%;
+    background-attachment: fixed;
+}
+#main_message_taglist_title{
+    margin-top:-45%;
 }
 .breadcrumb {
     background-color:#3a5876 !important;
@@ -514,3 +562,75 @@
     padding:0 !important;
     padding-top:1rem;
 }
+.nav-tabs{
+    border-bottom:2px solid #000000 !important;
+
+}
+/* tab color */
+.nav-tabs>li>a {
+    background-color: #333333 !important; 
+    border-color: #777777 !important;
+    color:#fff !important;
+    border-bottom: 1px solid #000000 !important;
+}
+  
+/* active tab color */
+.nav-tabs>li>a.active, .nav-tabs>li>a.active:hover, .nav-tabs>li>a.active:focus {
+    color: #fff !important;
+    border-color: #000000 !important;
+    background-color: #111111 !important;
+    border: 1px solid #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+}
+  
+/* hover tab color */
+.nav-tabs>li>a:hover {
+    border-color: #000000 !important;
+    background-color: #111111 !important;
+}
+.mainContentsTitle h3.tde :after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-left: 20px solid rgb(52, 58, 64);
+    border-bottom: 0px solid transparent;
+    border-right: 0 solid transparent;
+    position: absolute;
+    top: 0px;
+    right: -20px;
+}
+.mainContentsTitle h3.tde :before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 40px 20px 0px 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-right-color: rgb(52, 58, 64);
+    position: absolute;  
+    top: 0px;
+    left: -20px;
+}
+
+.mainContentsTitle h3.tde span {
+    background: rgb(52, 58, 64);
+    padding: 10px 20px 8px 20px;
+    color: white;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+  
+}
+.mainContentsTitle h3.tde {
+    text-align: center;
+    margin: 35px 0;
+    border-bottom: 2px solid rgb(52, 58, 64);
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+.mainTagName:hover{
+    color:#0056b3;
+}
+

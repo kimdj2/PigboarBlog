@@ -5,12 +5,12 @@
              <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"  id="main_massege_contents" >
                 <%= form_tag("/boards", :method => "get", class:"form-inline nav-right") do %>
                     <div class="form-row" style="width:100%;">
-                    <div class="col-12 col-md-9 mb-2 mb-md-0" style="width:100%;">
-                        <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"form-control form-control-lg",style:"width:100%;" %>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <%= submit_tag "検索", :name => nil, class:"btn btn-block btn-lg btn-primary" %>
-                    </div>
+                        <div class="col-9 col-md-9 mb-2 mb-md-0">
+                            <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"form-control form-control-sm",style:"width:100%;" %>
+                        </div>
+                        <div class="col-3 col-md-3">
+                            <%= submit_tag "検索", :name => nil, class:"btn btn-block btn-sm btn-primary" %>
+                        </div>
                     </div>
                 <% end %>
               </div>

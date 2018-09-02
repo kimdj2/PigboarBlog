@@ -40,7 +40,7 @@ $(document).on 'turbolinks:load', ->
       footerHeight = $('#footer').height()
       bottomHeight = footerHeight + height + scrollTop + bottomY - documentHeight
       if scrollTop >= documentHeight - height - footerHeight + bottomY
-        $('#page-top').css bottom: bottomHeight - bottomY + 45
+        $('#page-top').css bottom: bottomHeight - bottomY + 55
       else
         $('#page-top').css bottom: bottomY
       if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0         
@@ -63,7 +63,7 @@ $(document).on 'turbolinks:load', ->
 
     #スクロールしてトップ
     aboutBtn.click ->
-      $('body,html').animate { scrollTop: $("#main_image_about").offset().top  }, 300  
+      $('body,html').animate { scrollTop: $("#mainAboutus").offset().top  }, 300  
 
     navToggle.click ->
       if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0          

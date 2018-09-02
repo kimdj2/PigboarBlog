@@ -20,6 +20,9 @@
         <%= yield %>
       </div>
     <br>
+    <% if controller_name == 'main' %>
+      <%= render "layouts/tagList" %>
+    <% end %>
     <%= render "layouts/about" %>
     <div id="fb-root"></div>
     <%= breadcrumbs style: :bootstrap, separator: "&nbsp;&rsaquo;&nbsp;"  %>
