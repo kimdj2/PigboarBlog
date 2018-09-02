@@ -13,14 +13,14 @@
                 </div>
               <% end %>
               <div class="card-header main-card-header">
-                <h3 class="card-title wf-sawarabigothic">
+                <h3 class="card-title wf-sawarabigothic article_title">
                   <%= link_to(board_path(board.id)) do %>
                     <%= board.title %>
                   <% end %>
                 </h3>
               </div>
-                <div class="card-body">
-                  <div class="wf-sawarabigothic">
+                <div class="card-body main-card-body">
+                  <div class="wf-sawarabigothic article_content">
                     <p class="card-text"><%= Sanitize.clean(board.contents) %></p>
                   </div>
                   <% index += 1 %>

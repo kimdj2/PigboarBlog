@@ -4,13 +4,12 @@
   <br>
   <div class="row">
     <div class="col-sm-9">
-      <div class="card left_side">
-        <div class-"card-body">
+      <div class="card">
+        <div class-"card-body" style="padding:20px;">
           <h2 class="show_title">
             <%= @board.title %>
           </h2>
-          <span class="board_date"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %></span><br>
-          <span class="board_username"><%= @board.author %></span>
+          <span class="board_username article_content"><%= @board.author %></span>
             
           <br>
           <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
@@ -30,6 +29,7 @@
               <button type="button" class="btn btn-info btn-xs font_merri"><%=tag%></button>
             <% end %>  
           <% end %>
+          <div class="board_date article_content"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>に作成</div><br>
           <!--<%= render partial: 'layouts/disqus'%>-->
         </div>
       </div>

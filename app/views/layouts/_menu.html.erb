@@ -2,7 +2,7 @@
      
       <div class="col-sm-3">
       <h2 class="title-font">Tags</h2>
-      <div class="list-group" style="margin-right:-15px;">
+      <div class="list-group" >
         <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
           全体を見る
         <% end %>
@@ -14,26 +14,15 @@
       </div>
       <br>
       <h2 class="title-font">Archive</h2>
-      <div class="list-group" style="margin-right:-15px;">
+      <div class="list-group">
         <% @board_month.each do |board_month| %>
           <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>
             <%=board_month.month.strftime('%Y-%m')%><span class="badge badge-dark" style="float:right;"><%=board_month.total_month%></span>
           <% end %> 
         <%end%>
       </div>
-      <!--<div class="card right_side">
-        <div class="card-body">         
-          <% @tags.each do |tag| %>
-            <%= link_to(tag_path(tag.name)) do %>
-                <button type="button" class="btn btn-dark btn-xs">
-                  <%=tag.name%>&nbsp;&nbsp;<span class="badge badge-light" style="padding:2px;font-size:.675rem !important;"><%=tag.taggings_count%></span>
-                </button>
-            <% end %> 
-          <%end%>
-        </div>
-      </div>-->
       <br>
-      <div class="card right_side">
+      <div class="card">
         <div class="card-body"> 
           <a class="twitter-timeline" href="https://twitter.com/inoshishi30?ref_src=twsrc%5Etfw">Tweets by inoshishi30</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>

@@ -443,6 +443,7 @@
 }
 .main_recent_post{
     width:70%;
+    text-align: left;
     text-overflow: ellipsis;
     overflow:hidden;
     white-space: nowrap;
@@ -454,6 +455,7 @@
 }
 .main_recent_post_date{
     width:20%;
+    text-align: right;
     overflow:hidden;
     white-space: nowrap;
     display:inline-block;
@@ -500,9 +502,15 @@
 }
 .main-card-footer{
     background-color: transparent !important;
+    padding:0 !important;
 }
 .main-card-header{
     background-color: transparent !important;
     border-radius:0 !important;
     border:0 !important;
+    padding:0 !important;
+}
+.main-card-body{
+    padding:0 !important;
+    padding-top:1rem;
 }

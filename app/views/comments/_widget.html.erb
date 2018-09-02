@@ -1,4 +1,4 @@
-<div class="card left_side">
+<div class="card" style="padding:20px;">
   <div class-"card-body" id="comments-widget-of-commentable-<%= commentable.id %>">
     <h2>
       Comments <small id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></small>
@@ -9,7 +9,9 @@
       <%= render commentable.comments.where(parent_id: nil) %>
       <!-- comment-form -->
     </div>
-    <hr>
+    <% if commentable.comments.size != 0 %>
+      <hr>
+    <% end %>
     <h2>
       Your Comments
     </h2>
