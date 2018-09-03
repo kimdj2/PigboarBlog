@@ -4,11 +4,11 @@
   <div class="media p-3 comment" id="comment_<%= comment.id %>">
 <% end %>
     <% if comment.user.image != nil %>
-      <%=image_tag(comment.user.image, class:"mr-3 mt-3 rounded-circle", style:"width:50px;")%>
+      <%=image_tag(comment.user.image, class:"mr-2 mt-2 rounded-circle comment-image")%>
     <% else %>
-      <%=image_tag("defaultPerson.jpg", class:"mr-3 mt-3 rounded-circle", style:"width:50px;")%>
+      <%=image_tag("defaultPerson.jpg", class:"mr-2 mt-2 rounded-circle comment-image")%>
     <% end %>
-    <div class="media-body" id="comment_list_<%= comment.id %>">
+    <div class="media-body article_content" id="comment_list_<%= comment.id %>">
       <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">

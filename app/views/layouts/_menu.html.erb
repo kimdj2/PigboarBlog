@@ -1,8 +1,10 @@
-
-     
       <div class="col-sm-3">
-      <h2 class="title-font">Tags</h2>
-      <div class="list-group" >
+          <div class='mainContentsTitle'>
+            <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">         
+                <span>Tags</span>         
+            </h3>
+          </div>
+      <div class="list-group article_content" >
         <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
           全体を見る
         <% end %>
@@ -13,8 +15,12 @@
         <%end%>
       </div>
       <br>
-      <h2 class="title-font">Archive</h2>
-      <div class="list-group">
+      <div class='mainContentsTitle'>
+            <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">     
+                <span>Archive</span>             
+            </h3>
+      </div>
+      <div class="list-group article_content">
         <% @board_month.each do |board_month| %>
           <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>
             <%=board_month.month.strftime('%Y-%m')%><span class="badge badge-dark" style="float:right;"><%=board_month.total_month%></span>
