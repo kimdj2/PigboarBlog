@@ -18,14 +18,14 @@
               </ul>
               <ul class="navbar-nav" id="nav-search">
                 <li class="nav-item">
-                  <%= form_tag("boards", :method => "get", class:"form-inline nav-right") do %>
+                  <%= form_tag("boards", :method => "get", class:"form-inline") do %>
                     <div class="row">
-                      <div class="col-9 col-md-9 mb-2 mb-md-0" style="float:right">
-                        <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control",style:"float:right" %>
-                      </div>
-                      <div class="col-3 col-md-3">
-                        <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
-                      </div>
+                        <div class="col-8" style="padding-right:0">
+                          <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control" %>
+                        </div>
+                        <div class="col-3" style="padding-right:0">
+                          <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
+                        </div>
                     </div>
                   <% end %>
                 </li>

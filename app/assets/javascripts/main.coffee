@@ -26,7 +26,7 @@ $(document).on 'turbolinks:load', ->
     else
         headerImage.css({"top":"20px"})
     #スクロールが500に達したらボタン表示
-    $(window).scroll (e)->
+    $("body").scroll (e)->
       if $(this).scrollTop() > 50
         topBtn.fadeIn()
       else
