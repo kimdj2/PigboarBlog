@@ -12,16 +12,10 @@
       <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">
-        <% if user_signed_in? && current_user.username == comment.user.username%>
-          <%= link_to "Edit", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true, data: { turbolinks: true } %> &bull;
-          <%= link_to "Destroy", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
-          <% if comment.parent == nil %>
-            &bull;<%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
-          <% end %>
-        <% else %>
-          <% if comment.parent == nil %>
-            <%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
-          <% end %>
+        <%= link_to "Edit", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true, data: { turbolinks: true } %> &bull;
+        <%= link_to "Destroy", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
+        <% if comment.parent == nil %>
+          &bull;<%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
         <% end %>
       </div>
       <% if comment.replies.any? %>
