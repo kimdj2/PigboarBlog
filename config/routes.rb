@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'main', to:'main#index'
   get 'feed', to:'main#feed'
-  get 'rss', to:'feed.rss'
+  #get 'rss', to:'main#feed'
   get 'intro', to:'intro#index'
 
   post '/tinymce_assets' => 'tinymce_assets#create'
