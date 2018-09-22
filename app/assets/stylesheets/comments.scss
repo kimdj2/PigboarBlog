@@ -13,7 +13,6 @@
    
   ul.comments-list {
     padding-left: 1.3em;
-    & > li {}
     ul { padding-left: 1.3em; }
   }
    
@@ -22,17 +21,11 @@
     &:last-child {
       margin-bottom: 0;
     }
-    .comment-content {
-   
-    }
     .comment-info {
       color: #bbb;
       margin-bottom: .5em;
       a {
         color: #bbb;
-        &:hover {
-          //@extend .text-primary;
-        }
       }
     }
     margin-bottom: 1.3em;

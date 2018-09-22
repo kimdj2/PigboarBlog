@@ -40,12 +40,12 @@
       <br>
       <% if @before_post != nil %>
         <%= link_to(board_path(@before_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">前へ</button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">←前へ</button>
         <% end %>
       <% end %>
       <% if @next_post != nil %>
         <%= link_to(board_path(@next_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:10px;">次へ</button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:10px;">次へ→</button>
         <% end %>
       <% end %>
     </div>
