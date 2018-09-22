@@ -7,9 +7,10 @@ class MainController < ApplicationController
         @boards_buta = Board.where("author='豚'").order(created_at:"DESC").limit(6)
         render 'main/main'
     end
-    def rss
+    def feed
         @boards = Board.all.order(created_at:"DESC").limit(6)
         respond_to do |format|
+            format.atom
             format.rss { render :layout => false }
         end      
     end

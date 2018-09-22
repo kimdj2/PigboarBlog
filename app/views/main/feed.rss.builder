@@ -4,7 +4,6 @@ xml.rss :version => "2.0" do
     xml.title "PigAndBoar Blog"
     xml.description "PigAndBoarBlog"
     xml.link root_url
-
     @boards.each do |board|
       xml.item do
         xml.title board.title
