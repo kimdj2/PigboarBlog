@@ -6,20 +6,8 @@
   <br>
   <div class="row">
     <div class="col-sm-9">
-      <% if @before_post != nil %>
-        <%= link_to(board_path(@before_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">前へ</button>
-        <% end %>
-      <% end %>
-      <% if @next_post != nil %>
-        <%= link_to(board_path(@next_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:10px;">次へ</button>
-        <% end %>
-      <% end %>
-      <br><br>
       <div class="card">
         <div class-"card-body" style="padding:20px;">
-
           <h2 class="wf-sawarabigothic show_title">
             <%= @board.title %>
           </h2>
@@ -48,9 +36,19 @@
           <!--<%= render partial: 'layouts/disqus'%>-->
         </div>
       </div>
-      <br>
       <%= render "comments/widget", commentable: @board %>
-
+      <br>
+      <br>
+      <% if @before_post != nil %>
+        <%= link_to(board_path(@before_post.id)) do %>
+          <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">前へ</button>
+        <% end %>
+      <% end %>
+      <% if @next_post != nil %>
+        <%= link_to(board_path(@next_post.id)) do %>
+          <button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:10px;">次へ</button>
+        <% end %>
+      <% end %>
     </div>
     <%= render "layouts/menu" %>
   </div>
