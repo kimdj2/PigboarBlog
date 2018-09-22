@@ -38,7 +38,6 @@
       </div>
       <%= render "comments/widget", commentable: @board %>
       <br>
-      <br>
       <% if @before_post != nil %>
         <%= link_to(board_path(@before_post.id)) do %>
           <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">前へ</button>
