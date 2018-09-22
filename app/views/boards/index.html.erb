@@ -1,14 +1,13 @@
 <section class="main_contents">
 <div class="article_content">
   <% breadcrumb :boards %>
-</div>
-<div class="container container-large">
-  
   <% if user_signed_in? %>
     <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
-       <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
+      <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
     <% end %>
   <% end %>
+</div>
+<div class="container container-large">
   <div class="row">
     <div class="col-sm-9">
       <div class='mainContentsTitle'>
