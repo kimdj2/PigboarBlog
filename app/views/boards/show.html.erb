@@ -33,7 +33,6 @@
             <% end %>  
           <% end %>
           <div class="board_date article_content"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>に作成</div><br>
-          <!--<%= render partial: 'layouts/disqus'%>-->
         </div>
       </div>
       <%= render "comments/widget", commentable: @board %>
