@@ -6,19 +6,20 @@
   <br>
   <div class="row">
     <div class="col-sm-9">
+      <% if @before_post != nil %>
+        <%= link_to(board_path(@before_post.id)) do %>
+          <button type="button" class="btn btn-dark btn-sm" style="float:left;">前へ</button>
+        <% end %>
+      <% end %>
+      <% if @next_post != nil %>
+        <%= link_to(board_path(@next_post.id)) do %>
+          <button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ</button>
+        <% end %>
+      <% end %>
+      <br>
       <div class="card">
         <div class-"card-body" style="padding:20px;">
-          <% if @before_post != nil %>
-            <%= link_to(board_path(@before_post.id)) do %>
-              <button type="button" class="btn btn-dark btn-sm" style="float:left;">前へ</button>
-            <% end %>
-          <% end %>
-          <% if @next_post != nil %>
-            <%= link_to(board_path(@next_post.id)) do %>
-              <button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ</button>
-            <% end %>
-          <% end %>
-          <br>
+
           <h2 class="wf-sawarabigothic show_title">
             <%= @board.title %>
           </h2>
