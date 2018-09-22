@@ -18,6 +18,10 @@
           <% if comment.parent == nil %>
             &bull;<%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
           <% end %>
+        <% else %>
+          <% if comment.parent == nil %>
+            <%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
+          <% end %>
         <% end %>
       </div>
       <% if comment.replies.any? %>
