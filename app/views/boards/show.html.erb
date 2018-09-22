@@ -40,12 +40,12 @@
       <%= render "comments/widget", commentable: @board %>
       <% if @before_post != nil %>
         <%= link_to(board_path(@before_post.id)) do %>
-          前へ
+          <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">前へ</button>
         <% end %>
       <% end %>
       <% if @next_post != nil %>
         <%= link_to(board_path(@next_post.id)) do %>
-          次へ
+          <button type="button" class="btn btn-info" style="float:right;margin-bottom: 20px;">次へ</button>
         <% end %>
       <% end %>
     </div>
