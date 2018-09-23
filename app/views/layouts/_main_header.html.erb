@@ -23,8 +23,8 @@
               <% @boards.each do |board| %>
                   <div style="color:white">
                     <%= link_to(board_path(board.id)) do %>
-                      <div class="main_recent_post article_content"><%= board.title %>&nbsp;</div>
-                      <div class="main_recent_post_date article_content"><%= board.created_at.strftime('%Y-%m-%d') %></div>
+                      <div class="main_recent_post article_content_main"><%= board.title %>&nbsp;</div>
+                      <div class="main_recent_post_date article_content_main"><%= board.created_at.strftime('%Y-%m-%d') %></div>
                     <% end %>
                   </div>  
               <% end %>

@@ -30,14 +30,14 @@
               <% end %>
               <div class="card-header main-card-header">
                 <h3 class="card-title wf-sawarabigothic article_title">
-                  <%= link_to(board_path(board.id)) do %>
+                  <%= link_to(board_path(board.id), class:"article_line_limit_2",style:"-webkit-box-orient:vertical;") do %>
                     <%= board.title %>
                   <% end %>
                 </h3>
               </div>
                 <div class="card-body main-card-body">
                   <div class="wf-sawarabigothic article_content">
-                    <p class="card-text"><%= Sanitize.clean(board.contents) %></p>
+                    <p class="card-text article_line_limit_2" style="-webkit-box-orient:vertical;"><%= Sanitize.clean(board.contents) %></p>
                   </div>
                 </div>
                 <hr>

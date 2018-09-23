@@ -35,18 +35,24 @@
           <div class="board_date article_content"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>に作成</div><br>
         </div>
       </div>
+      <br>
       <%= render "comments/widget", commentable: @board %>
       <br>
       <% if @before_post != nil %>
         <%= link_to(board_path(@before_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:10px;">←前へ</button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:left;">←前へ</button>
+          <br>
+          <p style="float:left;"><%= @before_post.title %></p>
         <% end %>
       <% end %>
       <% if @next_post != nil %>
         <%= link_to(board_path(@next_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:10px;">次へ→</button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ→</button>
+          <br>
+          <p style="float:right;"><%= @next_post.title %></p>
         <% end %>
       <% end %>
+      
     </div>
     <%= render "layouts/menu" %>
   </div>

@@ -3,13 +3,9 @@
   <% breadcrumb :boards %>
 </div>
 <div class="container container-large">
+  <br>
   <div class="row">
     <div class="col-sm-9">
-      <% if user_signed_in? %>
-        <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
-          <button type="button" class="btn btn-info" style="float:right;margin-right:20px;">スレッド作成</button>
-        <% end %>
-      <% end %>
       <div class='mainContentsTitle'>
         <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">         
           <span><%=@title%></span>         
