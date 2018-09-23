@@ -26,7 +26,7 @@ $(document).on 'turbolinks:load', ->
                 onImageUpload: (files) ->
                     sendFile files[0], $(this)
             map:
-                apiKey: '',
+                apiKey: 'AIzaSyDhcF-sPLfQOB_XL1A8bB9JwJJtgwpUYCo',
                 center:
                     lat: -33.8688
                     lng: 151.2195
