@@ -16,23 +16,12 @@
       <%= render "layouts/contents_header" %>
     <% end %>
       <div id="main">
-        <%= breadcrumbs style: :bootstrap, separator: "&nbsp;&rsaquo;&nbsp;"  %>
-          <% if user_signed_in? %>
-            <% if (current_user.has_role?('superadmin') || current_user.has_role?('superadmin')) %>
-              <div class="container container-large">
-                <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
-                  <button type="button" class="btn btn-dark" style="float:right;">スレッド作成</button>
-                <% end %>
-              </div>
-            <% end %> 
-          <% end %>
+        <!--<%= breadcrumbs style: :bootstrap, separator: "&nbsp;&rsaquo;&nbsp;"  %>-->
         <%= yield %>
       </div>
-    <br>
-    <% if controller_name == 'main' %>
-      <%= render "layouts/tagList" %>
-    <% end %>
-    <%= render "layouts/about" %>
+    <br>    
+    <%= render "layouts/contact" %>
+    <%= render "layouts/login" %>
   </body>
   <%= render "layouts/footer" %>
 </html>

@@ -2,19 +2,26 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
-  attr_accessor :login
-  devise :omniauthable, omniauth_providers: [:facebook,:twitter]
+    :recoverable, :rememberable, :trackable, :validatable, :timeoutable
+    attr_accessor :login
+  devise :omniauthable, omniauth_providers: [:facebook,:twitter,:github]
   validates :username,
   uniqueness: { case_sensitive: :false }
+  validates :email, presence: true
+  validates :password, presence: true
+
   has_and_belongs_to_many :roles
   has_many :comments, dependent: :destroy
+  has_many :likes , dependent: :destroy
 
   def has_role?(name)
     self.roles.where(name: name).length > 0
   end
 
-  #length: { minimum: 4, maximum: 20 }
+  def is_like? (board)
+    Like.find_by(user_id: self.id, board_id: board.id).present?
+  end
+  
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
     puts auth

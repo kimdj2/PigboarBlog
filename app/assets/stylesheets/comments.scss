@@ -1,58 +1,46 @@
 .comments-widget {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 1em;
-    padding: 1em;
-    box-shadow: 0 10px 6px -6px #777;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  padding: 1em;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.comment-info {
+  color: #bbb;
+  margin-bottom: .5em;
+
+  a {
+    color: #bbb;
   }
-   
-  h2.comments-header {
-    color: rgb(247, 147, 124) !important;
-    margin-bottom: 0.3em !important;
+}
+.comment-form {
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+.comment-content {
+  min-height:3rem;
+}
+
+.comment-image {
+
+  /* Extra small devices (phones, up to 480px) */
+  @media screen and (max-width: 767px) {
+    width: 2.5rem;
   }
-   
-  ul.comments-list {
-    padding-left: 1.3em;
-    ul { padding-left: 1.3em; }
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 2.5rem;
   }
-   
-  li.comment {
-    margin-bottom: .5em !important;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    .comment-info {
-      color: #bbb;
-      margin-bottom: .5em;
-      a {
-        color: #bbb;
-      }
-    }
-    margin-bottom: 1.3em;
-    ul.replies_for_comment {
-      margin-top: 1em;
-    }
+
+  /* tablets/desktops and up ----------- */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    width: 3rem;
   }
-   
-  .comment-form {
-    margin-top: 1em;
-    margin-bottom: .5em;
+
+  /* large desktops and up ----------- */
+  @media screen and (min-width: 1200px) {
+    width: 3rem;
   }
-  .comment-image {
-    /* Extra small devices (phones, up to 480px) */
-    @media screen and (max-width: 767px) {
-      width:2.5rem;
-    }
-    /* Small devices (tablets, 768px and up) */
-    @media (min-width: 768px) and (max-width: 991px) {
-      width:2.5rem;
-    }
-    /* tablets/desktops and up ----------- */
-    @media (min-width: 992px) and (max-width: 1199px) {
-      width:3rem;
-    }
-    /* large desktops and up ----------- */
-    @media screen and (min-width: 1200px) {
-      width:3rem;
-    }
-  }
+}

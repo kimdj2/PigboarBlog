@@ -1,61 +1,131 @@
 <section class="main_contents">
-<div class="article_content">
-  <% breadcrumb :board, @board %>
-</div>
-<div class="container container-large">
-  <br>
-  <div class="row">
-    <div class="col-sm-9">
-      <div class="card">
-        <div class-"card-body" style="padding:20px;">
-          <h2 class="wf-sawarabigothic show_title">
-            <%= @board.title %>
-          </h2>
-          <span class="board_username article_content"><%= @board.author %></span>
-            
-          <br>
-          <%= content_tag(:div, @board.contents.html_safe, :class => "panel-body") %>
-          <!--<%= social_share_button_tag(@board.title) %>-->
-          <%= social_share_button_tag(@board.contents.html_safe, :url => board_url(@board), desc: @board.title)%>
-          <% if user_signed_in? && current_user.username == @board.author%>
-            <%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
-              <button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
-            <% end %>
-            <%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
-              <button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
-            <% end %>
-          <br>
-          <% end %>
-          <hr>
-          <% @board.tag_list.map do |tag| %> 
-            <%= link_to(tag_path(tag)) do %>
-              <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-            <% end %>  
-          <% end %>
-          <div class="board_date article_content"><%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>に作成</div><br>
-        </div>
-      </div>
-      <br>
-      <%= render "comments/widget", commentable: @board %>
-      <br>
-      <% if @before_post != nil %>
-        <%= link_to(board_path(@before_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:left;">←前へ</button>
-          <br>
-          <p style="float:left;"><%= @before_post.title %></p>
-        <% end %>
-      <% end %>
-      <% if @next_post != nil %>
-        <%= link_to(board_path(@next_post.id)) do %>
-          <button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ→</button>
-          <br>
-          <p style="float:right;"><%= @next_post.title %></p>
-        <% end %>
-      <% end %>
-      
-    </div>
-    <%= render "layouts/menu" %>
-  </div>
-  
-</div>
+	<div class="container container-large">
+		<div class="row">
+		    <%= render "layouts/search" %>
+			<!-- Post Content Column -->
+			<div class="col-lg-9">
+				<!-- Title -->
+				<h1 class="post_title">
+					<%= @board.title %>
+				</h1>
+				<p class="lead post_author">by 
+					<a href="#">
+						<%= @board.author %>
+					</a>
+				</p>
+				<hr>
+				<%= content_tag(:div, @board.contents.html_safe, :class => "panel-body article_content") %>
+				<hr>
+				<!--<%= social_share_button_tag(@board.title) %>-->
+				<div style="text-align:center;">
+					<%= social_share_button_tag(@board.contents.html_safe, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
+				</div>
+				<div id="likes_buttons_<%= @board.id %>" style="text-align:center;">
+					<%= render partial: 'layouts/like', locals: { board: @board, likes: @likes} %>
+				</div>
+				<div style="text-align:center;">
+					<p>Posted on 
+						<%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>
+					</p>
+				</div>
+				<% if user_signed_in? && current_user.username == @board.author%>
+				<%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
+				<button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
+				<% end %>
+				<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
+				<button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
+				<% end %>
+				<br>
+				<% end %>
+				<hr>
+        <i class="fa fa-tags"></i>
+				<% @board.tag_list.map do |tag| %>
+				<%= link_to(tag_path(tag)) do %>
+				<span class="wf-sawarabigothic maintag">#<%=tag%></span>
+				<% end %>
+				<% end %>
+				<hr>
+				<%= render "comments/widget", commentable: @board %>
+        		<hr>
+				<% if @before_post != nil %>
+				<%= link_to(board_path(@before_post.id)) do %>
+				<button type="button" class="btn btn-dark btn-sm" style="float:left;">←前へ</button>
+				<% end %>
+				<% end %>
+				<% if @next_post != nil %>
+				<%= link_to(board_path(@next_post.id)) do %>
+				<button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ→</button>
+				<br>
+				<% end %>
+				<% end %>
+			</div>
+			<%= render "layouts/menu" %>
+			<% if @related_articles.size > 0 %>
+			<hr>
+			<div class="col-md-12 py-2">
+				<div class="row">
+					<hr>
+					<div class="col-md-9 py-2">
+						<h2 class="article_title" style="text-align:center;">連携Post</h2>
+					</div>
+					<div class="col-md-3 py-2">
+					</div>
+				</div>
+			</div>
+			<% @related_articles.each do |board| %>
+					<div class="col-md-3 py-2" style="margin-bottom:10px;">
+						<div class="blog-card-main">
+							<div class="meta">
+								<% if !get_content_img(board.contents).blank? %>
+								<div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
+								<% else %>
+								<div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>							
+								<% end %>
+								<ul class="details">
+									<li class="author">
+										<a href="#">
+											<%= board.author %>
+										</a>
+									</li>
+									<li class="date">
+										<%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %>
+									</li>
+									<li class="tags">
+										<ul>
+											<% board.tag_list.map do |tag| %>
+											<li>
+												<%= link_to(tag_path(tag)) do %>
+												<span class="wf-sawarabigothic maintag"># 
+													<%=tag%>
+												</span>
+												<% end %>
+											</li>
+											<% end %>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="description">
+								<h1>
+									<%= truncate(board.title, length: 20) %>
+								</h1>
+								<p class="read-contents">
+									<%= truncate(Sanitize.clean(board.contents), length: 50) %>
+								</p>
+								<p class="read-more">
+									<span>
+										<i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
+										<i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
+										<i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
+									</span>
+									<%= link_to(board_path(board.id)) do %>Read More 
+									<% end %>
+								</p>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 </section>

@@ -14,13 +14,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery3
-//= require popper
-//= require tinymce
-//= require tinymce-jquery
 //= require social-share-button
 //= require jquery-ui
-//= require bootstrap
 //= require popper
+//= require bootstrap
 //= require codemirror
 //= require codemirror/modes/ruby
 //= require codemirror/modes/ruby

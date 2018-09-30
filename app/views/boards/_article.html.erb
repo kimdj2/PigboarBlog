@@ -1,43 +1,46 @@
-<% index = 1 %>
+  <% index = 1 %>
         <% @boards.each do |board| %>
-            <div class="card" style="padding:20px;">
-            <div class-"card-body">
-              <div class="row">
-                  <% if !get_content_img(board.contents).blank? %>
-                    <div class="col-sm-3 list_image">
-                      <%= image_tag(get_content_img(board.contents), :alt => "アイコン") %>
-                    </div>
-                  <% end %>
-                  <% if !get_content_img(board.contents).blank? %>  
-                    <div class="col-sm-9">
-                  <% else %>
-                    <div class="col-sm-12">
-                  <% end %>  
-                    <h2 class="wf-sawarabigothic board_title title-font content_title article_title">
-                      <%= link_to(board_path(board.id)) do %>
-                        <%= board.title %>
-                      <% end %>
-                    </h2>
-                    <div class="italic-font">
-                      <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                    </div>
-                    <div>
-                      <% board.tag_list.map do |tag| %> 
+          <% if index % 2 == 0 %>
+          <div class="blog-card alt">
+          <% else %>
+          <div class="blog-card">
+          <% end %>
+          <% index+=1 %>
+            <div class="meta">
+            <% if !get_content_img(board.contents).blank? %>
+              <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
+            <% else %>
+              <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>            
+            <% end %>
+              <ul class="details">
+                <li class="author"><a href="#"><%= board.author %></a></li>
+                <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
+                <li class="tags">
+                  <ul>
+                    <% board.tag_list.map do |tag| %>  
+                      <li>
                         <%= link_to(tag_path(tag)) do %>
                           <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                        <% end %>  
-                      <% end %>
-                    </div> 
-                    <div class="wf-sawarabigothic article_content">
-                      <h7><%= Sanitize.clean(board.contents) %></h7>
-                    </div>
-                    <% index += 1 %>  
-                    
-                  </div>
-                  <br>        
-              </div>
-            <hr> 
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </li>
+              </ul>
             </div>
+            <div class="description">
+              <h1><%= truncate(board.title, length: 20)  %></h1>
+              <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 100) %></p>
+              <p class="read-more">
+                <span>
+                  <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
+                  <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
+                  <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
+                </span>
+                <%= link_to(board_path(board.id)) do %>
+                Read More
+                <% end %>
+              </p>
             </div>
-            <br>
-        <% end %>
+          </div>
+          <% end %> 

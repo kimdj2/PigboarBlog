@@ -3,15 +3,15 @@
   $comment_parent = $("#comment_list_<%= @comment.parent.id %>");
   $comment_form = $("#comment_list_<%= @comment.parent.id %> > form");
 <% else %>
-  $comment_parent = $("#comments-widget-of-commentable-<%= @commentable.id %> .comments-list");
-  $comment_form = $("#comments-widget-of-commentable-<%= @commentable.id %> .comment-form form");
+  $comment_parent = $(".comments-list");
+  console.log($comment_parent);
 <% end %>
 $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
 <% if @comment.errors.empty?  # if no erros on creating a comment... %>
-  $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 1000);
-  $comment_parent.append("<%=j render @comment %>").find(".media").last().effect("highlight", {}, 1000);
-  $comment_form[0].reset();
+  $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 500);
+  $comment_parent.append("<%=j render @comment %>").find(".media").last().effect("highlight", { color: '#007bff' }, 500);
   <% if @comment.parent %>
+    $comment_form[0].reset();
     $comment_form.remove();
     // console.log("start");
     $comment = $("#comment_<%= @comment.parent.id %>")
@@ -21,6 +21,6 @@ $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
     $reply_link.href = $restore_link.href + "/reply"
   <% end %>
   $("#comment_new_chars_counter").html("Remaining : 255");
-<% else # if some errors occurs on creating a comment... %>
+<% else %>
   $comment_form.before("<div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><%= @comment.errors.full_messages.join('') %></div>").prev().delay(1500).slideUp();
 <% end %>

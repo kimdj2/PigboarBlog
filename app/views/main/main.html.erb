@@ -1,143 +1,116 @@
-<% breadcrumb :root %>
 <section class="main_contents">
   <div class="container container-large">
-    <div class='mainContentsTitle'>
-      <h3 class="tde">         
-          <span>Recent Posts</span>         
-      </h3>
-    </div>
-    <!--<ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home">全体</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu1">猪</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu2">豚</a>
-      </li>
-    </ul>-->
-    <div class="tab-content">
-      <div class="tab-pane active" id="home">
-        <div class="row" style="padding-top:20px;padding-bottom:20px;">
-        <% @boards.each do |board| %>
-          <div class="col-lg-4 py-2" style="margin-bottom:10px;">
-            <div class="card h-100 maincard">
-              <% if !get_content_img(board.contents).blank? %>
-                <div class="list_image py-3">
-                  <%= image_tag(get_content_img(board.contents), :alt => "アイコン", class:"card-img-top") %>
-                </div>
+    <div class="row" style="padding-bottom:20px;">
+        <%= render "layouts/search" %>
+        <div class="col-md-9 py-2">
+          <h2 style="text-align:center">Resent Post</h2>
+          <div class="row">
+            <% cnt = 1 %>
+            <% @boards.each do |board| %>
+              <% if cnt== 1 %>
+                <div class="col-md-8 py-2" style="margin-bottom:10px;">
+              <% else %>
+                <div class="col-md-4 py-2" style="margin-bottom:10px;">
               <% end %>
-              <div class="card-header main-card-header">
-                <h3 class="card-title wf-sawarabigothic article_title">
-                  <%= link_to(board_path(board.id), class:"article_line_limit_2",style:"-webkit-box-orient:vertical;") do %>
-                    <%= board.title %>
-                  <% end %>
-                </h3>
-              </div>
-                <div class="card-body main-card-body">
-                  <div class="wf-sawarabigothic article_content">
-                    <p class="card-text article_line_limit_2" style="-webkit-box-orient:vertical;"><%= Sanitize.clean(board.contents) %></p>
+                <% cnt+=1 %>                             
+                <div class="blog-card-main">
+                  <div class="meta">
+                    <% if !get_content_img(board.contents).blank? %>
+                      <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
+                    <% else %>
+                      <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>
+                    <% end %>
+                    <ul class="details">
+                      <li class="author"><a href="#"><%= board.author %></a></li>
+                      <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
+                      <li class="tags">
+                        <ul>
+                          <% board.tag_list.map do |tag| %>  
+                            <li>
+                              <%= link_to(tag_path(tag)) do %>
+                                <span class="wf-sawarabigothic maintag">#<%=tag%></span>
+                              <% end %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="description">
+                    <h1><%= truncate(board.title, length: 20) %></h1>
+                    <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
+                    <p class="read-more">
+                      <span>
+                        <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
+                        <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
+                        <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
+                      </span>
+                      <%= link_to(board_path(board.id)) do %>
+                      Read More
+                      <% end %>
+                    </p>
+                  </div>
                   </div>
                 </div>
-                <hr>
-                <div class="card-footer main-card-footer">
-                  <% board.tag_list.map do |tag| %> 
-                    <%= link_to(tag_path(tag)) do %>
-                      <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                    <% end %>&nbsp;  
-                  <% end %> 
-                  <br>
-                  <div class="italic-font">
-                    <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                  </div>        
-                </div>
-              </div> 
-            </div>             
-          <% end %>
-        </div>
-      </div>
-      <!--<div class="tab-pane fade" id="menu1">
-        <div class="row" style="padding-top:20px;padding-bottom:20px;">
-         <% @boards_ino.each do |board| %>
-          <div class="col-lg-4 py-2" style="margin-bottom:10px;">
-            <div class="card h-100 maincard">
-              <% if !get_content_img(board.contents).blank? %>
-                <div class="list_image py-3">
-                  <%= image_tag(get_content_img(board.contents), :alt => "アイコン", class:"card-img-top") %>
-                </div>
               <% end %>
-              <div class="card-header main-card-header">
-                <h3 class="card-title wf-sawarabigothic article_title">
-                  <%= link_to(board_path(board.id)) do %>
-                    <%= board.title %>
-                  <% end %>
-                </h3>
-              </div>
-                <div class="card-body main-card-body">
-                  <div class="wf-sawarabigothic article_content">
-                    <p class="card-text"><%= Sanitize.clean(board.contents) %></p>
+            </div>
+          <div class="row">
+            
+          </div>
+          <hr>
+          <h2 style="text-align:center">人気 Post</h2>
+          <div class="row">
+            <% cnt = 1 %>
+            <% @boards_like.each do |board| %>
+              <% if cnt== 1 %>
+                <div class="col-md-8 py-2" style="margin-bottom:10px;">
+              <% else %>
+                <div class="col-md-4 py-2" style="margin-bottom:10px;">
+              <% end %>
+                <% cnt+=1 %>                             
+                <div class="blog-card-main-like">
+                  <div class="meta">
+                    <% if !get_content_img(board.contents).blank? %>
+                      <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
+                    <% else %>
+                      <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>
+                    <% end %>
+                    <ul class="details">
+                      <li class="author"><a href="#"><%= board.author %></a></li>
+                      <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
+                      <li class="tags">
+                        <ul>
+                          <% board.tag_list.map do |tag| %>  
+                            <li>
+                              <%= link_to(tag_path(tag)) do %>
+                                <span class="wf-sawarabigothic maintag">#<%=tag%></span>
+                              <% end %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="description">
+                    <h1><%= truncate(board.title, length: 20) %></h1>
+                    <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
+                    <p class="read-more">
+                      <span>
+                        <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
+                        <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
+                        <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
+                      </span>
+                      <%= link_to(board_path(board.id)) do %>
+                      Read More
+                      <% end %>
+                    </p>
+                  </div>
                   </div>
                 </div>
-                <hr>
-                <div class="card-footer main-card-footer">
-                  <% board.tag_list.map do |tag| %> 
-                    <%= link_to(tag_path(tag)) do %>
-                      <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                    <% end %>&nbsp;  
-                  <% end %> 
-                  <br>
-                  <div class="italic-font">
-                    <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                  </div>        
-                </div>
-              </div> 
-            </div>             
-          <% end %>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="menu2">
-        <div class="row" style="padding-top:20px;padding-bottom:20px;">
-         <% @boards_buta.each do |board| %>
-          <div class="col-lg-4 py-2" style="margin-bottom:10px;">
-            <div class="card h-100 maincard">
-              <% if !get_content_img(board.contents).blank? %>
-                <div class="list_image py-3">
-                  <%= image_tag(get_content_img(board.contents), :alt => "アイコン", class:"card-img-top") %>
-                </div>
               <% end %>
-              <div class="card-header main-card-header">
-                <h3 class="card-title wf-sawarabigothic article_title">
-                  <%= link_to(board_path(board.id)) do %>
-                    <%= board.title %>
-                  <% end %>
-                </h3>
-              </div>
-                <div class="card-body main-card-body">
-                  <div class="wf-sawarabigothic article_content">
-                    <p class="card-text"><%= Sanitize.clean(board.contents) %></p>
-                  </div>
-                </div>
-                <hr>
-                <div class="card-footer main-card-footer">
-                  <% board.tag_list.map do |tag| %> 
-                    <%= link_to(tag_path(tag)) do %>
-                      <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                    <% end %>&nbsp;  
-                  <% end %> 
-                  <br>
-                  <div class="italic-font">
-                    <%= "Post on "+board.created_at.strftime('%Y-%m-%d') %>
-                  </div>        
-                </div>
-              </div> 
-            </div>             
-          <% end %>
-        </div>
-      </div>
-    </div>-->
-    <!--<hr class="hr-text" data-content="Recent Posts">-->
-      
+            </div>
+          </div>
+          <%= render "layouts/menu" %>
       </div>
     </div>
   </section>

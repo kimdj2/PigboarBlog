@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+    <% unless board.like_user(current_user.id).blank? %>
+        <%= link_to board_like_path(board_id: board.id ,id: board.likes[0].id), method: :delete, remote: true do %>
+            <div class="vertical_like">
+                <button type="button" class="btn btn-danger btn-sm">
+                    <i class="fa fa-thumbs-up"></i> Like <%= board.likes_count == nil ? 0 : board.likes_count%>
+                </button>
+            </div>
+        <% end %>
+    <% else %>
+        <%= link_to board_likes_path(board.id), method: :post, remote: true do %>
+            <div class="vertical_like">
+                <button type="button" class="btn btn-default btn-sm">
+                    <i class="fa fa-thumbs-up"></i> Like <%= board.likes_count == nil ? 0 : board.likes_count%>
+                </button>
+            </div>
+        <% end %>
+    <% end %>
+<% else %>
+    <div class="vertical_like">
+        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#login_popup">
+            <i class="fa fa-thumbs-up"></i> Like <%= board.likes_count == nil ? 0 : board.likes_count%>
+        </button>
+    </div>
+<% end %>

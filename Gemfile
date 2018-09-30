@@ -34,14 +34,12 @@ gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails'
-gem 'tinymce-rails'
-gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'carrierwave'
+gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'fog', '>= 1.15.0'
 gem 'rmagick', require: 'RMagick'
 gem 'devise'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '>= 4.1.3'
 gem 'sass-rails', '~> 5.0'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
@@ -53,16 +51,15 @@ gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-github'
 gem 'cancancan'
 gem 'rails_admin'
 gem 'ancestry'
 gem "font-awesome-rails"
-#gem 'bootstrap-sass'
 gem 'summernote-rails', '~> 0.8.10.0'
 gem 'jquery-turbolinks'
 gem 'simple_form', '~> 3.5.1'
 gem 'codemirror-rails'
-gem 'paperclip'
 gem 'bootstrap-social-rails'
 gem 'gretel'
 
@@ -74,6 +71,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem "letter_opener"
 end
 
 group :development do

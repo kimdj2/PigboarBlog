@@ -1,37 +1,19 @@
-<div class="card" style="padding:20px;">
-  <div class-"card-body" id="comments-widget-of-commentable-<%= commentable.id %>">
-    <h2 class="article_title">
+    <h2 class="article_title" style="text-align:center">
       Comments <small id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></small>
     </h2>
-    <hr>
     <div class="comments-list">
-      <%= render commentable.comments.where(parent_id: nil) %>
-      <!-- comment-form -->
+      <%= render commentable.comments.where(parent_id: nil).order(created_at:"ASC") %>
     </div>
-    <% if commentable.comments.size != 0 %>
-      <hr>
-    <% end %>
-    <h2 class="article_title">
+    <hr>
+    <h2 class="article_title" style="text-align:center">
       Your Comments
     </h2>
+    <% if user_signed_in? %>
     <%= render "comments/form", comment: commentable.comments.build  %>
-    <br><br>
-    <% if !user_signed_in? %>
-    <div class="row">
-      <div class="article_content col-sm-12 col-lg-6">
-        <%= link_to '/users/auth/twitter', class: "btn btn-block btn-social btn-twitter" do %>
-          <span class="fa fa-twitter"></span> Twitterアカウントでログイン
-        <% end %>
-        <%= link_to '/users/auth/facebook', class: "btn btn-block btn-social btn-facebook" do %>
-          <span class="fa fa-facebook"></span> Facebookアカウントでログイン
-        <% end %>
-        <%= link_to '/users/auth/facebook', class: "btn btn-block btn-social btn-google" do %>
-          <span class="fa fa-google"></span> Googleアカウントでログイン
-        <% end %>
+    <% else %>
+      <div style="text-align:center">
+        コメントの投稿にはログインが必要です。
+        <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#login_popup">ログイン</button>    
       </div>
-      <div class="col-6"></div>
-    </div>
     <% end %>
-  <br>
-  </div>
-</div> 
+    <br>

@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 201805250500442) do
     t.string "image_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "created_at2"
+    t.integer "likes_count"
+    t.integer "view"
+    t.text "words"
+    t.string "related_boards"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
@@ -43,6 +48,15 @@ ActiveRecord::Schema.define(version: 201805250500442) do
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "board_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_likes_on_board_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -108,4 +122,6 @@ ActiveRecord::Schema.define(version: 201805250500442) do
   add_foreign_key "boards", "users", column: "author", primary_key: "username", name: "boards_author_fkey"
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "boards"
+  add_foreign_key "likes", "users"
 end

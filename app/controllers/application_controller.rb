@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :setContact
   after_action  :store_location
  
   def store_location
@@ -36,6 +37,9 @@ class ApplicationController < ActionController::Base
     @tags = ActsAsTaggableOn::Tag.where("taggings_count <> 0").order(name: "ASC")
     @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month')
   end 
-
+  
+  def setContact
+    @contact = Contact.new
+  end 
   
 end

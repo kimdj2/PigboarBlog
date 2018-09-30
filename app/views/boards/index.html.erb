@@ -1,16 +1,8 @@
 <section class="main_contents">
-<div class="article_content">
-  <% breadcrumb :boards %>
-</div>
 <div class="container container-large">
-  <br>
   <div class="row">
-    <div class="col-sm-9">
-      <div class='mainContentsTitle'>
-        <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">         
-          <span><%=@title%></span>         
-        </h3>
-      </div>
+    <%= render "layouts/search" %>
+    <div class="col-lg-9">
       <% if @boards.count == 0 %>
         <h4>作成されているスレッドがありません。</h4>
       <% else %>

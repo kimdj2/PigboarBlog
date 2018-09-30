@@ -1,9 +1,55 @@
-      <div class="col-sm-3">
-          <div class='mainContentsTitle'>
-            <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">         
-                <span>Tags</span>         
-            </h3>
+  <div class="col-md-3">
+    <div id="profile_carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="height:auto;">
+          <div class="card">
+            <div class="box">
+              <div class="img">
+                <%=image_tag("Kim_Dongjin.png", style:"min-height:auto;")%>
+              </div>
+              <h2>Kim Dongjin<br><span style="background:#007bff;">Web Programer</span></h2>
+              <p>プログラミングを楽しく。</p>
+              <span>
+                <ul>
+                  <li><a href="javascript:window.open('https://www.facebook.com/kimdongjin2')"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://twitter.com/inoshishi30')"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://plus.google.com/109400383928994891321')"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://github.com/kimdj2')"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+              </span>
+            </div>
           </div>
+        </div>
+        <div class="carousel-item" style="height:auto;">
+          <div class="card">
+            <div class="box">
+              <div class="img">
+                <%=image_tag("Jang_Yumin.png", style:"min-height:auto;")%>
+              </div>
+              <h2>Jang Yumin<br><span>Web Programer</span></h2>
+              <p>メンメン</p>
+              <span>
+                <ul>
+                  <li><a href="javascript:window.open('https://www.facebook.com/kimdongjin2')"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://twitter.com/inoshishi30')"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://plus.google.com/109400383928994891321')"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                  <li><a href="javascript:window.open('https://github.com/kimdj2')"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#profile_carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#profile_carousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+
+      <hr>
+      <h3>Category<h3>
       <div class="list-group article_content" >
         <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
           全体を見る
@@ -14,12 +60,8 @@
           <% end %> 
         <%end%>
       </div>
-      <br>
-      <div class='mainContentsTitle'>
-            <h3 class="tde" style="margin-top:1rem;margin-bottom:1rem;">     
-                <span>Archive</span>             
-            </h3>
-      </div>
+      <hr>
+      <h3>Archive<h3>
       <div class="list-group article_content">
         <% @board_month.each do |board_month| %>
           <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>

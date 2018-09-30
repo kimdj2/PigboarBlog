@@ -1,4 +1,69 @@
-    <div id="header">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <%= link_to("/",class:"navbar-brand") do %>
+          Pig&Boar Blog
+        <% end %>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to("/",class:"nav-link") do %>
+                HOME
+              <% end %>
+            </li>         
+            <li class="nav-item">
+              <%= link_to("/about",class:"nav-link") do %>
+                About
+              <% end %>
+            </li>         
+            <li class="nav-item">
+              <%= link_to("/boards", class:"nav-link") do %>
+                Posts
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0);" id="contact_btn" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <% if user_signed_in? %>
+                <%= link_to "LOGOUT", destroy_user_session_path, class:"nav-link", method: :delete %>
+              <% else %>
+                <a href="javascript:void(0);" data-toggle="modal" class="nav-link" data-target="#login_popup">
+                  LOGIN
+                </a>
+              <% end %> 
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!--<header>
+		<div class="container-fluid position-relative no-side-padding">
+
+			<a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Categories</a></li>
+				<li><a href="#">Features</a></li>
+			</ul>
+			<div class="src-area">
+				<form>
+					<button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+					<input class="src-input" type="text" placeholder="Type of search">
+				</form>
+			</div>
+
+		</div> conatiner 
+	</header>-->
+    <!--<div id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="main_nav">
             <%= link_to("/",class:"navbar-brand mb-0 h1") do %>
                   Pig&Boar Blog
@@ -12,35 +77,18 @@
                   <a href="javascript:void(0);" class="nav-link" id="aboutBtn">About</a>
                 </li>         
                 <li class="nav-item">
-                  <%= link_to("/boards", class: :menu, class:"nav-link") do %>Posts<% end %>
+                  <%= link_to("/boards", class:"nav-link") do %>Posts<% end %>
                 </li>
                 <li class="nav-item"><a href="#", class="nav-link">GuestBook</a></li>
               </ul>
-             </div>
-             <!-- <ul class="navbar-nav" id="nav-search">
-                <li class="nav-item">
-                  <%= form_tag("boards", :method => "get", class:"form-inline") do %>
-                    <div class="row">
-                        <div class="col-6" style="padding-right:0">
-                          <%= text_field_tag :search, params[:search], placeholder: "Search",class:"form-control" %>
-                        </div>
-                        <div class="col-3" style="padding-right:0">
-                          <%= submit_tag "検索", :name => nil, class:"btn btn-primary" %>
-                        </div>
-                    </div>
-                  <% end %>
-                </li>
-              </ul>
+              <% if user_signed_in? %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <% else %>
+                <a  data-toggle="modal" data-target="#login_popup">
+                  ログイン
+                </a>
+              <% end %> 
             </div>
-            <div id="header_image">
-              <div class="social">
-                <ul>
-                  <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
-                </ul>
-              </div>
-            </div>-->
         </nav>
         
-  </div>
+  </div>-->

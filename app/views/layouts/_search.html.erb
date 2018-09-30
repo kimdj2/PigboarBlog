@@ -1,0 +1,24 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-8">
+            <% if user_signed_in? %>
+                <% if (current_user.has_role?('superadmin') || current_user.has_role?('superadmin')) %>
+                    <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
+                        <button type="button" class="btn btn-dark">スレッド作成</button>
+                    <% end %>
+                <% end %> 
+            <% end %>
+        </div>
+        <div class="col-md-4">
+        <%= form_tag("/boards", :method => "get") do %>
+            <div class="input-group">
+                <%= text_field_tag :search, params[:search], placeholder: "Search for...",class:"form-control" %>&nbsp;
+                <span class="input-group-btn">
+                        <%= submit_tag "検索", :name => nil, class:"btn btn-secondary" %>
+                </span>
+            </div>
+        <% end %>
+        </div>
+    </div>
+    <hr>
+</div>

@@ -1,35 +1,32 @@
-html{
-  overflow: hidden;
-  height: 100%;
-}
-body{
-  overflow: auto;
-  height: 100%;
-}
- 
 body {
-  background-color: #f1f1f1  !important;
   color: #333;
-  font-family:  -apple-system, "Sawarabi Gothic", BlinkMacSystemFont, "Segoe UI",  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  //font-family: YakuHanJP, Roboto, YuGothic, "Yu Gothic", "Yu Gothic local", "Hiragino Sans", メイリオ, Meiryo, sans-serif !important;
+  //font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-family: "Sawarabi Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 13px;
+  text-rendering: optimizeLegibility;
   line-height: 18px;
   margin-right: auto;
-  margin-left : auto;
-   /* Extra small devices (phones, up to 480px) */
-   @media screen and (max-width: 767px) {
-    font-size:0.75rem;
+  margin-left: auto;
+
+  /* Extra small devices (phones, up to 480px) */
+  @media screen and (max-width: 767px) {
+    font-size: 0.75rem;
   }
+
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) and (max-width: 991px) {
-    font-size:0.75rem;
+    font-size: 0.75rem;
   }
+
   /* tablets/desktops and up ----------- */
   @media (min-width: 992px) and (max-width: 1199px) {
-    font-size:1rem;
+    font-size: 1rem;
   }
+
   /* large desktops and up ----------- */
   @media screen and (min-width: 1200px) {
-    font-size:1rem;
+    font-size: 1rem;
   }
 }
 
@@ -52,7 +49,9 @@ td {
 }
 
 div {
-  &.field, &.actions {
+
+  &.field,
+  &.actions {
     margin-bottom: 10px;
   }
 }
@@ -67,7 +66,7 @@ div {
 
 #footer {
   background-color: gray;
-  height:80px;
+  height: 80px;
 }
 
 #error_explanation {
@@ -96,85 +95,105 @@ div {
 label {
   display: block;
 }
+
 ::-moz-selection {
   color: white;
   text-shadow: none;
   background: #0085a1;
 }
+
 ::selection {
   color: white;
   text-shadow: none;
   background: #0085a1;
 }
+
 .btn-xs {
-  padding  : .20rem .4rem !important;
-  font-size  : .675rem !important;
-  line-height  : .4 !important;
-  border-radius : .2rem !important;
-  padding : 0.6em 0.6em !important;
-  margin : 1px;
+  padding: .20rem .4rem !important;
+  font-size: .675rem !important;
+  line-height: .4 !important;
+  border-radius: .2rem !important;
+  padding: 0.6em 0.6em !important;
+  margin: 1px;
 }
+
 .article_title {
+
   /* Extra small devices (phones, up to 480px) */
   @media screen and (max-width: 767px) {
-    font-size:1.25rem;
+    font-size: 1.25rem;
   }
+
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) and (max-width: 991px) {
-    font-size:1.25rem;
+    font-size: 1.25rem;
   }
+
   /* tablets/desktops and up ----------- */
   @media (min-width: 992px) and (max-width: 1199px) {
-    font-size:1.75rem;
+    font-size: 1.6rem;
   }
+
   /* large desktops and up ----------- */
   @media screen and (min-width: 1200px) {
-    font-size:1.75rem;
+    font-size: 1.6rem;
   }
 }
+
 .article_content {
+
   /* Extra small devices (phones, up to 480px) */
   @media screen and (max-width: 767px) {
-    font-size:0.75rem;
+    font-size: 0.75rem;
   }
+
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) and (max-width: 991px) {
-    font-size:0.75rem;
+    font-size: 0.75rem;
   }
+
   /* tablets/desktops and up ----------- */
   @media (min-width: 992px) and (max-width: 1199px) {
-    font-size:1rem;
+    font-size: 1.1rem;
   }
+
   /* large desktops and up ----------- */
   @media screen and (min-width: 1200px) {
-    font-size:1rem;
+    font-size: 1.1rem;
   }
 }
+
 .article_content_main {
+
   /* Extra small devices (phones, up to 480px) */
   @media screen and (max-width: 767px) {
-    font-size:0.75rem;
+    font-size: 0.75rem;
   }
+
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) and (max-width: 991px) {
-    font-size:0.75rem;
+    font-size: 0.75rem;
   }
+
   /* tablets/desktops and up ----------- */
   @media (min-width: 992px) and (max-width: 1199px) {
-    font-size:1rem;
+    font-size: 1rem;
   }
+
   /* large desktops and up ----------- */
   @media screen and (min-width: 1200px) {
-    font-size:1rem;
+    font-size: 1rem;
   }
 }
-.article_line_limit_2{
-  display:-webkit-box;
-  text-overflow:ellipsis;
-  -webkit-line-clamp:2;  
-  -webkit-box-orient:vertical;
+
+.article_line_limit_2 {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.font-size-100{
-  font-size:100%;
+
+.font-size-100 {
+  font-size: 100%;
 }

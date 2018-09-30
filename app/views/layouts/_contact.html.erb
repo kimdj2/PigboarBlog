@@ -1,0 +1,38 @@
+<!-- Contact -->
+<section id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">Contact Us</h2>
+				<h3 class="section-subheading text-muted">気になるところがあったら、お問い合わせください。</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+                <%= form_for @contact , url: '/contact/send',id:"contactForm", name:"sentMessage", remote: true  do |f| %>
+					<div class="row">
+						<div class="col-md-6">
+                            <%= notice %>
+                            <%= @contact.errors.full_messages.join(', ') %>
+							<div class="form-group">
+                                <%= f.text_field :name, placeholder: 'Your Name *', class:"form-control", id:"contact_name", required:"required" %>
+							</div>
+							<div class="form-group">
+                                <%= f.email_field :email, placeholder: 'Your Email *', class:"form-control", id:"contact_email", required:"required" %>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+                                <%= f.text_area :message, placeholder: 'Your Message *', class:"form-control", id:"contact_message", required:"required" %>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12 text-center">
+                            <%= f.submit 'Send Message', id:"sendMessageButton", class:"btn btn-primary btn-xl text-uppercase" %>
+						</div>
+					</div>
+                <% end %>
+			</div>
+		</div>
+	</div>
+</section>

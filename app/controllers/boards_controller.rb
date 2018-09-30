@@ -2,17 +2,14 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :new, :destroy]
   before_action :setTagAndCategory, only: [:show, :index]
-  PER = 1
-
   # GET /boards
   # GET /boards.json
   def index
-      #@boards = Board.all.order(id: "DESC").page(params[:page]).per(PER)
       if params[:search]
         @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
         @title = "'"+params[:search]+"'の検索結果"
       elsif params[:tag]
-        @title = "Tag:"+params[:tag]
+        @title = "Category:"+params[:tag]
         @boards = Board.tagged_with(params[:tag])
       elsif params[:created]
         @title = "Archive:"+params[:created]
@@ -23,9 +20,9 @@ class BoardsController < ApplicationController
       end
       
       if params[:page]
-        @boards = @boards.order(id: "DESC").page(params[:page]).per(3)
+        @boards = @boards.order(id: "DESC").page(params[:page]).per(6)
       else
-        @boards = @boards.order(id: "DESC").page(1).per(3)
+        @boards = @boards.order(id: "DESC").page(1).per(6)
       end
   end
 
@@ -35,10 +32,19 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @board = Board.find(params[:id])
+    @related_articles = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(3) 
+    #Ex:- :limit => 40
+    if @board.view == nil
+      update_view=1
+    else
+      update_view = @board.view += 1
+    end
+    @board.update_attribute "view", update_view
     @before_post = @board.before_post
     @next_post = @board.next_post
-    puts @before_post
-    puts @next_post
+    @title = @board.title
+    @subTitle = 'by ' + @board.author
+    @date = ' on ' + @board.created_at.strftime('%Y/%m/%d')
   end
 
   # GET /boards/new
@@ -87,7 +93,6 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
-    
     @board.destroy
     respond_to do |format|
       format.html { redirect_to action: :index, notice: 'Board was successfully destroyed.'}
@@ -95,18 +100,20 @@ class BoardsController < ApplicationController
     end
   end
 
+  def like_and_destroy
+    like = Like.find_by(user_id: current_user.id, board_id: params[:id])
+    if like.nil?
+      Like.create(user_id: current_user.id, board_id: params[:id])
+    else
+      like.destroy
+    end
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
       @board = Board.find(params[:id])
-    end
-    def is_parent
-      categories = Category.find_by(:id => params[:category])
-      if categories.ancestry == nil
-        return true
-      else 
-        return false
-      end  
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params

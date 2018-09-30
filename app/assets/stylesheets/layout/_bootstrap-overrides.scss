@@ -1,0 +1,22 @@
+@import "layout/variables.scss";
+@import "layout/mixins.scss";
+
+// Bootstrap overrides for this template
+.btn {
+  @include sans-serif-font;
+}
+
+.btn-primary {
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background-color: darken($primary, 7.5) !important;
+    border-color: darken($primary, 7.5) !important;
+  }
+}
+
+.btn-lg {
+  font-size: 16px;
+  padding: 25px 35px;
+}

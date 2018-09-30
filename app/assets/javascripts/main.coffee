@@ -2,80 +2,41 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-    topBtn = $('#page-top')
-    aboutBtn = $('#aboutBtn')
-    footer = $('#footer')
-    mainNav = $('#main_nav')
-    navToggle = $('#navToggle')
-    mainTitle = $('#main_title')
-    headerImage = $('#header_image')
-    navSearch = $('#nav-search')
-    main_contents = $('.main_contents')[0]
-    topBtn.hide()
-    if document.body.scrollTop > main_contents.offsetTop or document.documentElement.scrollTop > main_contents.offsetTop 
-        mainNav.css('cssText', 'background-color: #343a40 !important;');
-        navSearch.show()
-    else
-        if navToggle.attr('aria-expanded') == 'false'
-          mainNav.css('cssText', 'background-color: transparent !important;');
+  'use strict'
+  contactBtn = $('#contact_btn')
+  $('body').on('input propertychange', '.floating-label-form-group', (e) ->
+    $(this).toggleClass 'floating-label-form-group-with-value', ! !$(e.target).val()
+    return
+  ).on('focus', '.floating-label-form-group', ->
+    $(this).addClass 'floating-label-form-group-with-focus'
+    return
+  ).on 'blur', '.floating-label-form-group', ->
+    $(this).removeClass 'floating-label-form-group-with-focus'
+    return
+  # Show the navbar when the page is scrolled up
+  MQL = 992
+  #primary navigation slide-in effect
+  if $(window).width() > MQL
+    headerHeight = $('#mainNav').height()
+    $(window).on 'scroll', { previousTop: 0 }, ->
+      currentTop = $(window).scrollTop()
+      #check if user is scrolling up
+      if currentTop < @previousTop
+        #if scrolling up...
+        if currentTop > 0 and $('#mainNav').hasClass('is-fixed')
+          $('#mainNav').addClass 'is-visible'
         else
-          mainNav.css('cssText', 'background-color: #343a40 !important;');
-        navSearch.hide()
-    if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
-        headerImage.css({"top":"-250px"})
-    else
-        headerImage.css({"top":"20px"})
-    #スクロールが500に達したらボタン表示
-    $("body").scroll (e)->
-      if $(this).scrollTop() > 50
-        topBtn.fadeIn()
-      else
-        topBtn.fadeOut()
-
-      bottomY = 15
-      $window = $(e.currentTarget)
-      height = $window.height()
-      scrollTop = document.documentElement.scrollTop
-      documentHeight = $(document).height()
-      footerHeight = $('#footer').height()
-      bottomHeight = footerHeight + height + scrollTop + bottomY - documentHeight
-      if scrollTop >= documentHeight - height - footerHeight + bottomY
-        $('#page-top').css bottom: bottomHeight - bottomY + 55
-      else
-        $('#page-top').css bottom: bottomY
-      if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0         
-        mainNav.css('cssText', 'background-color: #343a40 !important;')
-        navSearch.show()
-      else
-        if navToggle.attr('aria-expanded') == 'false'
-          mainNav.css('cssText', 'background-color: transparent !important;')
-        else
-          mainNav.css('cssText', 'background-color: #343a40 !important;')        
-        navSearch.hide()
-      if document.body.scrollTop > 50 or document.documentElement.scrollTop > 50
-        headerImage.css({"top":"-250px"})
-      else
-        headerImage.css({"top":"20px"})
+          $('#mainNav').removeClass 'is-visible is-fixed'
+      else if currentTop > @previousTop
+        #if scrolling down...
+        $('#mainNav').removeClass 'is-visible'
+        if currentTop > headerHeight and !$('#mainNav').hasClass('is-fixed')
+          $('#mainNav').addClass 'is-fixed'
+      @previousTop = currentTop
       return
     #スクロールしてトップ
-    topBtn.click ->
-      $('body,html').animate { scrollTop: 0 }, 300
-
-    #スクロールしてトップ
-    aboutBtn.click ->
-      $('body,html').animate { scrollTop: $("#mainAboutus").offset().top  }, 300  
-
-    navToggle.click ->
-      if document.body.scrollTop > 0 or document.documentElement.scrollTop > 0          
-        mainNav.css('cssText', 'background-color: #343a40 !important;')
-        navSearch.show()
-      else
-        if navToggle.attr('aria-expanded') == 'false'
-          mainNav.css('cssText', 'background-color: #343a40 !important;')        
-        else
-          mainNav.css('cssText', 'background-color: transparent !important;')
-        navSearch.hide()
-
+    contactBtn.click ->
+      $('body,html').animate { scrollTop: $("#contact").offset().top }, 300  
     return
 
 

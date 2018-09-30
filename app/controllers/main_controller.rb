@@ -2,15 +2,13 @@ class MainController < ApplicationController
     before_action :setTagAndCategory
     respond_to :rss, :html
     def index
-        @boards = Board.all.order(created_at:"DESC").limit(6)
-        @boards_ino = Board.where("author='イノシシ'").order(created_at:"DESC").limit(6)
-        @boards_buta = Board.where("author='豚'").order(created_at:"DESC").limit(6)
+        @boards = Board.all.order(created_at:"DESC").limit(5)
+        @boards_like = Board.all.order("likes_count IS NULL, likes_count DESC").order("view IS NULL, view DESC").limit(5)
         render 'main/main'
     end
     def feed
-        @boards = Board.all.order(created_at:"DESC").limit(6)
+        @boards = Board.all.order(created_at:"DESC").limit(5)
         respond_to do |format|
-            format.atom
             format.rss { render :layout => false }
         end      
     end

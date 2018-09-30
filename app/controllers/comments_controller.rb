@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_commentable
     before_action :set_comment, only: [ :reply, :edit, :update, :destroy ]
-   
+
     def reply
       @reply = @commentable.comments.build(parent: @comment)
     end
-   
+    
     def create
       @comment = @commentable.comments.new(comment_params)
       @comment.user = current_user
@@ -22,10 +22,10 @@ class CommentsController < ApplicationController
         end
       end
     end
-   
+    
     def edit
     end
-   
+    
     def update
       respond_to do |format|
         if @comment.update(comment_params)

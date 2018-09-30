@@ -1,20 +1,16 @@
-<div id="top_container">
-  <div id="top_image" class="text-white text-center">
-    <div class="container" id="top_message">
-          <div class="row">
-             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"  id="main_massege_contents" >
-                <%= form_tag("/boards", :method => "get", class:"form-inline nav-right") do %>
-                    <div class="form-row" style="width:100%;">
-                        <div class="col-9 col-md-9 mb-2 mb-md-0">
-                            <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"form-control form-control-sm",style:"width:100%;" %>
-                        </div>
-                        <div class="col-3 col-md-3">
-                            <%= submit_tag "検索", :name => nil, class:"btn btn-block btn-sm btn-primary" %>
-                        </div>
-                    </div>
-                <% end %>
-              </div>
-          </div>
+<header class="masthead" style="background-image: url('/assets/post_header.jpg')">
+    <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="page-heading">
+                    <h1><%=@title%></h1>
+                    <h2 class="subheading"><%=@subTitle%></h2>
+                    <span class="meta"><%=@date%></span>
+                </div>
+            </div>
         </div>
-  </div>
-</div>
+    </div>
+</header>
+
+

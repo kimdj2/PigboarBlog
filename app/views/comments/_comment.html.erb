@@ -1,8 +1,4 @@
-<% if comment.parent == nil %>
-  <div class="media border p-3 comment" id="comment_<%= comment.id %>">
-<% else %>
   <div class="media p-3 comment" id="comment_<%= comment.id %>">
-<% end %>
     <% if comment.user.image != nil %>
       <%=image_tag(comment.user.image, class:"mr-2 mt-2 rounded-circle comment-image")%>
     <% else %>
@@ -12,14 +8,32 @@
       <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">
-        <%= link_to "Edit", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true, data: { turbolinks: true } %> &bull;
-        <%= link_to "Destroy", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
         <% if comment.parent == nil %>
-          &bull;<%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true, data: { turbolinks: true }  %>
+          <% if user_signed_in? %>
+            <%= link_to(polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', style:"margin-right:5px;", remote: true, data: { turbolinks: true }) do %>
+            <i class="fa fa-reply"></i>返信
+            <% end %>
+          <% end %>
+        <% else %>
+          &nbsp;  
+        <% end %>
+        <% if user_signed_in? && comment.user.id == current_user.id %>
+          <%= link_to([comment.commentable, comment], method: :delete, class: 'delete-comment-link text-right', style:"float:right;margin-right:5px;",  data:{confirm:"コメントを削除します。よろしいですか。"}, remote: true ) do %>
+            <i class="fa fa-trash-o"></i>削除
+          <% end %>
+          <%= link_to(edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link text-right', style:"float:right;margin-right:5px;", remote: true, data: { turbolinks: true } ) do %>
+            <i class="fa fa-edit"></i>修正
+          <% end %>
         <% end %>
       </div>
+      <% if comment.parent == nil %>
+      <hr>
+      <% end %>
       <% if comment.replies.any? %>
         <%= render comment.replies %>
       <% end %>
     </div>
   </div>
+<% if comment.parent != nil %>
+<hr>
+<% end %>

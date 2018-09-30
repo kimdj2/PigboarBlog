@@ -13,40 +13,54 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
- @import 'jquery-ui';
- @import "font-awesome";
- @import "codemirror";
- @import "summernote-bs4";
- @import 'comments';
- @import "social-share-button";
- @import "bootstrap-tagsinput.css";
- @import "summernote-custom-theme.min";
- @import "codemirror/themes/solarized";
- @import "bootstrap-social"; 
- .container-small, .container-large {
+@import "bootstrap";
+@import "jquery-ui";
+@import "font-awesome";
+@import "codemirror";
+@import "summernote-bs4";
+@import "comments";
+@import "social-share-button";
+@import "bootstrap-tagsinput.css";
+@import "summernote-custom-theme.min";
+@import "codemirror/themes/solarized";
+@import "bootstrap-social";
+@import "layout/global.scss";
+@import "layout/navbar.scss";
+@import "layout/masthead.scss";
+@import "layout/post.scss";
+@import "layout/contact.scss";
+@import "layout/footer.scss";
+@import "layout/bootstrap-overrides.scss";
+.container-small,
+.container-large {
     max-width: 100%;
 }
+
 @media (min-width: 768px) {
     .container-small {
         width: 300px;
     }
+
     .container-large {
         width: 970px;
     }
 }
+
 @media (min-width: 992px) {
     .container-small {
         width: 500px;
     }
+
     .container-large {
         width: 1170px;
     }
 }
+
 @media (min-width: 1200px) {
     .container-small {
         width: 700px;
     }
+
     .container-large {
         width: 1300px;
     }

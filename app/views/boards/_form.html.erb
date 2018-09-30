@@ -13,6 +13,11 @@
                 <strong>エラー！！</strong> 内容が入力されていません。
               </div>      
             <% end %>
+            <% if key == :tag_list %>
+              <div class="alert alert-danger">
+                <strong>エラー！！</strong> tagが入力されていません。
+              </div>      
+            <% end %>
           <% end %>
       <% end %>
       <div class="content_title">Title</div>
@@ -25,9 +30,7 @@
       <%= f.hidden_field :image_path, id: :board_image_path %>
       <div class="content_title">Content</div>
       <div class="field">
-        <!--<%= tinymce %>-->
         <%= f.text_area :contents, 'data-provider': :summernote %>
-        <!--<%= f.text_area :contents, id: :board_contents, class: "form-control tinymce", rows: "25" %>-->
       </div>
       <hr>
     <br>
