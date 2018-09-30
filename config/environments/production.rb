@@ -93,7 +93,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
-    :port => 465,
+    :port => 587,
     :domain => 'gmail.com',
     :user_name => ENV["EMAIL_HIDDEN"],
     :password => ENV["PASSWORD_HIDDEN"],
