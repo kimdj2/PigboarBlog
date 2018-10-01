@@ -3,7 +3,7 @@ class MainController < ApplicationController
     respond_to :rss, :html
     def index
         @boards = Board.all.order(created_at:"DESC").limit(5)
-        @boards_like = Board.all.order("likes_count IS NULL, likes_count DESC").order("view IS NULL, view DESC").limit(5)
+        @boards_like = Board.all.order("likes_count DESC").order("view DESC").limit(5)
         render 'main/main'
     end
     def feed

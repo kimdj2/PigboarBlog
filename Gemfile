@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~>5.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -46,7 +46,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'sanitize'
 gem 'social-share-button'
 gem 'bootstrap-tagsinput-rails'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -56,12 +56,14 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'ancestry'
 gem "font-awesome-rails"
-gem 'summernote-rails', '~> 0.8.10.0'
+gem 'summernote-rails', '>= 0.8.10.0'
 gem 'jquery-turbolinks'
-gem 'simple_form', '~> 3.5.1'
+gem 'simple_form', '>= 3.5.1'
 gem 'codemirror-rails'
 gem 'bootstrap-social-rails'
 gem 'gretel'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

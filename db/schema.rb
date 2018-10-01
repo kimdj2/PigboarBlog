@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 201805250500442) do
+ActiveRecord::Schema.define(version: 2018_09_29_164013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,8 @@ ActiveRecord::Schema.define(version: 201805250500442) do
     t.string "image_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "created_at2"
     t.integer "likes_count"
     t.integer "view"
-    t.text "words"
-    t.string "related_boards"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|

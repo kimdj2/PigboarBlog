@@ -1,5 +1,5 @@
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/byebug-10.0.2/ext/byebug
-C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20180516-6264-vexdgo.rb extconf.rb
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181001-93584-j7slvh.rb extconf.rb
 creating Makefile
 
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/byebug-10.0.2/ext/byebug
@@ -17,4 +17,4 @@ linking shared-object byebug/byebug.so
 
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/byebug-10.0.2/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20180516-6264-1a5lt6j/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20181001-93584-1j6cml6/byebug

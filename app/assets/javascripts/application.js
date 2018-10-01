@@ -37,8 +37,6 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote/summernote-bs4.min
-//= require summernote/summernote-google
-//= require summernote/summernote-ext-highlight
 //= require bootstrap-tagsinput
 //= require bootstrap-sprockets
 //= require jquery.turbolinks

@@ -5,6 +5,7 @@ class Board < ActiveRecord::Base
     acts_as_taggable
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :likes, dependent: :destroy 
+    has_many :tag_taggings, class_name: 'ActsAsTaggableOn::Tagging'
 
 
     def before_post

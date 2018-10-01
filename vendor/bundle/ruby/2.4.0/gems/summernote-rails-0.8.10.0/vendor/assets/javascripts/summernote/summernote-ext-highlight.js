@@ -1,8 +1,6 @@
 /*!
- * Summernote Syntax Highlighting
- * http://epiksel.github.io/summernote-ext-highlight/
- * http://e-piksel.com
- * Original Author: http://www.hyl.pw/
+ * summernote highlight plugin
+ * http://www.hyl.pw/
  *
  * Released under the MIT license
  */
@@ -35,8 +33,7 @@
             var $editor = context.layoutInfo.editor;
             var options = context.options;
             var lang = options.langInfo;
-
-
+            
             // add button
 
             context.memo('button.highlight', function () {
@@ -44,7 +41,6 @@
                 var button = ui.button({
                     contents: '<i class="fa fa-file-code-o"></i>',
                     tooltip: 'highlight',
-                    container: true,
                     click: function () {
                         self.show()
                     }
@@ -63,11 +59,9 @@
                 var $select = $('<select class="form-control ext-highlight-select" />');
 
                 var languages = [
-                    'css', 'htm', 'html', 'php', 'java', 'js', 'xml', 'sql', 'py', 'rb', // popular lang
-                    'apoll', 'basic', 'clj', 'coffee', 'dart', 'erlan', 'go', 'hs',
-                    'lasso', 'lisp', 'llvm', 'logta', 'lua', 'matla', 'ml', 'mumps', 'n',
-                    'pasca', 'perl', 'proto', 'r', 'rd', 'rust', 'scala', 'swift',
-                    'tcl', 'tex', 'vb', 'vhdl', 'wiki', 'xhtml', 'xq', 'yaml'
+                    'bsh', 'c', 'cc', 'cpp', 'cs', 'csh', 'cyc', 'cv', 'htm', 'html',
+                    'java', 'js', 'm', 'mxml', 'perl', 'pl', 'pm', 'py', 'php', 'rb',
+                    'sh', 'xhtml', 'xml', 'xsl'
                 ];
 
                 for (var i = 0; i < languages.length; i++) {
@@ -91,11 +85,11 @@
 
             this.createCodeNode = function (code, select) {
                 var $code = $('<code>');
-                $code.html(code.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+                $code.html($code);
                 $code.addClass('language-' + select);
 
                 var $pre = $('<pre>');
-                $pre.html($code)
+                $pre.html(code)
                 $pre.addClass('prettyprint').addClass('linenums');
 
                 return $pre[0];
@@ -108,30 +102,29 @@
                     var $extHighlightSelect = self.$dialog.find('.ext-highlight-select');
 
                     ui.onDialogShown(self.$dialog, function () {
-                        context.triggerEvent('dialog.shown');
 
                         $extHighlightCode.val(codeInfo);
 
                         $extHighlightCode.on('input', function () {
                             ui.toggleBtn($extHighlightBtn, $extHighlightCode.val() != '');
-
                             codeInfo = $extHighlightCode.val();
                         });
 
                         $extHighlightBtn.one('click', function (event) {
                             event.preventDefault();
-                            context.invoke('editor.insertNode', self.createCodeNode(codeInfo, $extHighlightSelect.val()));
-
-                            self.$dialog.modal('hide');
+                            deferred.resolve(self.createCodeNode($extHighlightCode.val(), $extHighlightSelect.val()));
                         });
                     });
 
                     ui.onDialogHidden(self.$dialog, function () {
-                        context.triggerEvent('dialog.shown');
-                        deferred.resolve();
+                        $extHighlightBtn.off('click');
+                        if (deferred.state() === 'pending') {
+                            deferred.reject();
+                        }
                     });
+
                     ui.showDialog(self.$dialog);
-                }).promise();
+                });
             };
 
             this.getCodeInfo = function () {
@@ -141,10 +134,14 @@
 
             this.show = function () {
                 var codeInfo = self.getCodeInfo();
-
                 context.invoke('editor.saveRange');
                 this.showHighlightDialog(codeInfo).then(function (codeInfo) {
+                    self.$dialog.modal('hide');
                     context.invoke('editor.restoreRange');
+
+                    if (codeInfo) {
+                        context.invoke('editor.insertNode', codeInfo);
+                    }
                 });
             };
 

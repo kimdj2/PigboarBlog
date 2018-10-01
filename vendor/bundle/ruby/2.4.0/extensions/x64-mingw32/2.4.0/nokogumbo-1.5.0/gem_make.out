@@ -1,5 +1,5 @@
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
-C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20180516-6264-gofjf.rb extconf.rb
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181001-93584-ufaf9o.rb extconf.rb
 checking for xmlNewDoc() in -lxml2... no
 checking for gumbo_parse() in -lgumbo... no
 checking for GumboErrorType with error.h... not found
@@ -31,4 +31,4 @@ linking shared-object nokogumboc.so
 
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/nokogumbo-1.5.0/ext/nokogumboc
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogumboc.so ./.gem.20180516-6264-enwng1
+/usr/bin/install -c -m 0755 nokogumboc.so ./.gem.20181001-93584-ws0o08

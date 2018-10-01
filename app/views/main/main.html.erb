@@ -3,113 +3,12 @@
     <div class="row" style="padding-bottom:20px;">
         <%= render "layouts/search" %>
         <div class="col-md-9 py-2">
-          <h2 style="text-align:center">Resent Post</h2>
-          <div class="row">
-            <% cnt = 1 %>
-            <% @boards.each do |board| %>
-              <% if cnt== 1 %>
-                <div class="col-md-8 py-2" style="margin-bottom:10px;">
-              <% else %>
-                <div class="col-md-4 py-2" style="margin-bottom:10px;">
-              <% end %>
-                <% cnt+=1 %>                             
-                <div class="blog-card-main">
-                  <div class="meta">
-                    <% if !get_content_img(board.contents).blank? %>
-                      <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
-                    <% else %>
-                      <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>
-                    <% end %>
-                    <ul class="details">
-                      <li class="author"><a href="#"><%= board.author %></a></li>
-                      <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
-                      <li class="tags">
-                        <ul>
-                          <% board.tag_list.map do |tag| %>  
-                            <li>
-                              <%= link_to(tag_path(tag)) do %>
-                                <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                              <% end %>
-                            </li>
-                          <% end %>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="description">
-                    <h1><%= truncate(board.title, length: 20) %></h1>
-                    <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
-                    <p class="read-more">
-                      <span>
-                        <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
-                        <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
-                        <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
-                      </span>
-                      <%= link_to(board_path(board.id)) do %>
-                      Read More
-                      <% end %>
-                    </p>
-                  </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          <div class="row">
-            
-          </div>
+          <h2 style="text-align:center;">Resent Post</h2>
+          <%= render "layouts/postList", boards: @boards, types:"resent" %>
           <hr>
-          <h2 style="text-align:center">人気 Post</h2>
-          <div class="row">
-            <% cnt = 1 %>
-            <% @boards_like.each do |board| %>
-              <% if cnt== 1 %>
-                <div class="col-md-8 py-2" style="margin-bottom:10px;">
-              <% else %>
-                <div class="col-md-4 py-2" style="margin-bottom:10px;">
-              <% end %>
-                <% cnt+=1 %>                             
-                <div class="blog-card-main-like">
-                  <div class="meta">
-                    <% if !get_content_img(board.contents).blank? %>
-                      <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
-                    <% else %>
-                      <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>
-                    <% end %>
-                    <ul class="details">
-                      <li class="author"><a href="#"><%= board.author %></a></li>
-                      <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
-                      <li class="tags">
-                        <ul>
-                          <% board.tag_list.map do |tag| %>  
-                            <li>
-                              <%= link_to(tag_path(tag)) do %>
-                                <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                              <% end %>
-                            </li>
-                          <% end %>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="description">
-                    <h1><%= truncate(board.title, length: 20) %></h1>
-                    <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
-                    <p class="read-more">
-                      <span>
-                        <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
-                        <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
-                        <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
-                      </span>
-                      <%= link_to(board_path(board.id)) do %>
-                      Read More
-                      <% end %>
-                    </p>
-                  </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
+          <h2>人気 Post</h2>
+          <%= render "layouts/postList", boards: @boards_like, types:"like"%>
+        </div>  
           <%= render "layouts/menu" %>
       </div>
     </div>

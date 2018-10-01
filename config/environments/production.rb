@@ -97,7 +97,7 @@ Rails.application.configure do
     :domain => 'gmail.com',
     :user_name => ENV["EMAIL_HIDDEN"],
     :password => ENV["PASSWORD_HIDDEN"],
-    :authentication => 'login',
+    :authentication => :plain,
     :tls => true,
   }
 end

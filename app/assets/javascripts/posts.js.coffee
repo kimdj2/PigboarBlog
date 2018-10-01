@@ -9,8 +9,7 @@ sendFile = (file, toSummernote) ->
     contentType: false
     processData: false
     success: (data) ->
-      console.log 'file uploading...'
-      toSummernote.summernote "insertImage", data.url
+        toSummernote.summernote "insertImage", data.url
 
 $(document).on 'turbolinks:load', ->
     $('[data-provider="summernote"]').each ->
@@ -25,12 +24,6 @@ $(document).on 'turbolinks:load', ->
             callbacks:
                 onImageUpload: (files) ->
                     sendFile files[0], $(this)
-            map:
-                apiKey: '',
-                center:
-                    lat: -33.8688
-                    lng: 151.2195
-                zoom: 13
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],

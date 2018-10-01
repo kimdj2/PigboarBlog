@@ -1,0 +1,16 @@
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181001-93584-j65cd3.rb extconf.rb
+creating Makefile
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+generating websocket_mask-x64-mingw32.def
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20181001-93584-13x4o06
