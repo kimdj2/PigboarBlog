@@ -10,7 +10,7 @@ class ContactController < ApplicationController
         ContactMailer.contact_me(@contact).deliver
         format.js
       else
-        format.js
+        format.json { render json: {error:"送信エラー"}, status: 400 }
       end
     end
   end

@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :setContact
   after_action  :store_location
- 
+
+  rescue_from ActionController::RoutingError, with: :handle_404 unless Rails.env.development?
+  rescue_from ActiveRecord::RecordNotFound,   with: :handle_404 unless Rails.env.development?
+
   def store_location
     if (request.fullpath != new_user_registration_path &&
         request.fullpath != new_user_session_path &&
