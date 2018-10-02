@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :setContact
   after_action  :store_location
-
-  rescue_from ActionController::RoutingError, with: :handle_404 unless Rails.env.development?
-  rescue_from ActiveRecord::RecordNotFound,   with: :handle_404 unless Rails.env.development?
+  include BlogCommon
 
   def store_location
     if (request.fullpath != new_user_registration_path &&
@@ -44,5 +42,30 @@ class ApplicationController < ActionController::Base
   def setContact
     @contact = Contact.new
   end 
-  
+      # エラーハンドリング処理
+      def handle_500(e = nil)
+        #ログ出力
+        ErrorUtility.errorLogger(e)
+
+        if request.xhr?
+        # Ajaxのための処理
+        render json: { error: '500 error' }, status: 500
+        else
+        render template: 'errors/error_500', status: 500, layout: 'application', content_type: 'text/html'
+        end
+    end
+
+    def handle_404(e = nil)
+        #ログ出力
+        ErrorUtility.errorLogger(e)
+        
+        #ajax通信の場合
+        if request.xhr?
+            render json: { error: '404 error' }, status: 404
+        #ajax通信以外の場合
+        else
+            render file: "#{Rails.root}/public/404.html", layout: false, status: 500
+        end
+    end
+
 end
