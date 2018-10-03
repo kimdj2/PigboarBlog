@@ -52,7 +52,7 @@
       <h4>Resent Post</h4>
         <% @boards_resent.each do |board| %>
           <%= link_to(board_path(board.id)) do %>
-            <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 15) %></p>
+            <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 19) %></p>
           <% end %>
         <% end %>
       <hr>
