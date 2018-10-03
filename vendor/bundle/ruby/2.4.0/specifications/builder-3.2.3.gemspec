@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.homepage = "http://onestepback.org".freeze
   s.licenses = ["MIT".freeze]
   s.rdoc_options = ["--title".freeze, "Builder -- Easy XML Building".freeze, "--main".freeze, "README.rdoc".freeze, "--line-numbers".freeze]
-  s.rubygems_version = "2.7.6".freeze
+  s.rubygems_version = "2.7.7".freeze
   s.summary = "Builders for MarkUp.".freeze
 
-  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.7" if s.respond_to? :installed_by_version
 end

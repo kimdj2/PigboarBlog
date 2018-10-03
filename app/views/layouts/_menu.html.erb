@@ -49,7 +49,14 @@
     </div>
 
       <hr>
-      <h3>Category<h3>
+      <h4>Resent Post</h4>
+        <% @boards_resent.each do |board| %>
+          <%= link_to(board_path(board.id)) do %>
+            <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 15) %></p>
+          <% end %>
+        <% end %>
+      <hr>
+      <h4>Category<h4>
       <div class="list-group article_content" >
         <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
           全体を見る
@@ -61,7 +68,7 @@
         <%end%>
       </div>
       <hr>
-      <h3>Archive<h3>
+      <h4>Archive<h4>
       <div class="list-group article_content">
         <% @board_month.each do |board_month| %>
           <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>

@@ -3,11 +3,11 @@
     <div class="row" style="padding-bottom:20px;">
         <%= render "layouts/search" %>
         <div class="col-md-9 py-2">
-          <h2 style="text-align:center;">Resent Post</h2>
-          <%= render "layouts/postList", boards: @boards, types:"resent" %>
-          <hr>
-          <h2>人気 Post</h2>
+          <h2 style="text-align:center;">人気 Post</h2>
           <%= render "layouts/postList", boards: @boards_like, types:"like"%>
+          <hr>
+          <h2 style="text-align:center;">Resent Post</h2>
+          <%= render "layouts/postList", boards: @boards_resent, types:"resent" %>
         </div>  
           <%= render "layouts/menu" %>
       </div>

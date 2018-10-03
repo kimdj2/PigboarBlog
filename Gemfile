@@ -36,8 +36,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
-gem 'fog', '>= 1.15.0'
-gem 'rmagick', require: 'RMagick'
+#gem 'fog', '>= 1.15.0'
+#gem 'rmagick', require: 'RMagick'
 gem 'devise'
 gem 'bootstrap', '>= 4.1.3'
 gem 'sass-rails', '~> 5.0'
@@ -74,6 +74,10 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem "letter_opener"
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails' 
+  gem 'rails-controller-testing' 
+
 end
 
 group :development do

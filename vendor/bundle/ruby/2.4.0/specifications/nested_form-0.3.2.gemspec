@@ -13,10 +13,10 @@ Gem::Specification.new do |s|
   s.email = "ryan@railscasts.com".freeze
   s.homepage = "http://github.com/ryanb/nested_form".freeze
   s.rubyforge_project = "nested_form".freeze
-  s.rubygems_version = "2.7.6".freeze
+  s.rubygems_version = "2.7.7".freeze
   s.summary = "Gem to conveniently handle multiple models in a single form.".freeze
 
-  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.7" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

@@ -3,18 +3,17 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.has_role?('admin')
-      can :read, :all
-      can :access, :rails_admin
-      can :dashboard
-    elsif user.has_role?('superadmin')
+    if user.has_role?('superadmin')
       can :read, :all
       can :access, :rails_admin
       can :manage, :all
+      can :dashboard
+    elsif user.has_role?('admin')
+      can :read, :all
+      can :manage, :all
+      can :dashboard
     else
-      can :manage, [] # A
-      can :read, [] # B
-      can :create, [] # C
+      can :read, :all
     end
     # Define abilities for the passed in user here. For example:
     #

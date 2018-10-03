@@ -27,7 +27,7 @@ Gems
 - rails_admin
 - summernote-rails
 - gretel
-
+- rspec
 	
 2018/05/21
 - add disqus Comments
@@ -64,4 +64,9 @@ Gems
 2018/10/02
 - railsバージョンアップ（5.1.6 → 5.2.0）
 - viewの共通化
+
+2018/10/04
+- ajaxLoadert追加
+- rspec追加
+
 

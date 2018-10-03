@@ -15,10 +15,10 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT".freeze]
   s.post_install_message = "When upgrading\n\nRe-run the migrations generator\n\n    rake acts_as_taggable_on_engine:install:migrations\n\nThis will create any new migrations and skip existing ones\nVersion 3.5.0 has a migration for mysql adapter".freeze
   s.required_ruby_version = Gem::Requirement.new(">= 2.2.7".freeze)
-  s.rubygems_version = "2.7.6".freeze
+  s.rubygems_version = "2.7.7".freeze
   s.summary = "Advanced tagging for Rails.".freeze
 
-  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.7" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

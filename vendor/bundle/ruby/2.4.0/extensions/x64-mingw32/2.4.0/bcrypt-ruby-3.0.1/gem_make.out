@@ -1,5 +1,5 @@
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
-C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181001-93584-7nkdi4.rb extconf.rb
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181003-87684-1u6inej.rb extconf.rb
 creating Makefile
 
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
@@ -26,4 +26,4 @@ linking shared-object bcrypt_ext.so
 
 current directory: D:/project/railssite3/vendor/bundle/ruby/2.4.0/gems/bcrypt-ruby-3.0.1/ext/mri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20181001-93584-13v237p
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20181003-87684-tebb7m

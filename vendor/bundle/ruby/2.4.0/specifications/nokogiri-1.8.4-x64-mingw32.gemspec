@@ -19,10 +19,10 @@ Gem::Specification.new do |s|
   s.post_install_message = "Nokogiri is built with the packaged libraries: libxml2-2.9.8, libxslt-1.1.32, zlib-1.2.11, libiconv-1.15.\n".freeze
   s.rdoc_options = ["--main".freeze, "README.md".freeze]
   s.required_ruby_version = Gem::Requirement.new(["< 2.6".freeze, ">= 2.2".freeze])
-  s.rubygems_version = "2.7.6".freeze
+  s.rubygems_version = "2.7.7".freeze
   s.summary = "Nokogiri (\u92F8) is an HTML, XML, SAX, and Reader parser".freeze
 
-  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.7" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

@@ -1,3 +1,4 @@
+#エラーハンドラ
 module ErrorHandler
     extend ActiveSupport::Concern
     included do
@@ -15,20 +16,22 @@ module ErrorHandler
         #rescue_from IllegalAccessError,            with: :render_403
     end
 
-
-    # エラーハンドリング処理
+    # 500エラー制御
     def handle_500(e = nil)
         #ログ出力
         ErrorUtility.errorLogger(e)
-
+        
+        #ajax通信の場合
         if request.xhr?
-        # Ajaxのための処理
-        render json: { error: '500 error' }, status: 500
+            render json: { error: '500 error' }, status: 500
+        #ajax通信以外の場合
         else
-        render template: 'errors/error_500', status: 500, layout: 'application', content_type: 'text/html'
+            #500ページをロードする。
+            render file: "#{Rails.root}/public/500.html", layout: false, status: 500
         end
     end
 
+    # 404エラー制御
     def handle_404(e = nil)
         #ログ出力
         ErrorUtility.errorLogger(e)
@@ -38,7 +41,8 @@ module ErrorHandler
             render json: { error: '404 error' }, status: 404
         #ajax通信以外の場合
         else
-            render file: "#{Rails.root}/public/500.html", layout: false, status: 500
+            #404ページをロードする。
+            render file: "#{Rails.root}/public/404.html", layout: false, status: 404
         end
     end
 end
