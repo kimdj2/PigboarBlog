@@ -144,22 +144,22 @@ label {
 
   /* Extra small devices (phones, up to 480px) */
   @media screen and (max-width: 767px) {
-    font-size: 0.75rem;
+    font-size: 1.1rem;
   }
 
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) and (max-width: 991px) {
-    font-size: 0.75rem;
+    font-size: 1.1rem;
   }
 
   /* tablets/desktops and up ----------- */
   @media (min-width: 992px) and (max-width: 1199px) {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   /* large desktops and up ----------- */
   @media screen and (min-width: 1200px) {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -196,4 +196,26 @@ label {
 
 .font-size-100 {
   font-size: 100%;
+}
+.post_title {
+
+  /* Extra small devices (phones, up to 480px) */
+  @media screen and (max-width: 767px) {
+    font-size: 1.8rem;
+  }
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    font-size: 1.8rem;
+  }
+
+  /* tablets/desktops and up ----------- */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    font-size: 2.5rem;
+  }
+
+  /* large desktops and up ----------- */
+  @media screen and (min-width: 1200px) {
+    font-size: 2.5rem;
+  }
 }

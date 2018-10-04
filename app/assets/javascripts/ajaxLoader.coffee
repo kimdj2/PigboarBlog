@@ -1,9 +1,11 @@
 $(document).on 'turbolinks:load', ->
     $loading = $('.ajax_loading')
     # Ajax ローディング
-    $(document).on 'ajax:before', (event, xhr, status, error) -> 
+    $(document).on 'ajax:before', () -> 
         $loading.show()
-    .on 'ajax:error', (event, xhr, status, error) ->
+    .on 'ajax:error', () ->
         $loading.hide()
-    .on 'ajax:success', (event, xhr, status, error) ->
+    .on 'ajax:success', () ->
+        $loading.hide()
+    .on 'complete', () ->
         $loading.hide()

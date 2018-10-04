@@ -29,13 +29,14 @@
 					</p>
 				</div>
 				<% if user_signed_in? && current_user.username == @board.author%>
-				<%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
-				<button type="button" class="btn btn-danger btn-sm" style="float:right;margin-right:10px;">削除</button>
-				<% end %>
-				<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
-				<button type="button" class="btn btn-sm" style="float:right;margin-right:10px;">修正</button>
-				<% end %>
-				<br>
+				<div style="text-align:right;">
+					<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
+						<button type="button" class="btn btn-dark btn-sm" style="margin-right:10px;">修正</button>
+					<% end %>
+					<%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>
+						<button type="button" class="btn btn-danger btn-sm" style="margin-right:10px;">削除</button>
+					<% end %>
+				</div>
 				<% end %>
 				<hr>
         <i class="fa fa-tags"></i>
@@ -49,12 +50,12 @@
         		<hr>
 				<% if @before_post != nil %>
 				<%= link_to(board_path(@before_post.id)) do %>
-				<button type="button" class="btn btn-dark btn-sm" style="float:left;">←前へ</button>
+				<button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:15px;">←前へ</button>
 				<% end %>
 				<% end %>
 				<% if @next_post != nil %>
 				<%= link_to(board_path(@next_post.id)) do %>
-				<button type="button" class="btn btn-dark btn-sm" style="float:right;">次へ→</button>
+				<button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:15px;">次へ→</button>
 				<br>
 				<% end %>
 				<% end %>

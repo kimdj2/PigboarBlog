@@ -57,7 +57,7 @@
         <% end %>
       <hr>
       <h4>Category<h4>
-      <div class="list-group article_content" >
+      <div class="list-group article_content_main" >
         <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
           全体を見る
         <% end %>
@@ -69,7 +69,7 @@
       </div>
       <hr>
       <h4>Archive<h4>
-      <div class="list-group article_content">
+      <div class="list-group article_content_main">
         <% @board_month.each do |board_month| %>
           <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>
             <%=board_month.month.strftime('%Y-%m')%><span class="badge badge-dark" style="float:right;"><%=board_month.total_month%></span>

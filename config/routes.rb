@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   get 'contact/create'
 
-  get 'likes/create'
-
-  get 'likes/destroy'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions' }
@@ -19,7 +15,6 @@ Rails.application.routes.draw do
   get 'about', to:'etc#about'
   
   #post
-  post '/tinymce_assets' => 'tinymce_assets#create'
   post '/image_upload' => 'images#create'
   post '/contact/send' => 'contact#create'
   resources :boards do

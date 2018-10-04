@@ -36,7 +36,7 @@ $(document).on 'turbolinks:load', ->
       return
     #スクロールしてトップ
     contactBtn.click ->
-      $('body,html').animate { scrollTop: $("#contact").offset().top }, 300  
+      $('body,html').stop().animate { scrollTop: $("#contact").offset().top }, 300  
     return
 
 

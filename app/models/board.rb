@@ -1,6 +1,7 @@
 class Board < ActiveRecord::Base
+    require_dependency 'concerns/content_input_validator.rb'
     validates :title, presence: true
-    validates :contents, presence: true
+    validates :contents, presence: true, content_input: true
     validates :tag_list, presence: true
     acts_as_taggable
     has_many :comments, as: :commentable, dependent: :destroy
@@ -18,5 +19,11 @@ class Board < ActiveRecord::Base
 
     def like_user(user_id)
         likes.find_by(user_id: user_id)
+    end
+
+    def check_contents
+        if truncate(Sanitize.clean(board.contents)).trim == nil
+            errors.add(:contents, "内容を入力してください。")
+        end
     end
 end

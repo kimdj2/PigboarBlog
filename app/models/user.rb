@@ -1,17 +1,24 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  #メール正規式
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :timeoutable
     attr_accessor :login
   devise :omniauthable, omniauth_providers: [:facebook,:twitter,:github]
-  validates :username,
-  uniqueness: { case_sensitive: :false }
-  validates :email, presence: true
+  
+  #ユーザー名
+  validates :username, uniqueness: { case_sensitive: :false }
+  #ユーザーメール
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  #パスワード
   validates :password, presence: true
 
+  #権限とユーザーはN:N関係
   has_and_belongs_to_many :roles
+  #1:N関係定義
+  #コメント
   has_many :comments, dependent: :destroy
+  #いいね
   has_many :likes , dependent: :destroy
 
   def has_role?(name)

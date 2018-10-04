@@ -5,28 +5,8 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-      if params[:search]
-        @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
-        @title = "'"+params[:search]+"'の検索結果"
-      elsif params[:tag]
-        @title = "Category:"+params[:tag]
-        @boards = Board.tagged_with(params[:tag])
-      elsif params[:created]
-        @title = "Archive:"+params[:created]
-        @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
-      else 
-        @boards = Board.all
-        @title = "Posts"
-      end
-      
-      if params[:page]
-        @boards = @boards.order(id: "DESC").page(params[:page]).per(6)
-      else
-        @boards = @boards.order(id: "DESC").page(1).per(6)
-      end
+    set_data_from_param
   end
-
-  
 
   # GET /boards/1
   # GET /boards/1.json
@@ -100,6 +80,8 @@ class BoardsController < ApplicationController
     end
   end
 
+  # GET 'likes/create'
+  # GET 'likes/destroy'
   def like_and_destroy
     like = Like.find_by(user_id: current_user.id, board_id: params[:id])
     if like.nil?
@@ -118,5 +100,31 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path)
+    end
+    def set_data_from_param 
+      begin
+        if params[:search]
+          @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
+          @title = "'"+params[:search]+"'の検索結果"
+        elsif params[:tag]
+          @title = "Category:"+params[:tag]
+          @boards = Board.tagged_with(params[:tag])
+        elsif params[:created]
+          @title = "Archive:"+params[:created]
+          @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
+        else 
+          @boards = Board.all
+          @title = "Posts"
+        end
+        if params[:page]
+          @boards = @boards.order(id: "DESC").page(params[:page]).per(6)
+        else
+          @boards = @boards.order(id: "DESC").page(1).per(6)
+        end
+      rescue => e
+        ErrorUtility.errorLogger(e,"データ取得に失敗しました。")
+        @boards = Board.new(board_params)
+        @title = ""
+      end
     end
 end
