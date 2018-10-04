@@ -66,7 +66,12 @@ Gems
 - viewの共通化
 
 2018/10/04
-- ajaxLoadert追加
+- ajaxLoader追加
 - rspec追加
+
+2018/10/05
+- モバイルスクロールイベント修正
+- ajaxLoaderバグ修正
+- デザイン修正
 
 
