@@ -3,6 +3,7 @@ module BlogCommon
 
     included do
         include ErrorHandler
+        include LoginHandler
         before_action :setContact
         before_action :setResentBoard
         before_action :set_header_image

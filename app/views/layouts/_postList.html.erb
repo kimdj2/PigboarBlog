@@ -44,7 +44,7 @@
                     <h1><%= truncate(board.title, length: 20) %></h1>
                     <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
                     <p class="read-more">
-                      <span>
+                      <span style="color:#263238">
                         <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
                         <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
                         <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>

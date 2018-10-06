@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   before_action :set_post
-  
+  before_action :authenticate
+
   #いいね
   def create
     #ユーザー情報（自分）、ポストのIDでいいねテーブルにデータを登録する。

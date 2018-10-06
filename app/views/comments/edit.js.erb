@@ -24,3 +24,4 @@
   alert("このコメントは既に削除されています。");
 <% end %>
 $("#comment_<%= @comment.id %> form textarea").trigger('keyup');
+$('.ajax_loading').hide();

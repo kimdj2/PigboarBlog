@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:facebook,:twitter,:github]
   
   #ユーザー名
-  validates :username, uniqueness: { case_sensitive: :false }
+  validates :username, presence: true
   #ユーザーメール
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   #パスワード
   validates :password, presence: true
 
@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   #いいね
   has_many :likes , dependent: :destroy
 
+  #ユーザーに権限があるか確認
   def has_role?(name)
     self.roles.where(name: name).length > 0
   end
@@ -42,7 +43,6 @@ class User < ActiveRecord::Base
         password: Devise.friendly_token[0, 20]
       )
     end
-
     user
   end
 

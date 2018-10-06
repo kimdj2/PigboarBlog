@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
+
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'

@@ -1,14 +1,14 @@
   <div class="media p-3 comment" id="comment_<%= comment.id %>">
-    <% if comment.user.image != nil %>
-      <%=image_tag(comment.user.image, class:"mr-2 mt-2 rounded-circle comment-image")%>
-    <% else %>
+    <% if comment.user.image.blank? %>
       <%=image_tag("defaultPerson.jpg", class:"mr-2 mt-2 rounded-circle comment-image")%>
+    <% else %>
+      <%=image_tag(comment.user.image, class:"mr-2 mt-2 rounded-circle comment-image")%>
     <% end %>
-    <div class="media-body article_content" id="comment_list_<%= comment.id %>">
+    <div class="media-body" id="comment_list_<%= comment.id %>">
       <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">
-        <% if comment.parent == nil %>
+        <% if comment.parent.nil? %>
           <% if user_signed_in? %>
             <%= link_to(polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', style:"margin-right:5px;", remote: true, data: { turbolinks: true }) do %>
             <i class="fa fa-reply"></i>返信
@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
       </div>
-      <% if comment.parent == nil %>
+      <% if comment.parent.nil? %>
       <hr>
       <% end %>
       <% if comment.replies.any? %>
@@ -34,6 +34,6 @@
       <% end %>
     </div>
   </div>
-<% if comment.parent != nil %>
+<% if !comment.parent.nil? %>
 <hr>
 <% end %>

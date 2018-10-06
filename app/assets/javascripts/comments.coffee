@@ -28,6 +28,3 @@ $(document).on 'keyup', '.comment_content textarea', (e) ->
   counter.css 'color', if charsRemaining < 0 then 'red' else '#818a91'
   return
  
-# Handle 401 error on ajax call.
-$(document).ajaxError (_, xhr)->
-  window.location = '/users/sign_in' if xhr.status == 401

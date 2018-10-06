@@ -38,4 +38,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.model 'User' do
+    include_fields_if do
+      not name.match /at$/
+    end
+    #field :comment
+  end
 end

@@ -15,5 +15,4 @@ module BoardsHelper
     def get_board_comment_count(board)
         return board.comments.size
     end
-
 end

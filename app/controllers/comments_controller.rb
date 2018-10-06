@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     #認証チェック
-    before_action :authenticate_user!
+    before_action :authenticate
     before_action :set_commentable
     #パラメータ取得
     before_action :set_comment, only: [ :reply, :edit, :update, :destroy ]

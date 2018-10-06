@@ -6,24 +6,26 @@ class Board < ActiveRecord::Base
     acts_as_taggable
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :likes, dependent: :destroy 
-    has_many :tag_taggings, class_name: 'ActsAsTaggableOn::Tagging'
+    after_initialize :init_value, unless: :persisted?
 
-
+    #直前のレコードを取得する。
     def before_post
         Board.order(created_at: :desc, id: :desc).where("created_at <= ? and id < ?", created_at, id).first
     end
-    
+
+    #直後のレコードを取得する。
     def next_post
         Board.order(created_at: :desc, id: :desc).where("created_at >= ? and id > ?", created_at, id).first
     end
 
+    #既にいいねしたか確認する。
     def like_user(user_id)
         likes.find_by(user_id: user_id)
     end
 
-    def check_contents
-        if truncate(Sanitize.clean(board.contents)).trim == nil
-            errors.add(:contents, "内容を入力してください。")
-        end
+    #いいねの数と照会数がnilの場合、初期値として0を設定する。
+    def init_value
+        self.view        ||= 0           
+        self.likes_count ||= 0 
     end
 end
