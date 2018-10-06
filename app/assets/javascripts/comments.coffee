@@ -16,10 +16,10 @@ $(document).on "click", '.cancel-comment-link', (e) ->
     if $reply_link
       $reply_link.href = "#{$restore_link.href}/reply"
   $edit_link = $comment.find('a.edit-comment-link')[0]
-  # console.log $edit_link
+  #console.log $edit_link
   $edit_link.href = "#{$restore_link.href}/edit"
   $form.remove()
- 
+
 $(document).on 'keyup', '.comment_content textarea', (e) ->
   comment_id = $(this).data('comment-id')
   counter = $("#comment_#{comment_id}_chars_counter")

@@ -24,6 +24,13 @@
           <%= link_to(edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link text-right', style:"float:right;margin-right:5px;", remote: true, data: { turbolinks: true } ) do %>
             <i class="fa fa-edit"></i>修正
           <% end %>
+        <% else %>
+          <%= link_to([comment.commentable, comment], method: :delete, class: 'delete-comment-link text-right', style:"float:right;margin-right:5px;display:none;",  data:{confirm:"コメントを削除します。よろしいですか。"}, remote: true ) do %>
+            <i class="fa fa-trash-o"></i>削除
+          <% end %>
+          <%= link_to(edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link text-right', style:"float:right;margin-right:5px;display:none;", remote: true, data: { turbolinks: true } ) do %>
+            <i class="fa fa-edit"></i>修正
+          <% end %>
         <% end %>
       </div>
       <% if comment.parent.nil? %>
