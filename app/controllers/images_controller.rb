@@ -3,7 +3,6 @@ class ImagesController < ApplicationController
   
   #イメージ登録
   def create
-  　# パラメータよりイメージ情報を設定する。
     @image = Image.new(image_params)
     respond_to do |format|
       #イメージを登録する。
@@ -28,10 +27,11 @@ class ImagesController < ApplicationController
   private
   #パラメータを取得する。
   def image_params
+    puts "5"
     params.require(:upload).permit(
       :file,
       :hint,
-      :alt,
+      :alt
       )
   end
 end
