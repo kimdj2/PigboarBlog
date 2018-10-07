@@ -10,6 +10,7 @@
                         <h2>Login</h2>
                         <hr>
                     </div>
+                    <!-- SNSログイン -->
                     <div class="col-md-5" >
                         <%= link_to '/users/auth/twitter', class: "btn btn-block btn-social btn-twitter" do %>
                             <span class="fa fa-twitter"></span> Twitterアカウントでログイン
@@ -21,6 +22,7 @@
                             <span class="fa fa-github"></span> Githubアカウントでログイン
                         <% end %>
                     </div>
+                    <!-- メールアドレス（管理者）ログイン -->
                     <div class="col-md-7" style="border-left:1px solid #ccc;height:160px">
                         <h5 style="margin-top:10px;">eメールでログイン</h5>
                         <%= form_for(resource, :as => resource_name,:url => session_path(resource_name) ,:html => {:id => "sign_in_user"}, :format => :json, :remote => true,class:"form-horizontal" ) do |f| %>

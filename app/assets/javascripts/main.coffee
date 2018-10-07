@@ -13,22 +13,24 @@ $(document).on 'turbolinks:load', ->
   ).on 'blur', '.floating-label-form-group', ->
     $(this).removeClass 'floating-label-form-group-with-focus'
     return
-  # Show the navbar when the page is scrolled up
+  # スクロールアップ時のナビゲーション表示制御
   MQL = 992
-  #primary navigation slide-in effect
+  # PC環境の場合
   if $(window).width() > MQL
     headerHeight = $('#mainNav').height()
     $(window).on 'scroll', { previousTop: 0 }, ->
       currentTop = $(window).scrollTop()
-      #check if user is scrolling up
+      #スクロールアップをキャッチする。
       if currentTop < @previousTop
-        #if scrolling up...
+        #スクロールアップの場合、最上階以外はfixed領域に設定する。
         if currentTop > 0 and $('#mainNav').hasClass('is-fixed')
           $('#mainNav').addClass 'is-visible'
+        # 最上階の場合は固定とする。
         else
           $('#mainNav').removeClass 'is-visible is-fixed'
       else if currentTop > @previousTop
-        #if scrolling down...
+        #スクロールダウンの場合
+        # ナビゲーションを非表示とする。
         $('#mainNav').removeClass 'is-visible'
         if currentTop > headerHeight and !$('#mainNav').hasClass('is-fixed')
           $('#mainNav').addClass 'is-fixed'

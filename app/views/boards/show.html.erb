@@ -4,30 +4,35 @@
 		    <%= render "layouts/search" %>
 			<!-- Post Content Column -->
 			<div class="col-lg-9">
-				<!-- Title -->
+				<!-- タイトル -->
 				<h1 class="post_title">
 					<%= @board.title %>
 				</h1>
+				<!-- 作成者 -->
 				<p class="lead post_author">by 
 					<a href="#">
 						<%= @board.author %>
 					</a>
 				</p>
 				<hr>
+				<!-- 内容（html形式そのまま表示する） -->
 				<%= content_tag(:div, @board.contents.html_safe, :class => "panel-body board-contents") %>
 				<hr>
-				<!--<%= social_share_button_tag(@board.title) %>-->
+				<!-- シェアボタン -->
 				<div style="text-align:center;">
 					<%= social_share_button_tag(@board.contents.html_safe, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
 				</div>
+				<!-- いいね -->
 				<div id="likes_buttons_<%= @board.id %>" style="text-align:center;">
 					<%= render partial: 'layouts/like', locals: { board: @board, likes: @likes} %>
 				</div>
+				<!-- 作成年月日 -->
 				<div style="text-align:center;">
 					<p>Posted on 
 						<%= @board.created_at.strftime('%Y/%m/%d %H:%M')  %>
 					</p>
 				</div>
+				<!-- ログインしているユーザーと作成者が一致する場合は修正ボタンと削除ボタンを表示する。 -->
 				<% if user_signed_in? && current_user.username == @board.author%>
 				<div style="text-align:right;">
 					<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
@@ -39,6 +44,7 @@
 				</div>
 				<% end %>
 				<hr>
+				<!-- タグリストを表示 -->
         <i class="fa fa-tags"></i>
 				<% @board.tag_list.map do |tag| %>
 				<%= link_to(tag_path(tag)) do %>
@@ -46,8 +52,10 @@
 				<% end %>
 				<% end %>
 				<hr>
+				<!-- コメントページを表示 -->
 				<%= render "comments/widget", commentable: @board %>
         		<hr>
+				<!-- 前へ、次へボタン表示 -->
 				<% if @before_post != nil %>
 				<%= link_to(board_path(@before_post.id)) do %>
 				<button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:15px;">←前へ</button>
@@ -60,7 +68,10 @@
 				<% end %>
 				<% end %>
 			</div>
+			<!-- 画面右側のリスト表示 -->
 			<%= render "layouts/menu" %>
+			<!-- 関連データがある場合 -->
+			<!-- 連携Postを表示する。 -->
 			<% if @related_articles.size > 0 %>
 			<hr>
 			<div class="col-md-12 py-2">
@@ -77,20 +88,27 @@
 					<div class="col-md-3 py-2" style="margin-bottom:10px;">
 						<div class="blog-card-main">
 							<div class="meta">
+								<!-- Postの中身にてイメージが存在する場合 -->
 								<% if !get_content_img(board.contents).blank? %>
+								<!-- イメージを表示する。 -->
 								<div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
+								<!-- Postの中身にてイメージが存在しない場合 -->
 								<% else %>
+								<!-- イメージを基本イメージで表示する。 -->
 								<div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>							
 								<% end %>
 								<ul class="details">
+									<!-- 作成者 -->
 									<li class="author">
 										<a href="#">
 											<%= board.author %>
 										</a>
 									</li>
+									<!-- 作成年月日 -->
 									<li class="date">
 										<%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %>
 									</li>
+									<!-- タグリスト -->
 									<li class="tags">
 										<ul>
 											<% board.tag_list.map do |tag| %>
@@ -107,18 +125,23 @@
 								</ul>
 							</div>
 							<div class="description">
+								<!-- タイトル表示 -->
 								<h1>
 									<%= truncate(board.title, length: 20) %>
 								</h1>
+								<!-- ディスクリプション表示 -->
+								<!-- ディスクリプションはhtmlタグを除いて表示する。 -->
 								<p class="read-contents">
 									<%= truncate(Sanitize.clean(board.contents), length: 50) %>
 								</p>
+								<!-- 照会数、いいね、コメント数を表示する。 -->
 								<p class="read-more">
 									<span>
 										<i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
 										<i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
 										<i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
 									</span>
+									<!-- 詳細ページへ遷移するボタン -->
 									<%= link_to(board_path(board.id)) do %>Read More 
 									<% end %>
 								</p>

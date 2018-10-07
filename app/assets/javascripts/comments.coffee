@@ -1,7 +1,10 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+# コメント作成キャンセルボタンイベント
 $(document).on "click", '.cancel-comment-link', (e) ->
+  # 重複イベント防止
   e.preventDefault()
   replied = $(this).data('reply')
   # console.log replied
@@ -18,13 +21,5 @@ $(document).on "click", '.cancel-comment-link', (e) ->
   $edit_link = $comment.find('a.edit-comment-link')[0]
   #console.log $edit_link
   $edit_link.href = "#{$restore_link.href}/edit"
+  # フォームを削除
   $form.remove()
-
-$(document).on 'keyup', '.comment_content textarea', (e) ->
-  comment_id = $(this).data('comment-id')
-  counter = $("#comment_#{comment_id}_chars_counter")
-  charsRemaining = 255 - ($(this).val().length)
-  counter.text "Remaining : #{charsRemaining}"
-  counter.css 'color', if charsRemaining < 0 then 'red' else '#818a91'
-  return
- 

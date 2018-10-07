@@ -1,5 +1,7 @@
+<!-- コメント入力フォーム -->
 <%= simple_form_for [comment.commentable, comment], remote: true do | f | %>
     <%= f.hidden_field :parent_id %>
+    <!-- コメント内容入力フォーム -->
     <%= f.input :content, as: :summernote, label: false, input_html: { rows: 5, style:"width:100%;",'data-provider': :summernote2 } %>
   <div style="text-align:right;">  
     <%= f.submit "コメント作成", class: 'btn btn-dark btn-sm float-xs-right', style: "margin-top:10px;" %>

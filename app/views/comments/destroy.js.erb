@@ -1,3 +1,4 @@
+//コメント削除後の処理
 $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
 <% if @comment.errors.empty? %>
   $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 1000);

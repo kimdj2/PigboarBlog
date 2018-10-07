@@ -11,17 +11,25 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
-    @board = Board.find(params[:id])
+    #取得したデータと関連データを取得する。
     @related_articles = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(3) 
-    #Ex:- :limit => 40
-    if @board.view == nil
+    #照会数がnilの場合
+    if @board.view.nil?
+      #照会数を１とする。
       update_view=1
     else
+      #照会数をカウントアップする。
       update_view = @board.view += 1
     end
+    
+    #設定した照会数を更新する。
     @board.update_attribute "view", update_view
+
+    #次へ、前へボタンイベントのため、前後レコードを取得する。
     @before_post = @board.before_post
     @next_post = @board.next_post
+
+    # 画面タイトルのデータを設定する。
     @title = @board.title
     @subTitle = 'by ' + @board.author
     @date = ' on ' + @board.created_at.strftime('%Y/%m/%d')
@@ -29,20 +37,24 @@ class BoardsController < ApplicationController
 
   # GET /boards/new
   def new
+    # データ修正ページへ遷移。
+    # 作成・修正画面が共通のため、ボタン名を作成とする。
     @board = Board.new
     @buttonName = "作成"
   end
 
   # GET /boards/1/edit
   def edit
+    # データ修正ページへ遷移。
+    # 作成・修正画面が共通のため、ボタン名を修正とする。
     @buttonName = "修正"
   end
 
   # POST /boards
   # POST /boards.json
   def create
+    # データを作成する。
     @board = Board.new(board_params)
-    
     respond_to do |format|
       if @board.save
         format.html { redirect_to action: :index}
@@ -59,6 +71,7 @@ class BoardsController < ApplicationController
   # PATCH/PUT /boards/1.json
   def update
     respond_to do |format|
+      # データを更新する。
       if @board.update(board_params)
         format.html { redirect_to action: :index}
         format.json { render :index, status: :ok, location: @board }
@@ -73,45 +86,42 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
+    # データを削除する。
     @board.destroy
     respond_to do |format|
-      format.html { redirect_to action: :index, notice: 'Board was successfully destroyed.'}
+      format.html { redirect_to action: :index}
       format.json { head :no_content }
     end
-  end
-
-  # GET 'likes/create'
-  # GET 'likes/destroy'
-  def like_and_destroy
-    like = Like.find_by(user_id: current_user.id, board_id: params[:id])
-    if like.nil?
-      Like.create(user_id: current_user.id, board_id: params[:id])
-    else
-      like.destroy
-    end
-    redirect_to :back
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
+      #ページに表示するデータを取得する。
       @board = Board.find(params[:id])
     end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path)
     end
+    
+    #パラメータより画面のタイトルと当てはまるデータを設定する。
     def set_data_from_param 
       begin
+        #検索よりページ活性化
         if params[:search]
           @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
           @title = "'"+params[:search]+"'の検索結果"
+        #タグボタンよりページ活性化
         elsif params[:tag]
           @title = "Category:"+params[:tag]
           @boards = Board.tagged_with(params[:tag])
+        #アーカイブボタンよりページ活性化
         elsif params[:created]
           @title = "Archive:"+params[:created]
           @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
+        #その他
         else 
           @boards = Board.all
           @title = "Posts"
@@ -122,7 +132,10 @@ class BoardsController < ApplicationController
           @boards = @boards.order(id: "DESC").page(1).per(6)
         end
       rescue => e
+        #例外が発生
+        #エラーログ出力
         ErrorUtility.errorLogger(e,"データ取得に失敗しました。")
+        #データを空に設定する。
         @boards = Board.new(board_params)
         @title = ""
       end

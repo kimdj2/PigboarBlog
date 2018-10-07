@@ -1,15 +1,20 @@
+<!-- メイン画面を表示する。 -->
 <section class="main_contents">
   <div class="container container-large">
     <div class="row" style="padding-bottom:20px;">
-        <%= render "layouts/search" %>
-        <div class="col-md-9 py-2">
-          <h2 style="text-align:center;">人気 Post</h2>
-          <%= render "layouts/postList", boards: @boards_like, types:"like"%>
-          <hr>
-          <h2 style="text-align:center;">Resent Post</h2>
-          <%= render "layouts/postList", boards: @boards_resent, types:"resent" %>
-        </div>  
-          <%= render "layouts/menu" %>
-      </div>
+      <!-- 検索フォーム表示 -->
+      <%= render "layouts/search" %>
+      <div class="col-md-9 py-2">
+        <h2 style="text-align:center;">人気 Post</h2>
+        <!-- 人気post表示 -->
+        <%= render "layouts/postList", boards: @boards_like, types:"like"%>
+        <hr>
+        <h2 style="text-align:center;">Resent Post</h2>
+        <!-- 最近のpost表示 -->
+        <%= render "layouts/postList", boards: @boards_resent, types:"resent" %>
+      </div> 
+      <!-- 画面の右側リスト表示 --> 
+      <%= render "layouts/menu" %>
     </div>
-  </section>
+  </div>
+</section>

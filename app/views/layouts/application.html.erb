@@ -9,19 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+    <!-- ナビゲーション -->
     <%= render "layouts/navigation" %>
+    <!-- ヘッダ -->
     <% if controller_name == 'main' %>
       <%= render "layouts/main_header" %>
     <% else %>
       <%= render "layouts/contents_header" %>
     <% end %>
+      <!-- メイン表示 -->
       <div id="main">
         <%= yield %>
       </div>
     <br>    
+    <!-- メールお問い合わせ -->
     <%= render "layouts/contact" %>
+    <!-- ログインフォーム -->
     <%= render "layouts/login" %>
+    <!-- ajaxローディング -->
     <%= render "layouts/ajaxloading" %>
   </body>
+  <!-- フッダ -->
   <%= render "layouts/footer" %>
 </html>

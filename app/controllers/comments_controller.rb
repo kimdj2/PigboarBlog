@@ -7,20 +7,24 @@ class CommentsController < ApplicationController
     
     #返信処理
     def reply
+      #親データをビルドし、リプレイデータを生成する。
       @reply = @commentable.comments.build(parent: @comment)
     end
     
     #コメント作成
     def create
+      # 入力値よりデータを生成する。
       @comment = @commentable.comments.new(comment_params)
+      # ユーザ情報は認証されている現在のユーザ情報とする。
       @comment.user = current_user
+      # コメントを登録する。
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to @commentable, notice: "作成が成功しました。"}
+          format.html { redirect_to @commentable}
           format.json { render json: @comment }
           format.js
         else
-          format.html { render :back, notice: "作成に失敗しました。" }
+          format.html { render :back }
           format.json { render json: @comment.errors }
           format.js
         end
@@ -29,17 +33,19 @@ class CommentsController < ApplicationController
     
     #修正ボタン
     def edit
+      #javascript制御しかないので、未実装
     end
     
     #コメント更新
     def update
+      # コメントを更新する。
       respond_to do |format|
         if @comment.update(comment_params)
-          format.html { redirect_to @commentable, notice: "更新が成功しました。"}
+          format.html { redirect_to @commentable}
           format.json { render json: @comment }
           format.js
         else
-          format.html { render :back, notice: "更新に失敗しました。" }
+          format.html { render :back}
           format.json { render json: @comment.errors }
           format.js
         end
@@ -48,9 +54,10 @@ class CommentsController < ApplicationController
     
     #コメント削除処理
     def destroy
+      # コメントを削除する。
       @comment.destroy if @comment.errors.empty?
       respond_to do |format|
-        format.html { redirect_to @commentable, notice: "削除が成功しました。"}
+        format.html { redirect_to @commentable}
         format.json { head :no_content }
         format.js
       end

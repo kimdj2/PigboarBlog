@@ -1,17 +1,22 @@
+<!--一覧表示画面-->
 <section class="main_contents">
 <div class="container container-large">
   <div class="row">
     <%= render "layouts/search" %>
     <div class="col-lg-9">
+      <!--データ件数が0件の場合-->
       <% if @boards.count == 0 %>
         <h4>作成されているスレッドがありません。</h4>
       <% else %>
         <div id="article">
+          <!--データリスト部を表示する。-->
           <%= render 'article' %>
         </div>
+        <!--もっと見るボタン-->
         <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'more_link', class:"btn btn-dark btn-block"%>
       <% end %>
     </div>
+    <!--右側リスト-->
     <%= render "layouts/menu" %>
   </div>
 </div>

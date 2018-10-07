@@ -1,14 +1,22 @@
   <div class="media p-3 comment" id="comment_<%= comment.id %>">
+    <!-- ユーザーイメージが存在しない場合 -->
     <% if comment.user.image.blank? %>
+      <!-- 基本イメージを表示する。 -->
       <%=image_tag("defaultPerson.jpg", class:"mr-2 mt-2 rounded-circle comment-image")%>
+    <!-- ユーザーイメージが存在する場合 -->
     <% else %>
+      <!-- ユーザー情報のイメージを表示する。 -->
       <%=image_tag(comment.user.image, class:"mr-2 mt-2 rounded-circle comment-image")%>
     <% end %>
     <div class="media-body" id="comment_list_<%= comment.id %>">
+      <!-- ユーザー名と作成年月日を表示 -->
       <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
+      <!-- コメント内容を表示する。 -->
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">
+        <!-- 親コメントの場合 -->
         <% if comment.parent.nil? %>
+          <!-- 返信ボタン表示 -->
           <% if user_signed_in? %>
             <%= link_to(polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', style:"margin-right:5px;", remote: true, data: { turbolinks: true }) do %>
             <i class="fa fa-reply"></i>返信
@@ -17,6 +25,7 @@
         <% else %>
           &nbsp;  
         <% end %>
+        <!-- 削除ボタンと修正ボタンを表示する。 -->
         <% if user_signed_in? && comment.user.id == current_user.id %>
           <%= link_to([comment.commentable, comment], method: :delete, class: 'delete-comment-link text-right', style:"float:right;margin-right:5px;",  data:{confirm:"コメントを削除します。よろしいですか。"}, remote: true ) do %>
             <i class="fa fa-trash-o"></i>削除
@@ -36,7 +45,9 @@
       <% if comment.parent.nil? %>
       <hr>
       <% end %>
+      <!-- リプレイがある場合。 -->
       <% if comment.replies.any? %>
+        <!-- リプレイを追加表示する。 -->
         <%= render comment.replies %>
       <% end %>
     </div>

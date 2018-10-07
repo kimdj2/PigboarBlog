@@ -1,11 +1,17 @@
 class Board < ActiveRecord::Base
     require_dependency 'concerns/content_input_validator.rb'
+    # バリデーション
+    # タイトル
     validates :title, presence: true
+    # 内容
     validates :contents, presence: true, content_input: true
+    # カテゴリ（タグリスト）
     validates :tag_list, presence: true
+    # 関係定義
     acts_as_taggable
     has_many :comments, as: :commentable, dependent: :destroy
     has_many :likes, dependent: :destroy 
+    # 初期値設定
     after_initialize :init_value, unless: :persisted?
 
     #直前のレコードを取得する。

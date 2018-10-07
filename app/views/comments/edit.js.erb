@@ -2,7 +2,8 @@
   $('.comments-list').find(".cancel-comment-link").click();
   $("#comment_list_<%= @comment.id %> > .comment-info .edit-comment-link").removeAttr("href");
   $("#comment_list_<%= @comment.id %> > .comment-info").after("<%=j render('comments/form', comment: @comment) %>");
-    $('[data-provider="summernote2"]').each(function() {
+  //コメント作成エディタをロードする。
+  $('[data-provider="summernote2"]').each(function() {
     return $(this).summernote({
       lang: 'ja-JP',
       height: 200,

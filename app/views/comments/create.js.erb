@@ -1,4 +1,4 @@
-// create.js.erb (CommentsController#create)
+//コメント作成後の処理
 <% if @comment.parent %>
   $comment_parent = $("#comment_list_<%= @comment.parent.id %>");
   $comment_form = $("#comment_list_<%= @comment.parent.id %> > form");
@@ -7,7 +7,7 @@
   console.log($comment_parent);
 <% end %>
 $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
-<% if @comment.errors.empty?  # if no erros on creating a comment... %>
+<% if @comment.errors.empty? %>
   $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 500);
   $comment_parent.append("<%=j render @comment %>").find(".media").last().effect("highlight", { color: '#007bff' }, 500);
   <% if @comment.parent %>

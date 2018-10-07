@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
     attr_accessor :login
   devise :omniauthable, omniauth_providers: [:facebook,:twitter,:github]
   
+  # バリデーション
   #ユーザー名
   validates :username, presence: true
   #ユーザーメール
@@ -25,11 +26,11 @@ class User < ActiveRecord::Base
   def has_role?(name)
     self.roles.where(name: name).length > 0
   end
-
+  #ユーザーに権限があるか確認
   def is_like? (board)
     Like.find_by(user_id: self.id, board_id: board.id).present?
   end
-  
+  # auth認証より認証された場合、該当する認証情報がない場合は向の認証情報よりユーザー情報を設定する。
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
     puts auth
@@ -47,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   private
-
+  # auth認証より認証された場合、ダミのEメールを作成する。
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end

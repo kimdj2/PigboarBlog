@@ -59,7 +59,7 @@ module ErrorHandler
         #ajax通信以外の場合
         else
             #401ページをロードする。
-            render "etc/user_error"
+            render "etc/user_error", status: 401
         end
     end
 end

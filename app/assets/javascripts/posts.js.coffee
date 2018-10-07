@@ -1,3 +1,4 @@
+#イメージアップロード処理
 sendFile = (file, toSummernote) ->
   data = new FormData
   data.append 'upload[file]', file
@@ -11,7 +12,9 @@ sendFile = (file, toSummernote) ->
     success: (data) ->
         toSummernote.summernote "insertImage", data.url
 
+#summernote表示処理
 $(document).on 'turbolinks:load', ->
+    #スレッド作成時のテキストエディタ
     $('[data-provider="summernote"]').each ->
         $(this).summernote
             lang: 'ja-JP'
@@ -34,7 +37,7 @@ $(document).on 'turbolinks:load', ->
                 ['insert', ['link', 'picture', 'video', 'map']],
                 ['view', ['fullscreen', 'codeview','highlight', 'help']]
             ]
-
+    #コメント作成時のテキストエディタ
     $('[data-provider="summernote2"]').each ->
         $(this).summernote
             lang: 'ja-JP'
@@ -44,9 +47,6 @@ $(document).on 'turbolinks:load', ->
                 lineNumbers: true
                 tabSize: 2
                 theme: 'solarized'
-            callbacks:
-                onImageUpload: (files) ->
-                    sendFile files[0], $(this)
             toolbar: [
                 ['font', ['bold', 'underline', 'clear']],
                 ['fontname', ['fontname']],
@@ -56,6 +56,5 @@ $(document).on 'turbolinks:load', ->
                 ['insert', ['link']],
                 ['view', ['help']],
                 ['highlight', ['highlight']]
-
             ]            
     return

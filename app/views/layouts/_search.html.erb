@@ -1,3 +1,4 @@
+<!-- Post検索フォーム -->
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-8">
@@ -14,7 +15,7 @@
             <div class="input-group">
                 <%= text_field_tag :search, params[:search], placeholder: "Search for...",class:"form-control" %>&nbsp;
                 <span class="input-group-btn">
-                        <%= submit_tag "検索", :name => nil, class:"btn btn-secondary" %>
+                    <%= submit_tag "検索", :name => nil, class:"btn btn-secondary" %>
                 </span>
             </div>
         <% end %>

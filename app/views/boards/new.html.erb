@@ -1,9 +1,10 @@
+<!--修正画面-->
 <section class="main_contents">
-<% breadcrumb :board_new, @board %>
     <div class="container container-large">
         <h3><span class="badge badge-secondary">New</span>スレッド作成</h3>
         <hr>
     </div>
 </section>    
+<!--入力フォームを呼び出す。-->
 <%= render 'form', board: @board %>
 <br>

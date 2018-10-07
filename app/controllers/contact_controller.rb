@@ -21,13 +21,16 @@ class ContactController < ApplicationController
         end
       end
     rescue => e
+      # 例外が発生した場合
+      # ログを出力する。
       ErrorUtility.errorLogger(e,"メール送信に失敗")
+      # jsonフォーマットに返す（ajax処理のため）
       format.json { render json: {error:"送信エラー"}, status: 400 }
     end
   end
   
   private
-  
+  #パラメータを設定する。
   def contact_params
     params.require(:contact).permit(:name, :email, :message)
   end
