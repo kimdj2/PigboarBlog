@@ -57,6 +57,9 @@
             <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 19) %></p>
           <% end %>
         <% end %>
+        <%= link_to("/boards") do %>
+            <p style="margin:0;margin-top:10px;text-align:right;">もっと見る<i class="fa fa-angle-double-right"></i></p>
+        <% end %>
       <hr>
       <!-- タグリスト（カテゴリ）を表示する。 -->
       <h4>Category<h4>

@@ -12,6 +12,10 @@
         <h2 style="text-align:center;">Resent Post</h2>
         <!-- 最近のpost表示 -->
         <%= render "layouts/postList", boards: @boards_resent, types:"resent" %>
+        <%= link_to("/boards") do %>
+            <p style="margin:0;text-align:right;">もっと見る<i class="fa fa-angle-double-right"></i></p>
+        <% end %>
+        <hr>
       </div> 
       <!-- 画面の右側リスト表示 --> 
       <%= render "layouts/menu" %>

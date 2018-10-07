@@ -22,7 +22,7 @@
           <% end %>
       <% end %>
       <!--タイトル入力-->
-      <div class="content_title">Title</div>
+      <div class="content_title"><p>タイトル</p></div>
       <div class="field">
         <%= f.text_field :title, id: :board_title, class:"form-control" %>
       </div>
@@ -32,25 +32,25 @@
       <%= f.hidden_field :author, value: current_user.username, id: :board_author %>
       <%= f.hidden_field :image_path, id: :board_image_path %>
       <!--内容入力-->
-      <div class="content_title">Content</div>
+      <div class="content_title"><p>内容</p></div>
       <div class="field">
         <%= f.text_area :contents, 'data-provider': :summernote %>
       </div>
       <hr>
     <br>
     <!--タグリスト入力-->
-      <div class="content_title">Tags</div>
+      <div class="content_title"><p>タグリスト</p></div>
       <div class="field">
         <%= text_field_tag 'board[tag_list]', board.tag_list.join(','), "data-role" => "tagsinput", class:"form-control" %>
       </div>
     <br>
       <!--作成・修正ボタン-->
-      <div class="actions" onclick="setImagePath();">
-        <%= f.submit @buttonName, class: "follow_submit btn btn-info", :onclick => "setImagePath();"%> 
+      <div class="actions" onclick="setImagePath();" style="text-align:center">
+        <%= f.submit @buttonName, class: "btn btn-dark", :onclick => "setImagePath();"%>
+        <%= link_to(boards_path) do %>
+          <button type="button" class="btn btn-dark">キャンセル</button>
+        <% end %> 
       </div>
-      <%= link_to(boards_path) do %>
-        <button type="button" class="btn btn-info" style="float:left;margin-bottom: 20px;">戻る</button>
-      <% end %>
       <br>
       <br>
     </div>
