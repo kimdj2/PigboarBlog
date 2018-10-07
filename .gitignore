@@ -10,10 +10,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+/vendor
 !/log/.keep
 !/tmp/.keep
 
 /node_modules
 /yarn-error.log
-
 .byebug_history
