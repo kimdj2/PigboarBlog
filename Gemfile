@@ -38,8 +38,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
-gem 'fog', '>= 1.15.0'
-gem 'rmagick', require: 'RMagick'
 gem 'devise'
 gem 'bootstrap', '>= 4.1.3'
 gem 'sass-rails', '~> 5.0'
@@ -86,6 +84,9 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
-
+group :production do
+  # gem 'fog', '>= 1.15.0'
+  #gem 'rmagick', require: 'RMagick'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

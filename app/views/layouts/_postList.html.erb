@@ -52,7 +52,11 @@
       <!-- タイトルを表示する。 -->
         <h1><%= truncate(board.title, length: 20) %></h1>
         <!-- 内容を表示する。 -->
+        <% if types != 'like' %>                             
         <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
+        <% else %>
+        <p></p>
+        <% end %>
         <!-- 照会数、コメント数、いいね数を表示する。 -->
         <p class="read-more">
           <span style="color:#263238">

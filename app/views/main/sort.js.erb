@@ -1,0 +1,13 @@
+//likeレイアウトを再描画する。
+$('#like_list').html("<%= j(render partial: 'layouts/postList', locals: {boards: @boards_like, types:'like'}) %>");
+$('.nav-link').removeClass('active');
+<% if @active_id == "tab_resent" %>
+    $("#tab_resent").addClass('active');
+<% elsif @active_id == "tab_like" %>
+    $("#tab_like").addClass('active');
+<% elsif @active_id == "tab_see"%>
+    $("#tab_see").addClass('active');
+<% elsif @active_id == "tab_comment"%>
+    $("#tab_comment").addClass('active');
+<% end %>
+$('.ajax_loading').hide();
