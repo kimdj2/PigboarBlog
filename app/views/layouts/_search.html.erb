@@ -5,7 +5,7 @@
             <% if user_signed_in? %>
                 <% if current_user.has_role?('superadmin') %>
                     <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
-                        <button type="button" class="btn btn-dark" style="margin-bottom:10px;">スレッド作成</button>
+                        <button type="button" class="btn btn-dark" style="margin-bottom:10px;">ポスト作成</button>
                     <% end %>
                 <% end %> 
             <% end %>
