@@ -85,8 +85,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 group :production do
-  gem 'fog', '>= 1.15.0'
-  gem 'rmagick', require: 'RMagick'
+  #gem 'fog', '>= 1.15.0'
+  #gem 'rmagick', require: 'RMagick'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
