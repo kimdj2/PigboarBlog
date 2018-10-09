@@ -6,7 +6,7 @@
       <%= render "layouts/search" %>
       <div class="col-md-9 py-2">
         <!-- 人気post表示 -->
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs main-nav">
           <li class="nav-item">
             <%= link_to "sort/resent/1", method: :get, remote: true,id:"tab_resent",class:"nav-link active",:data => {:toggle=>"tab"} do %>最近順<%end%>
           </li>
