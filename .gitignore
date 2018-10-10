@@ -11,9 +11,11 @@
 /log/*
 /tmp/*
 /vendor/*
+/public/uploads/*
 !/log/.keep
 !/tmp/.keep
 
 /node_modules
 /yarn-error.log
 .byebug_history
+/public/uploads/image
