@@ -10,7 +10,7 @@
     <% end %>
     <div class="media-body" id="comment_list_<%= comment.id %>">
       <!-- ユーザー名と作成年月日を表示 -->
-      <small><%= comment.user.username %>&nbsp;<i><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></i></small>
+      <%= comment.user.username %>&nbsp;<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       <!-- コメント内容を表示する。 -->
       <%= content_tag(:div, comment.content.html_safe, :class => "comment-content") %>
       <div class="comment-info">
