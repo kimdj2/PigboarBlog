@@ -8,9 +8,9 @@ $(document).on "click", '.cancel-comment-link', (e) ->
   e.preventDefault()
   replied = $(this).data('reply')
   # console.log replied
-  $comment = $(this).closest('.comment')
-  # console.log $comment
-  $form = $(this).closest('form')
+  $comment = $(this).closest('.single-comment').prev();
+  console.log $comment
+  $form = $("#reply_form");
   $restore_link = $comment.find('a.delete-comment-link')[0]
   #console.log $restore_link
   if replied is true

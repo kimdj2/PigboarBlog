@@ -12,12 +12,12 @@ crumb :board do |board|
 end
 
 crumb :board_new do
-  link "スレット作成", boards_path
+  link "ポスト作成", boards_path
   parent :boards
 end
 
 crumb :board_edit do
-  link "スレット修正", boards_path
+  link "ポスト修正", boards_path
   parent :boards
 end
 

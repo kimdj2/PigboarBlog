@@ -38,6 +38,7 @@ module BlogCommon
     #最新のポスト内容を取得する。
     def setResentBoard
         @boards_resent = Board.all.order(created_at:"DESC").limit(5)
+        @boards_likelist = Board.all.order("likes_count DESC").order("view DESC").limit(3)
     end
 
     #deviseパラメータ設定
@@ -50,7 +51,7 @@ module BlogCommon
     #ヘッダイメージ設定
     def set_header_image
         if controller_name == "main"
-            @header_image = "home-bg.jpg"
+            @header_image = "title.png"
         elsif controller_name == "etc"
             @header_image = "about-bg.jpg"
         else 

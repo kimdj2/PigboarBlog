@@ -1,76 +1,38 @@
 <!-- Postリスト表示 -->
-<div class="row">
-  <% cnt = 1 %>
-  <% boards.each do |board| %>
-    <% if cnt== 1 && types == 'like' %>
-      <div class="col-md-8 py-2" style="margin-bottom:10px;">
-    <% elsif types == 'like' %>
-      <div class="col-md-4 py-2" style="margin-bottom:10px;">
-    <% else %>  
-      <div class="col-md-12 py-2" style="margin-bottom:10px;">
-    <% end %>
-    <% if types == 'like' %>                             
-    <div class="blog-card-main-like">
-    <% else %>
-      <% if cnt % 2 == 0 %>
-      <div class="blog-card alt">
+<% boards.each do |board| %>
+  <div class="blog-item">
+    <div class="blog-imgdiv">
+      <!-- 内容にイメージが含まれている場合 -->
+      <% if !get_content_img(board.contents).blank? %>
+        <!-- イメージを表示する。 -->
+        <a href="#"><img class="img-responsive img-blog" src="<%=get_content_img(board.contents) %>" width="100%" alt="" /></a>
+      <!-- 内容にイメージが含まれていない場合 -->
       <% else %>
-      <div class="blog-card">
+        <!-- 基本イメージを表示する。 -->
+        <a href="#"><img class="img-responsive img-blog" src="<%= asset_path('default-image2.png')%>" width="100%" alt="" /></a>
       <% end %>
-    <% end %>  
-      <% cnt+=1 %>
-      <div class="meta">
-        <!-- 内容にイメージが含まれている場合 -->
-        <% if !get_content_img(board.contents).blank? %>
-          <!-- イメージを表示する。 -->
-          <div class="photo" style="background-image: url(<%=get_content_img(board.contents) %>)"></div>
-        <!-- 内容にイメージが含まれていない場合 -->
-        <% else %>
-          <!-- 基本イメージを表示する。 -->
-          <div class="photo" style="background-image: url(<%= asset_path('default-image2.png')%>)"></div>
+    </div>  
+    <div class="blog-content">
+      <% board.tag_list.map do |tag| %>  
+        <%= link_to(tag_path(tag),class:"blog_cat") do %>
+          #<%=tag%>&nbsp;
         <% end %>
-        <ul class="details">
-          <!-- 作成者 -->
-          <li class="author"><a href="#"><%= board.author %></a></li>
-          <!-- 作成年月日 -->
-          <li class="date"><%= "Post on "+ board.created_at.strftime('%Y-%m-%d') %></li>
-          <li class="tags">
-            <ul>
-            <!-- タグリスト表示 -->
-              <% board.tag_list.map do |tag| %>  
-                <li>
-                  <%= link_to(tag_path(tag)) do %>
-                    <span class="wf-sawarabigothic maintag">#<%=tag%></span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="description">
-      <!-- タイトルを表示する。 -->
-        <h1><%= truncate(board.title, length: 20) %></h1>
-        <!-- 内容を表示する。 -->
-        <% if types != 'like' %>                             
-        <p class="read-contents"> <%= truncate(Sanitize.clean(board.contents), length: 50) %></p>
-        <% else %>
-        <p></p>
-        <% end %>
-        <!-- 照会数、コメント数、いいね数を表示する。 -->
-        <p class="read-more">
-          <span style="color:#263238">
-            <i class="fa fa-eye"></i>&nbsp;<%= get_board_view_count(board)%>
-            <i class="fa fa-comments"></i><%= get_board_comment_count(board)%>
-            <i class="fa fa-thumbs-up"></i>&nbsp;<%= get_board_like_count(board)%>
-          </span>
-          <!-- 詳細ページ遷移ボタン -->
-          <%= link_to(board_path(board.id)) do %>
-          Read More
-          <% end %>
+      <% end %>
+      <h2><%= link_to(board_path(board.id)) do %><%= truncate(board.title, length: 20) %><% end %></h2>
+      <div class="post-meta">
+        <p>By <%= board.author %></p>
+        <p><i class="fa fa-clock-o"></i> <%= board.created_at.strftime('%d %b %Y') %></p>
+        <p><i class="fa fa-comment"></i> <%= get_board_comment_count(board)%></p>
+        <p><i class="fa fa-thumbs-up"></i> <%= get_board_like_count(board)%></p>
+        <p>
+            <%= social_share_button_tag(board.contents.html_safe, :url => board_url(board), desc: board.title, style:"text-align:center;")%>
         </p>
       </div>
-      </div>
+      <h3><%= truncate(Sanitize.clean(board.contents), length: 50) %></h3>
+      <%= link_to(board_path(board.id), class:"readmore") do %>
+        Read More<i class="fa fa-long-arrow-right"></i>
+      <% end %>
     </div>
-  <% end %>
-</div>
+    
+  </div>
+<% end %>

@@ -1,25 +1,15 @@
 <% if user_signed_in? %>
     <% unless board.like_user(current_user.id).blank? %>
-        <%= link_to board_like_path(board_id: board.id ,id: board.likes[0].id), method: :delete, remote: true do %>
-            <div class="vertical_like">
-                <button type="button" class="btn btn-danger btn-sm">
-                    <i class="fa fa-thumbs-up"></i> Like <%=get_board_like_count(board)%>
-                </button>
-            </div>
+        <%= link_to board_like_path(board_id: board.id ,id: board.likes[0].id), method: :delete, remote: true, style:"cursor: pointer;" do %>
+            <i class="fa fa-heart"></i> Like済み <%=get_board_like_count(board)%>
         <% end %>
     <% else %>
         <%= link_to board_likes_path(board.id), method: :post, remote: true do %>
-            <div class="vertical_like">
-                <button type="button" class="btn btn-default btn-sm">
-                    <i class="fa fa-thumbs-up"></i> Like <%=get_board_like_count(board)%>
-                </button>
-            </div>
+            <i class="fa fa-heart"></i> Like <%=get_board_like_count(board)%>
         <% end %>
     <% end %>
 <% else %>
-    <div class="vertical_like">
-        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#login_popup">
-            <i class="fa fa-thumbs-up"></i> Like <%=get_board_like_count(board)%>
-        </button>
-    </div>
+    <a href="javascript:void(0);" data-toggle="modal" data-target="#login_popup" style="cursor: pointer;">
+        <i class="fa fa-heart"></i> Like <%=get_board_like_count(board)%>
+    </a>
 <% end %>

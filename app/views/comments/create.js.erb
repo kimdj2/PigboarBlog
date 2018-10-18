@@ -1,17 +1,18 @@
 //コメント作成後の処理
 <% if @comment.parent %>
-  $comment_parent = $("#comment_list_<%= @comment.parent.id %>");
-  $comment_form = $("#comment_list_<%= @comment.parent.id %> > form");
+  $comment_parent = $(".comment_group_<%= @comment.parent.id %>").last();
+  $comment_form = $("#reply_form");
+  console.log($comment_form);
 <% else %>
-  $comment_parent = $(".comments-list");
+  $comment_parent = $(".comments_list").last();
   console.log($comment_parent);
 <% end %>
 $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
 <% if @comment.errors.empty? %>
   $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 500);
-  $comment_parent.append("<%=j render @comment %>").find(".media").last().effect("highlight", { color: '#007bff' }, 500);
+  $comment_parent.after("<%=j render @comment %>").find(".single-comment").last().effect("highlight", { color: '#007bff' }, 500);
   <% if @comment.parent %>
-    $comment_form[0].reset();
+    //$comment_form[0].reset();
     $comment_form.remove();
     // console.log("start");
     $comment = $("#comment_<%= @comment.parent.id %>")

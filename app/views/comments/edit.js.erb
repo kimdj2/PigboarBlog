@@ -1,7 +1,7 @@
 <% if @comment.errors.empty? %>
-  $('.comments-list').find(".cancel-comment-link").click();
-  $("#comment_list_<%= @comment.id %> > .comment-info .edit-comment-link").removeAttr("href");
-  $("#comment_list_<%= @comment.id %> > .comment-info").after("<%=j render('comments/form', comment: @comment) %>");
+  $('.comments').find(".cancel-comment-link").click();
+  $("#comment_<%= @comment.id %> .comment-info .edit-comment-link").removeAttr("href");
+  $("#comment_<%= @comment.id %>").after("<%=j render('comments/form', comment: @comment) %>");
   //コメント作成エディタをロードする。
   $('[data-provider="summernote2"]').each(function() {
     return $(this).summernote({

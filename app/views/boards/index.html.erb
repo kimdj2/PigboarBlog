@@ -1,15 +1,15 @@
+<% breadcrumb :boards %>
 <!--一覧表示画面-->
-<section class="main_contents">
-<div class="container container-large">
-  <div class="row">
-    <%= render "layouts/search" %>
-    <div class="col-lg-9">
+<div class="row">
+    <div class="col-md-8">
       <!--データ件数が0件の場合-->
       <% if @boards.count == 0 %>
         <h4>作成されているスレッドがありません。</h4>
       <% else %>
         <div id="article">
           <!--データリスト部を表示する。-->
+          <h3><%= @title %></h3>
+          <br>
           <%= render 'article' %>
         </div>
         <!--もっと見るボタン-->
@@ -18,7 +18,4 @@
     </div>
     <!--右側リスト-->
     <%= render "layouts/menu" %>
-  </div>
 </div>
-</section>
-

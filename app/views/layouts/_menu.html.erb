@@ -1,4 +1,19 @@
-  <div class="col-md-3">
+  <aside class="col-md-4">
+    <% if user_signed_in? %>
+    <div class="widget search">
+        <% if current_user.has_role?('superadmin') %>
+          <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
+            <button type="submit" id="new-post">ポスト作成</button>
+          <% end %>
+        <% end %> 
+    </div>
+    <% end %>
+    <div class="widget search">
+      <%= form_tag("/boards", :method => "get", role:"form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for...",class:"form-control search_box",autocomplete:"off" %>
+          <button type="submit"><i class="fa fa-search"></i></button>
+      <% end %>
+    </div>
     <!-- Profile表示 -->
     <div id="profile_carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -48,44 +63,64 @@
         </a>
       </div>
     </div>
-
-      <hr>
-      <h4>Resent Post</h4>
-        <!-- 最近のPost表示 -->
-        <% @boards_resent.each do |board| %>
-          <%= link_to(board_path(board.id)) do %>
-            <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 19) %></p>
-          <% end %>
+    <hr>
+      <div class="widget popular_post">
+        <h3>Popular Post</h3>
+        <ul>
+        <% @boards_likelist.each do |board| %>
+          <li>
+              <%= link_to(board_path(board.id)) do %>
+              <div class="widget_img">
+                <% if !get_content_img(board.contents).blank? %>
+                  <img src="<%=get_content_img(board.contents) %>" alt="">
+                <% else %>
+                  <img src="<%= asset_path('default-image2.png')%>" alt="">
+                <% end %>
+              </div>
+              <p><%= truncate(board.title, length: 20) %></p>
+              <% end %>
+          </li>
         <% end %>
-        <%= link_to("/boards") do %>
-            <p style="margin:0;margin-top:10px;text-align:right;">もっと見る<i class="fa fa-angle-double-right"></i></p>
-        <% end %>
+        </ul>
+      </div>
       <hr>
       <!-- タグリスト（カテゴリ）を表示する。 -->
-      <h4>Category<h4>
-      <div class="list-group article_content_main" >
-        <%= link_to("/boards", class:"list-group-item list-group-item-action") do %> 
-          全体を見る
-        <% end %>
-        <% @tags.each do |tag| %>
-          <%= link_to(tag_path(tag.name), class:"list-group-item list-group-item-action") do %>
-            <%=tag.name%><span class="badge badge-dark" style="float:right;"><%=tag.taggings_count%></span>
-          <% end %> 
-        <%end%>
+      <div class="widget archieve">
+          <h3>Categories</h3>
+          <div class="row">
+              <div class="col-sm-12">
+                  <ul class="blog_archieve">
+                    <% @tags.each do |tag| %>
+                      <li>
+                        <%= link_to(tag_path(tag.name)) do %>
+                          <%=tag.name%><span class="pull-right">(<%=tag.taggings_count%>)</span>
+                        <% end %> 
+                      </li>
+                    <%end%>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="widget archieve">
+          <h3>Archive</h3>
+          <div class="row">
+              <div class="col-sm-12">
+                  <ul class="blog_archieve">
+                    <% @board_month.each do |board_month| %>
+                      <li>
+                        <%= link_to(created_path(board_month.month.strftime('%Y-%m'))) do %>
+                          <%=board_month.month.strftime('%Y-%m')%><span class="pull-right">(<%=board_month.total_month%>)</span>
+                        <% end %> 
+                      </li>
+                    <%end%>
+                  </ul>
+              </div>
+          </div>
       </div>
       <hr>
-      <h4>Archive<h4>
-      <div class="list-group article_content_main">
-        <% @board_month.each do |board_month| %>
-          <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"list-group-item list-group-item-action") do %>
-            <%=board_month.month.strftime('%Y-%m')%><span class="badge badge-dark" style="float:right;"><%=board_month.total_month%></span>
-          <% end %> 
-        <%end%>
-      </div>
-      <br>
       <div class="card">
         <div class="card-body"> 
           <a class="twitter-timeline" href="https://twitter.com/inoshishi30?ref_src=twsrc%5Etfw">Tweets by inoshishi30</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
-    </div>
+    </aside>

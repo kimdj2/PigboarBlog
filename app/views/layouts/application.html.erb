@@ -12,15 +12,20 @@
     <!-- ナビゲーション -->
     <%= render "layouts/navigation" %>
     <!-- ヘッダ -->
-    <% if controller_name == 'main' %>
-      <%= render "layouts/main_header" %>
-    <% else %>
-      <%= render "layouts/contents_header" %>
-    <% end %>
-      <!-- メイン表示 -->
-      <div id="main">
+    <%= render "layouts/main_header" %>
+    <!-- メイン表示 -->
+    <section id="blog">
+      <div class="blog container">
+        <div class="row">
+          <div class="col-md-12">
+            <%= breadcrumbs separator: " &rsaquo; " %>
+          </div>
+        </div>
+        <br>
+        <br>
         <%= yield %>
       </div>
+    </section>
     <br>    
     <!-- メールお問い合わせ -->
     <%= render "layouts/contact" %>

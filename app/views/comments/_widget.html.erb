@@ -1,24 +1,22 @@
-    <h2 class="article_title" style="text-align:center">
-      Comments <small id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></small>
-    </h2>
     <!-- コメントリストを表示する。 -->
-    <div class="comments-list">
+    <div class="comments">
+      <h2>
+      Comments <small id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></small>
+      </h2>
       <%= render commentable.comments.where(parent_id: nil).order(created_at:"ASC") %>
+          <hr>
+      <h2>Your Comments</h2>
+      <!-- ログインしている場合 -->
+      <% if user_signed_in? %>
+      <!-- コメント入力フォームを表示する。 -->
+      <%= render "comments/form", comment: commentable.comments.build %>
+      <% else %>
+      <!-- ログインしていない場合 -->
+        <!-- ログインボタンを表示する。 -->
+        <div style="text-align:center">
+          コメントの投稿にはログインが必要です。
+          <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#login_popup">ログイン</button>    
+        </div>
+      <% end %>
     </div>
-    <hr>
-    <h2 class="article_title" style="text-align:center">
-      Your Comments
-    </h2>
-    <!-- ログインしている場合 -->
-    <% if user_signed_in? %>
-    <!-- コメント入力フォームを表示する。 -->
-    <%= render "comments/form", comment: commentable.comments.build  %>
-    <% else %>
-    <!-- ログインしていない場合 -->
-      <!-- ログインボタンを表示する。 -->
-      <div style="text-align:center">
-        コメントの投稿にはログインが必要です。
-        <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#login_popup">ログイン</button>    
-      </div>
-    <% end %>
     <br>

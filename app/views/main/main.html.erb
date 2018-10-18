@@ -1,10 +1,6 @@
 <!-- メイン画面を表示する。 -->
-<section class="main_contents">
-  <div class="container">
     <div class="row" style="padding-bottom:20px;">
-      <!-- 検索フォーム表示 -->
-      <%= render "layouts/search" %>
-      <div class="col-md-9 py-2">
+      <div class="col-md-8">
         <!-- 人気post表示 -->
         <ul class="nav nav-tabs main-nav">
           <li class="nav-item">
@@ -25,16 +21,7 @@
           <%= render "layouts/postList", boards: @boards_like, types:"like"%>
         </div>
         <hr>  
-        <h2 style="text-align:center;">Resent Post</h2>
-        <!-- 最近のpost表示 -->
-        <%= render "layouts/postList", boards: @boards_resent, types:"resent" %>
-        <%= link_to("/boards") do %>
-            <p style="margin:0;text-align:right;">もっと見る<i class="fa fa-angle-double-right"></i></p>
-        <% end %>
-        <hr>
       </div> 
       <!-- 画面の右側リスト表示 --> 
       <%= render "layouts/menu" %>
     </div>
-  </div>
-</section>

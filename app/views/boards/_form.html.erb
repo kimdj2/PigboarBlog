@@ -1,7 +1,5 @@
   <%= form_with(model: board, local: true) do |f| %>
-  <section class="main_contents">
-    <div class="container container-large">
-      <!--　入力エラー表示　-->
+  <!--　入力エラー表示　-->
       <% if board.errors.any? %>
           <% board.errors.messages.each_key do |key|%>
             <% if key == :title %>
@@ -54,8 +52,6 @@
       </div>
       <br>
       <br>
-    </div>
-    </section>
   <% end %>
   <script>
     $('#tag-input-form').tagsinput();

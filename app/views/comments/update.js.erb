@@ -1,5 +1,5 @@
 //コメント修正後の処理
-$comment_form = $("#comment_<%= @comment.id %> .comment-form form");
+//$comment_form = $("#comment_<%= @comment.id %> .comment-form form");
 $comment = $("#comment_<%= @comment.id %>");
 <% if @comment.errors.empty? %>
   $comment.after("<%=j render @comment %>").find(".media").last().effect("highlight", {}, 1000);
