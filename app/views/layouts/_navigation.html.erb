@@ -1,46 +1,4 @@
-    <!-- Navigation
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <%= link_to("/",class:"navbar-brand") do %>
-          Pig&Boar Blog
-        <% end %>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-lg fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <%= link_to("/",class:"nav-link") do %>
-                HOME
-              <% end %>
-            </li>         
-            <li class="nav-item">
-              <%= link_to("/about",class:"nav-link") do %>
-                About
-              <% end %>
-            </li>         
-            <li class="nav-item">
-              <%= link_to("/boards", class:"nav-link") do %>
-                Posts
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <a href="#contact" id="contact_btn" class="nav-link">Contact</a>
-            </li>
-            <li class="nav-item">
-              <% if user_signed_in? %>
-                <%= link_to "LOGOUT", destroy_user_session_path, class:"nav-link", method: :delete %>
-              <% else %>
-                <a href="javascript:void(0);" data-toggle="modal" class="nav-link" data-target="#login_popup">
-                  LOGIN
-                </a>
-              <% end %> 
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>-->
+<!-- Navigation -->
 <header id="header">
   <nav class="navbar navbar-inverse" role="banner">
       <div class="container">
@@ -52,35 +10,32 @@
                   <span class="icon-bar"></span>
               </button>
               <%= link_to("/",class:"navbar-brand") do %>
-                <h2>Pig&Boar Blog</h2>
+                <h2>Pig<span style="color:#EC5538;">&</span>Boar Blog</h2>
               <% end %>
           </div>
           <div class="collapse navbar-collapse navbar-right in">
               <ul class="nav navbar-nav">
                 <li>
                   <%= link_to("/",class:"nav-link") do %>
-                    HOME
+                    <span style="color:#EC5538;">H</span>OME
                   <% end %>
                 </li>         
                 <li>
                   <%= link_to("/about",class:"nav-link") do %>
-                    About
+                    <span style="color:#EC5538;">A</span>BOUT
                   <% end %>
                 </li>         
                 <li>
-                  <%= link_to("/boards", class:"nav-link") do %>
-                    Posts
-                  <% end %>
-                </li>
-                <li>
-                  <a href="#contact" id="contact_btn" class="nav-link">Contact</a>
+                  <a href="javascript:;" id="contact_btn" class="nav-link"><span style="color:#EC5538;">C</span>ONTACT</a>
                 </li>
                 <li>
                   <% if user_signed_in? %>
-                    <%= link_to "LOGOUT", destroy_user_session_path, class:"nav-link", method: :delete %>
+                    <%= link_to destroy_user_session_path, class:"nav-link", method: :delete do %>
+                      <span style="color:#EC5538;">L</span>OGOUT
+                    <% end %>
                   <% else %>
                     <a href="javascript:void(0);" data-toggle="modal" class="nav-link" data-target="#login_popup">
-                      LOGIN
+                      <span style="color:#EC5538;">L</span>OGIN
                     </a>
                   <% end %> 
                 </li>

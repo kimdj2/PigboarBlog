@@ -3,15 +3,15 @@
   <div class="container bottom_border">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-4">
-        <h5 class="headin5_amrc col_white_amrc footer_title">Pig&BoarBlog</h5>
+        <h5 class="headin5_amrc col_white_amrc footer_title">Pig<span style="color:#EC5538;">&</span>BoarBlog</h5>
       </div>
       <div class="col-xs-12 col-md-4">
-        <h5 class="headin5_amrc col_white_amrc">Contact Me</h5>
+        <h5 class="headin5_amrc col_white_amrc"><span style="color:#EC5538;">C</span>ontact Me</h5>
         <p>気になるところがありましたら、下記のメールアドレスに連絡してください。</p>
         <p><i class="fa fa fa-envelope"></i><%= mail_to("1222kdj@gmail.com","1222kdj@gmail.com", style:"color:#FFFFFF") %></p>
       </div>
       <div class=" col-xs-12 col-md-4">
-        <h5 class="headin5_amrc col_white_amrc">Resent Post</h5>
+        <h5 class="headin5_amrc col_white_amrc"><span style="color:#EC5538;">R</span>esent Post</h5>
         <% @boards_resent.each do |board| %>
           <%= link_to(board_path(board.id)) do %>
             <p style="margin:0;"><i class="fa fa-angle-double-right"></i><%= truncate(board.title, length: 20) %></p>
@@ -31,9 +31,7 @@
         <% end %>
       </li>         
       <li>
-        <%= link_to("/boards") do %>
-          Posts
-        <% end %>
+        <a href="javascript:;" id="contact_btn">Contact</a>
       </li>
       <li>
         <% if user_signed_in? %>

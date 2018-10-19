@@ -5,11 +5,15 @@
       <!-- 内容にイメージが含まれている場合 -->
       <% if !get_content_img(board.contents).blank? %>
         <!-- イメージを表示する。 -->
-        <a href="#"><img class="img-responsive img-blog" src="<%=get_content_img(board.contents) %>" width="100%" alt="" /></a>
+        <%= link_to(board_path(board.id)) do %>
+          <img class="img-responsive img-blog" src="<%=get_content_img(board.contents) %>" width="100%" alt="" />
+        <% end %>
       <!-- 内容にイメージが含まれていない場合 -->
       <% else %>
         <!-- 基本イメージを表示する。 -->
-        <a href="#"><img class="img-responsive img-blog" src="<%= asset_path('default-image2.png')%>" width="100%" alt="" /></a>
+        <%= link_to(board_path(board.id)) do %>
+          <img class="img-responsive img-blog" src="<%= asset_path('default-image2.png')%>" width="100%" alt="" />
+        <% end %>
       <% end %>
     </div>  
     <div class="blog-content">

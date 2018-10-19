@@ -1,26 +1,9 @@
 <!-- メイン画面を表示する。 -->
     <div class="row" style="padding-bottom:20px;">
       <div class="col-md-8">
-        <!-- 人気post表示 -->
-        <ul class="nav nav-tabs main-nav">
-          <li class="nav-item">
-            <%= link_to "sort/resent/1", method: :get, remote: true,id:"tab_resent",class:"nav-link active",:data => {:toggle=>"tab"} do %>最近順<%end%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "sort/like/1", method: :get, remote: true,id:"tab_like",class:"nav-link",:data => {:toggle=>"tab"} do %>いいね順<%end%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "sort/see/1", method: :get, remote: true,id:"tab_see",class:"nav-link",:data => {:toggle=>"tab"} do %>照会順<%end%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "sort/comment/1", method: :get, remote: true,id:"tab_comment",class:"nav-link",:data => {:toggle=>"tab"} do %>コメント順<%end%>
-          </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content" id="like_list">
-          <%= render "layouts/postList", boards: @boards_like, types:"like"%>
-        </div>
-        <hr>  
+        <%= render "layouts/postList", boards: @boards_like, types:"like"%>
+        <hr>
+        <%= paginate @boards_like %>  
       </div> 
       <!-- 画面の右側リスト表示 --> 
       <%= render "layouts/menu" %>

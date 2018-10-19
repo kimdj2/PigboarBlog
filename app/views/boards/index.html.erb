@@ -10,10 +10,10 @@
           <!--データリスト部を表示する。-->
           <h3><%= @title %></h3>
           <br>
-          <%= render 'article' %>
+			    <%= render "article", boards: @boards %>
         </div>
         <!--もっと見るボタン-->
-        <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'more_link', class:"btn btn-dark btn-block"%>
+        <%= link_to_next_page @boards, 'もっと見る', remote: true, id: 'more_link' %>
       <% end %>
     </div>
     <!--右側リスト-->

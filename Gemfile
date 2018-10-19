@@ -62,7 +62,7 @@ gem 'simple_form', '>= 3.5.1'
 gem 'codemirror-rails'
 gem 'bootstrap-social-rails'
 gem 'gretel'
-
+gem 'masonry-rails'
 
 
 # Use Capistrano for deployment
