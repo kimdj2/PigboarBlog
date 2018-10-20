@@ -26,8 +26,6 @@
         <%= yield %>
       </div>
     </section>
-    <!-- メールお問い合わせ -->
-    <%= render "layouts/contact" %>
     <!-- ログインフォーム -->
     <%= render "layouts/login" %>
     <!-- ajaxローディング -->
@@ -35,4 +33,7 @@
   </body>
   <!-- フッダ -->
   <%= render "layouts/footer" %>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </html>

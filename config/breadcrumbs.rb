@@ -6,6 +6,15 @@ crumb :boards do
   link "Posts", boards_path
 end
 
+crumb :contact do
+  link "Contact", contact_path
+end
+
+crumb :about do
+  link "About", about_path
+end
+
+
 crumb :board do |board|
   link board.title, board
   parent :boards

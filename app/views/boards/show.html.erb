@@ -36,7 +36,7 @@
 							</span>
 						</div>
 						<br>
-						<%= social_share_button_tag(@board.contents.html_safe, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
+						<%= social_share_button_tag(@board.contents, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
 					</div>
 				</div>
 				<!-- いいね -->
@@ -59,12 +59,12 @@
 		</div>
 		<% if @before_post != nil %>
 			<%= link_to(board_path(@before_post.id)) do %>
-			<button type="button" class="btn btn-dark btn-sm" style="float:left;margin-bottom:15px;">←前へ</button>
+			<button type="button" class="btn btn-primary btn-sm" style="float:left;margin-bottom:20px;margin-top:0;">←前へ</button>
 			<% end %>
 		<% end %>
 		<% if @next_post != nil %>
 			<%= link_to(board_path(@next_post.id)) do %>
-			<button type="button" class="btn btn-dark btn-sm" style="float:right;margin-bottom:15px;">次へ→</button>
+			<button type="button" class="btn btn-primary btn-sm" style="float:right;margin-bottom:20px;margin-top:0;">次へ→</button>
 			<% end %>
 		<% end %>
 		<br>

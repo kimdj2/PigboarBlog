@@ -391,7 +391,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form (>= 3.5.1)
   social-share-button
-  summernote-rails (>= 0.8.10.0)
+  summernote-rails
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

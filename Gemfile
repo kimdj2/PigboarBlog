@@ -56,7 +56,7 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'ancestry'
 gem "font-awesome-rails"
-gem 'summernote-rails', '>= 0.8.10.0'
+gem 'summernote-rails'
 gem 'jquery-turbolinks'
 gem 'simple_form', '>= 3.5.1'
 gem 'codemirror-rails'
@@ -85,8 +85,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 group :production do
-  gem 'fog', '>= 1.15.0'
-  gem 'rmagick', require: 'RMagick'
+  #gem 'fog', '>= 1.15.0'
+  #gem 'rmagick', require: 'RMagick'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

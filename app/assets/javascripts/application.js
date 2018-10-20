@@ -39,6 +39,8 @@
 //= require summernote/summernote-bs4.min
 //= require bootstrap-tagsinput
 //= require bootstrap-sprockets
+//= require summernote-ext-highlight
+//= require highlight.pack
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .

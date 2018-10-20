@@ -26,8 +26,8 @@
         <!-- コメント内容入力フォーム -->
         <%= f.input :content, as: :summernote, label: false, input_html: { rows: 5, style:"width:100%;",'data-provider': :summernote2 } %>
       <div style="text-align:right;">  
-        <%= f.submit "コメント作成", class: 'btn btn-dark btn-sm float-xs-right', style: "margin-top:10px;" %>
-        <%= link_to "キャンセル", "#", 'data-reply': comment.parent_id.present?,style: 'margin-top:10px;', class: 'cancel-comment-link btn btn-dark btn-sm float-xs-right ml-1' if comment.persisted? or comment.parent %>
+        <%= f.submit "コメント作成", class: 'btn btn-primary btn-sm float-xs-right', style: "margin-top:10px;" %>
+        <%= link_to "キャンセル", "#", 'data-reply': comment.parent_id.present?,style: 'margin-top:10px;', class: 'cancel-comment-link btn btn-primary btn-sm float-xs-right ml-1' if comment.persisted? or comment.parent %>
       </div>
     <% end %>
     </div>

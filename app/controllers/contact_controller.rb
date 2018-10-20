@@ -2,6 +2,7 @@ class ContactController < ApplicationController
   #お問い合わせモデルを生成する。
   def new
     @contact = Contact.new
+    render 'contact/contact'
   end
   
   #メッセージ送信

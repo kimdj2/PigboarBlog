@@ -1538,7 +1538,15 @@ section.pricing{
     text-transform: uppercase;
     font-weight: 600;
 }
+#contact-form-list .form-group label{
+    color: #989898;
+    font-size: 16px;
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
 
+}
 .form-group .form-control {
     padding: 0 12px;
     border-color: #f2f2f2;
@@ -1568,7 +1576,6 @@ textarea#message {
 .large-title{
     text-align: center;
     margin-bottom: 70px;
-    margin-top: 50px;
 }
 
 .large-title h2{
@@ -1882,6 +1889,24 @@ ul.pagination>li>a {
     border: none;
     background-color: transparent;
 }
+ul.pagination>li>p {
+    border-radius: 5px;
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: none;
+    background-color: transparent;
+}
+ul.pagination>li.active>p{
+    background-color: #EC5538 ;
+    color: #fff;
+}
 
 ul.pagination>li>a i {
     margin-left: 5px;
@@ -1898,8 +1923,6 @@ ul.pagination>li:first-child > a,
 ul.pagination>li:last-child > a{
     background-color: transparent;
     color: #989898;
-    -webkit-transform: translateX(-200px);
-    transform: translateX(-200px)
 }
 
 ul.pagination>li:first-child > a:hover, 
@@ -1912,15 +1935,11 @@ ul.pagination>li:last-child > a:hover{
 ul.pagination>li:first-child > a{
     background-color: transparent;
     color: #989898;
-    -webkit-transform: translateX(-200px);
-    transform: translateX(-200px)
 }
  
 ul.pagination>li:last-child > a{
     background-color: transparent;
     color: #989898;
-    -webkit-transform: translateX(200px);
-    transform: translateX(200px)
 }
 
 

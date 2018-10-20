@@ -22,14 +22,14 @@
           #<%=tag%>&nbsp;
         <% end %>
       <% end %>
-      <h2><%= link_to(board_path(board.id)) do %><%= truncate(board.title, length: 20) %><% end %></h2>
+      <h2><%= link_to(board_path(board.id), data: {"turbolinks" => false}) do %><%= truncate(board.title, length: 20) %><% end %></h2>
       <div class="post-meta">
         <p>By <%= board.author %></p>
         <p><i class="fa fa-clock-o"></i> <%= board.created_at.strftime('%d %b %Y') %></p>
         <p><i class="fa fa-comment"></i> <%= get_board_comment_count(board)%></p>
         <p><i class="fa fa-thumbs-up"></i> <%= get_board_like_count(board)%></p>
         <p>
-            <%= social_share_button_tag(board.contents.html_safe, :url => board_url(board), desc: board.title, style:"text-align:center;")%>
+            <%= social_share_button_tag(board.contents, :url => board_url(board), desc: board.title, style:"text-align:center;")%>
         </p>
       </div>
       <h3><%= truncate(Sanitize.clean(board.contents), length: 50) %></h3>

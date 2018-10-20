@@ -31,7 +31,9 @@
         <% end %>
       </li>         
       <li>
-        <a href="javascript:;" id="contact_btn">Contact</a>
+        <%= link_to("/contact") do %>
+          Contact
+        <% end %>
       </li>
       <li>
         <% if user_signed_in? %>

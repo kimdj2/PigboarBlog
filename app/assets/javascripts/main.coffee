@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
   'use strict'
+  $('pre code').each (i, block) ->
+    hljs.highlightBlock block
+  return
   contactBtn = $('#contact_btn')
   $('body').on('input propertychange', '.floating-label-form-group', (e) ->
     $(this).toggleClass 'floating-label-form-group-with-value', ! !$(e.target).val()

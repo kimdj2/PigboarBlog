@@ -29,13 +29,16 @@ $(document).on 'turbolinks:load', ->
                     sendFile files[0], $(this)
             toolbar: [
                 ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
+                ['font', ['bold', 'underline','strikethrough', 'clear']],
                 ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['specialchars', ['specialchars']],
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
                 ['insert', ['link', 'picture', 'video', 'map']],
-                ['view', ['fullscreen', 'codeview','highlight', 'help']]
+                ['view', ['fullscreen', 'codeview','highlight','help']]
+                
             ]
     #コメント作成時のテキストエディタ
     $('[data-provider="summernote2"]').each ->

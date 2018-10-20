@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'created/:created', to: 'boards#index', as: :created
   get 'categories/:category', to:'boards#index', as: :category
   get 'about', to:'etc#about'
+  get 'contact',to: 'contact#new'
 
   get 'sort/resent/:resent', to: 'main#sort', as: :resent
   get 'sort/like/:like', to: 'main#sort', as: :like
