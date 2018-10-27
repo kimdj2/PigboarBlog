@@ -5,6 +5,10 @@
   console.log($comment_form);
 <% else %>
   $comment_parent = $(".comments_list").last();
+  //１つ目のコメント投稿時の親要素
+  if($comment_parent.length === 0) {
+    $comment_parent = $(".comments > h2").first();
+  }
   console.log($comment_parent);
 <% end %>
 $comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
