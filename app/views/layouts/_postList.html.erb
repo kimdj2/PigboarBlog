@@ -29,7 +29,7 @@
         <p><i class="fa fa-comment"></i> <%= get_board_comment_count(board)%></p>
         <p><i class="fa fa-thumbs-up"></i> <%= get_board_like_count(board)%></p>
         <p>
-            <%= social_share_button_tag(board.title, :url => board_url(board), desc: board.contents, style:"text-align:center;")%>
+            <%= social_share_button_tag(board.title, :url => board_url(board), desc: board.title, style:"text-align:center;")%>
         </p>
       </div>
       <h3><%= truncate(Sanitize.clean(board.contents), length: 50) %></h3>
