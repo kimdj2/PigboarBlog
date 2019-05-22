@@ -1,7 +1,7 @@
 <% breadcrumb :board, @board %>
 <div class="row">
 	<!-- Post Content Column -->
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="blog-item">
 			<div class="blog-content">
 				<!--<a href="#" class="blog_cat">UI/UX DESIGN</a>-->
@@ -53,10 +53,11 @@
 				</div>
 				<% end %>
 				<!-- コメントページを表示 -->
-				<%= render "comments/widget", commentable: @board %>
+				<%= render partial: 'layouts/disqus', locals: { page_title: @board.title } %> 
 			</div>
 			<!-- 前へ、次へボタン表示 -->
 		</div>
+		<hr>
 		<% if @before_post != nil %>
 			<%= link_to(board_path(@before_post.id)) do %>
 			<button type="button" class="btn btn-primary btn-sm" style="float:left;margin-bottom:20px;margin-top:0;">←前へ</button>
@@ -67,16 +68,5 @@
 			<button type="button" class="btn btn-primary btn-sm" style="float:right;margin-bottom:20px;margin-top:0;">次へ→</button>
 			<% end %>
 		<% end %>
-		<br>
-		<br>
-		<hr>
-		<!-- 関連データがある場合 -->
-		<% if @related_articles.size > 0 %>
-			<!-- 連携Postを表示する。 -->
-			<h2>Related Posts</h2>
-			<%= render "article", boards: @related_articles %>
-		<% end %>
 	</div>
-	<!-- 画面右側のリスト表示 -->
-	<%= render "layouts/menu" %>
 </div>

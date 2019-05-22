@@ -1,10 +1,13 @@
 <!-- メイン画面を表示する。 -->
-<div class="row" style="padding-bottom:20px;">
-  <div class="col-md-8">
-    <%= render "layouts/postList", boards: @boards_like, types:"like"%>
-    <hr>
-    <%= paginate @boards_like %>  
-  </div> 
-  <!-- 画面の右側リスト表示 --> 
-  <%= render "layouts/menu" %>
+<div class="row" style="padding-bottom:20px;" data-turbolinks="false">
+  <div class="col-md-12">
+    <div id="article">
+      <!--データリスト部を表示する。-->
+      <%= render "layouts/postList", boards: @boards_like, types:"like"%>
+    </div>
+    <!--もっと見るボタン-->
+    <%= link_to_next_page @boards_like, 'もっと見る', remote: true, id: 'more_link' %>
+  </div>
 </div>
+  <hr>
+  <!-- 画面の右側リスト表示 --> 

@@ -375,6 +375,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 }
 
+
+.row {
+    margin-right:0 !important;
+}
+
 .card.left_side {
     margin-left: -15px;
     padding: 20px;
@@ -1499,3 +1504,85 @@ blockquote {
 pre{
     font-size:1rem;
 }
+
+#masonry-container {
+            .blog-item,
+            .grid-sizer,.mas-box {
+                // default width (set to maximal columns within maxiaml screen width, 5 columns)
+                width: 32%;
+            
+                @media screen and (min-width: 1150px)  {
+                  // 3 columns
+                  width: 32%;
+                }
+                @media screen and (min-width: 1057px) and (max-width: 1149px) {
+                  // 3 columns
+                  width: 47%;
+                }
+                @media screen and (min-width: 821px) and (max-width: 1056px)  {
+                  // 2 columns
+                  width: 47%;
+                }
+                @media screen and (min-width: 541px) and (max-width: 820px)  {
+                  // 2 columns
+                  width: 47%;
+                }
+                @media screen and (max-width: 540px) {
+                  // 1 column
+                  width: 100%;
+                }
+              }
+  }
+  .mas-box {
+    background-color: rgba(#ffffff, 0.97);
+    border: 1px solid #858585;
+    margin:.5em;
+    border-radius: 4px;
+    box-sizing: border-box;
+    float: left;
+    margin-bottom: .5em;
+    padding: .5em;
+  }
+  .gutter-sizer {
+    width: 10px;
+  }
+
+  .clearfix:before, .clearfix:after { content: ""; display: table; }
+  .clearfix:after { clear: both; }
+  .clearfix { zoom: 1; }
+
+  .transitions-enabled.masonry,
+  .transitions-enabled.masonry .masonry-brick {
+    -webkit-transition-duration: 0.7s;
+       -moz-transition-duration: 0.7s;
+        -ms-transition-duration: 0.7s;
+         -o-transition-duration: 0.7s;
+            transition-duration: 0.7s;
+  }
+  
+  .transitions-enabled.masonry {
+    -webkit-transition-property: height, width;
+       -moz-transition-property: height, width;
+        -ms-transition-property: height, width;
+         -o-transition-property: height, width;
+            transition-property: height, width;
+  }
+  
+  .transitions-enabled.masonry  .masonry-brick {
+    -webkit-transition-property: left, right, top;
+       -moz-transition-property: left, right, top;
+        -ms-transition-property: left, right, top;
+         -o-transition-property: left, right, top;
+            transition-property: left, right, top;
+  }
+  
+  
+  /* disable transitions on container */
+  .transitions-enabled.infinite-scroll.masonry {
+    -webkit-transition-property: none;
+       -moz-transition-property: none;
+        -ms-transition-property: none;
+         -o-transition-property: none;
+            transition-property: none;
+  }
+  

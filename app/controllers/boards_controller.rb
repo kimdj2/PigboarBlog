@@ -124,12 +124,11 @@ class BoardsController < ApplicationController
         #その他
         else 
           @boards = Board.all
-          @title = "Posts"
         end
         if params[:page]
-          @boards = @boards.order(id: "DESC").page(params[:page]).per(6)
+          @boards = @boards.order(created_at:"DESC").page(params[:page]).per(6)
         else
-          @boards = @boards.order(id: "DESC").page(1).per(6)
+          @boards = @boards.order(created_at:"DESC").page(1).per(6)
         end
       rescue => e
         #例外が発生

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
   end
   
-  root "main#index"
+  root "boards#index"
 
 
 end

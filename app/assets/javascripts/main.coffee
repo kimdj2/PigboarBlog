@@ -1,11 +1,35 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$(window).on 'load', ->
+
 $(document).on 'turbolinks:load', ->
   'use strict'
+  $('.sidebar-dropdown > a').click ->
+    $('.sidebar-submenu').slideUp 200
+    if $(this).parent().hasClass('active')
+      $('.sidebar-dropdown').removeClass 'active'
+      $(this).parent().removeClass 'active'
+    else
+      $('.sidebar-dropdown').removeClass 'active'
+      $(this).next('.sidebar-submenu').slideDown 200
+      $(this).parent().addClass 'active'
+    return
+  $('#show-sidebar2').click ->
+    $('.page-wrapper').addClass 'toggled'
+    return
+  $('#close-sidebar').click ->
+    $('.page-wrapper').removeClass 'toggled'
+    return
+  $('#masonry-container').masonry
+    itemSelector: '.mas-box'
+    columnWidth: '.grid-sizer'
+    gutter: '.gutter-sizer'
+  $('.mas-box').hide()
+  $('.mas-box').each((i) ->
+    $(this).delay(i * 100).fadeIn(1000))
   $('pre code').each (i, block) ->
     hljs.highlightBlock block
-  return
   contactBtn = $('#contact_btn')
   $('body').on('input propertychange', '.floating-label-form-group', (e) ->
     $(this).toggleClass 'floating-label-form-group-with-value', ! !$(e.target).val()
@@ -43,5 +67,8 @@ $(document).on 'turbolinks:load', ->
     contactBtn.click ->
       $('body,html').stop().animate { scrollTop: $("#contact").offset().top }, 300  
     return
+
+
+
 
 

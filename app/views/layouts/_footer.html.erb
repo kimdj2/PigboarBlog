@@ -19,35 +19,7 @@
         <% end %>
       </div>
     </div>
-    <ul class="foote_bottom_ul_amrc">
-      <li>
-        <%= link_to("/") do %>
-          Home
-        <% end %>
-      </li>         
-      <li>
-        <%= link_to("/about") do %>
-          About
-        <% end %>
-      </li>         
-      <li>
-        <%= link_to("/contact") do %>
-          Contact
-        <% end %>
-      </li>
-      <li>
-        <% if user_signed_in? %>
-          <%= link_to(destroy_user_session_path, method: :delete) do %>
-            Logout
-          <% end %>
-        <% else %>
-          <a href="javascript:void(0);" data-toggle="modal" data-target="#login_popup">
-            Login
-          </a>
-        <% end %> 
-      </li>
-    </ul>
-    <p class="text-center">Copyright @2018 | Pig&Boar blog</p>
+    <p class="text-center">Copyright &copy;2019 | Pig&Boar blog</p>
   </div>
   <div class="social" style="text-align:center;">
     <ul>

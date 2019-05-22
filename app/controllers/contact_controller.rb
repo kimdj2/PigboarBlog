@@ -10,6 +10,7 @@ class ContactController < ApplicationController
     begin
       #入力フォームよりデータを取得する。
       @contact = Contact.new contact_params
+      response.set_header('Test', 'test')
       respond_to do |format|
         #バリデーションチェックに問題ない場合
         if @contact.valid?

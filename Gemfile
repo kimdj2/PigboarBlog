@@ -62,8 +62,7 @@ gem 'simple_form', '>= 3.5.1'
 gem 'codemirror-rails'
 gem 'bootstrap-social-rails'
 gem 'gretel'
-gem 'masonry-rails'
-
+gem 'jquery-masonry-rails' 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -85,8 +84,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 group :production do
-  gem 'fog', '>= 1.15.0'
-  gem 'rmagick', require: 'RMagick'
+  #gem 'fog', '>= 1.15.0'
+  #gem 'rmagick', require: 'RMagick'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

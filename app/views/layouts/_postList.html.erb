@@ -1,25 +1,18 @@
+<div id="masonry-container" class="transitions-enable clearfix">
 <!-- Postリスト表示 -->
 <% boards.each do |board| %>
-  <div class="blog-item">
-    <div class="blog-imgdiv">
-      <!-- 内容にイメージが含まれている場合 -->
+  <div class="box blog-item">
       <% if !get_content_img(board.contents).blank? %>
+        <!-- 内容にイメージが含まれている場合 -->
         <!-- イメージを表示する。 -->
         <%= link_to(board_path(board.id)) do %>
           <img class="img-responsive img-blog" src="<%=get_content_img(board.contents) %>" width="100%" alt="" />
         <% end %>
-      <!-- 内容にイメージが含まれていない場合 -->
-      <% else %>
-        <!-- 基本イメージを表示する。 -->
-        <%= link_to(board_path(board.id)) do %>
-          <img class="img-responsive img-blog" src="<%= asset_path('default-image2.png')%>" width="100%" alt="" />
-        <% end %>
       <% end %>
-    </div>  
     <div class="blog-content">
       <% board.tag_list.map do |tag| %>  
         <%= link_to(tag_path(tag),class:"blog_cat") do %>
-          #<%=tag%>&nbsp;
+          <%=tag%>&nbsp;
         <% end %>
       <% end %>
       <h2><%= link_to(board_path(board.id), data: {"turbolinks" => false}) do %><%= truncate(board.title, length: 20) %><% end %></h2>
