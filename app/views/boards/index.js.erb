@@ -1,8 +1,6 @@
 //もっと見る処理後の画面制御
 //データを画面下部に追加表示する。
-$("<%= escape_javascript(render 'article', boards: @boards) %>").appendTo("#masonry-container").hide().fadeIn('slow',function(){
-  $('#masonry-container').masonry("reload");
-});
+$("#masonry-container").append("<%= escape_javascript(render 'article', boards: @boards) %>").hide().fadeIn('slow').masonry('reloadItems').masonry('layout');
 //もっと見るボタンを再表示する。
 $("#more_link").replaceWith("<%= escape_javascript(
   link_to_next_page(@boards, 'もっと見る', remote: true, id: 'more_link')

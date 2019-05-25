@@ -1509,23 +1509,23 @@ pre{
             .blog-item,
             .grid-sizer,.mas-box {
                 // default width (set to maximal columns within maxiaml screen width, 5 columns)
-                width: 32%;
+                width: 30%;
             
                 @media screen and (min-width: 1150px)  {
                   // 3 columns
-                  width: 32%;
+                  width: 30%;
                 }
                 @media screen and (min-width: 1057px) and (max-width: 1149px) {
                   // 3 columns
-                  width: 47%;
+                  width: 45%;
                 }
                 @media screen and (min-width: 821px) and (max-width: 1056px)  {
                   // 2 columns
-                  width: 47%;
+                  width: 45%;
                 }
                 @media screen and (min-width: 541px) and (max-width: 820px)  {
                   // 2 columns
-                  width: 47%;
+                  width: 45%;
                 }
                 @media screen and (max-width: 540px) {
                   // 1 column
