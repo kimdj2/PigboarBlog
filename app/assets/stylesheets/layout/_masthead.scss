@@ -4,11 +4,18 @@
 // Styling for the masthead
 header.masthead {
   // TIP: Background images are set within the HTML using inline CSS!
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
   height: 100%;
   background: no-repeat center center;
   background-color: $gray-600;
   background-attachment: scroll;
-  position: relative;
   @include background-cover;
   .overlay {
     position: absolute;
@@ -82,4 +89,10 @@ header.masthead {
       }
     }
   }
+}
+#headimage{
+  position:relative;
+  flex-grow:1;
+  background-color:#131517;
+  padding-bottom:50%;
 }

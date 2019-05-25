@@ -18,10 +18,20 @@ $(document).on 'turbolinks:load', ->
   $('#show-sidebar2').click ->
     $('.page-wrapper').addClass 'toggled'
     $('.page-content').addClass 'content-toggled'
+    $('.page-content').addClass 'exec'
     return
   $('#close-sidebar').click ->
     $('.page-wrapper').removeClass 'toggled'
     $('.page-content').removeClass 'content-toggled'
+    $('.page-content').removeClass 'exec'
+    return
+  $('.page-content').click ->
+    if $('.page-content').hasClass('content-toggled')
+      if !$('.page-content').hasClass('exec')
+        $('.page-wrapper').removeClass 'toggled'
+        $('.page-content').removeClass 'content-toggled'
+      else
+        $('.page-content').removeClass 'exec'
     return  
   $('#masonry-container').masonry
     percentPosition: true
@@ -57,6 +67,10 @@ $(document).on 'turbolinks:load', ->
         # 最上階の場合は固定とする。
           $('#mainNav').slideDown()  
         else
+          if currentTop==0
+            $('#mainNav').css({'background-color','transparent'})
+          else
+            $('#mainNav').css({'background-color','#2E2E2E'})
           $('#mainNav').slideDown()
           $('#mainNav').addClass 'fixed-top'
       else if currentTop > @previousTop

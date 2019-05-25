@@ -16,8 +16,8 @@
     </div>
   </nav>
 </header>-->
-<header class="masthead" style="background-image: url('<%= asset_path(@header_image)%>'); background-blend-mode: multiply;">
-    <nav id="mainNav" class="navbar navbar-inverse fixed-top" role="banner">
+<div id="headimage">
+<nav id="mainNav" class="navbar navbar-inverse fixed-top" role="banner">
       <div class="container">
         <div class="navbar-header">
                 <button type="button" id="show-sidebar2" class="navbar-toggle">
@@ -32,6 +32,7 @@
         </div>
       </div>
     </nav>
+<header class="masthead" style="background-image: url('<%= asset_path(@header_image)%>');opacity:0.5;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -43,3 +44,4 @@
       </div>
     </div>
 </header>
+</div>
