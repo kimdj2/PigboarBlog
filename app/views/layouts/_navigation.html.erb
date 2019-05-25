@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="sidebar-search">
-        <% if current_user.has_role?('superadmin') %>
+        <% if user_signed_in? && current_user.has_role?('superadmin') %>
           <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
             <button type="submit" id="new-post">ポスト作成</button>
           <% end %>
