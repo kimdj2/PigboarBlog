@@ -17,14 +17,17 @@ $(document).on 'turbolinks:load', ->
     return
   $('#show-sidebar2').click ->
     $('.page-wrapper').addClass 'toggled'
+    $('.page-content').addClass 'content-toggled'
     return
   $('#close-sidebar').click ->
     $('.page-wrapper').removeClass 'toggled'
-    return
+    $('.page-content').removeClass 'content-toggled'
+    return  
   $('#masonry-container').masonry
+    percentPosition: true
     itemSelector: '.mas-box'
-    columnWidth: '.grid-sizer'
     gutter: '.gutter-sizer'
+    isResizable: true
   $('.mas-box').hide()
   $('.mas-box').each((i) ->
     $(this).delay(i * 100).fadeIn(1000))
@@ -50,17 +53,16 @@ $(document).on 'turbolinks:load', ->
       #スクロールアップをキャッチする。
       if currentTop < @previousTop
         #スクロールアップの場合、最上階以外はfixed領域に設定する。
-        if currentTop > 0 and $('#mainNav').hasClass('is-fixed')
-          $('#mainNav').addClass 'is-visible'
+        if currentTop > 0 and $('#mainNav').hasClass('fixed-top')
         # 最上階の場合は固定とする。
+          $('#mainNav').slideDown()  
         else
-          $('#mainNav').removeClass 'is-visible is-fixed'
+          $('#mainNav').slideDown()
+          $('#mainNav').addClass 'fixed-top'
       else if currentTop > @previousTop
         #スクロールダウンの場合
         # ナビゲーションを非表示とする。
-        $('#mainNav').removeClass 'is-visible'
-        if currentTop > headerHeight and !$('#mainNav').hasClass('is-fixed')
-          $('#mainNav').addClass 'is-fixed'
+        $('#mainNav').slideUp()
       @previousTop = currentTop
       return
     #スクロールしてトップ

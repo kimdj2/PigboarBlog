@@ -63,6 +63,7 @@ gem 'codemirror-rails'
 gem 'bootstrap-social-rails'
 gem 'gretel'
 gem 'jquery-masonry-rails' 
+gem 'imagesLoaded_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

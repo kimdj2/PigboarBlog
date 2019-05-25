@@ -234,7 +234,6 @@ ul.social-share li {
 ul.social-share li a {
     display: inline-block;
     color: #fff;
-    background: #404040;
     width: 25px;
     height: 25px;
     line-height: 25px;
@@ -1314,7 +1313,7 @@ a.accordion-toggle i {
 }
 
 .footer {
-    background: none repeat scroll 0 0 #2E2E2E;
+    background: none repeat scroll 0 0 #131517;
     border-top: 5px solid #EC5538;
 }
 
@@ -1774,7 +1773,7 @@ ul.faq li>div h3 {
 .blog-item {
     border-radius: 0;
     overflow: hidden;
-    background-color: #fff;
+    background-color: #282c2f;
 }
 
 .blog .blog-item .img-blog {
@@ -1784,23 +1783,32 @@ ul.faq li>div h3 {
 
 
 .blog .blog-item .blog-content {
-    padding: 25px;
+    padding: 18px;
+    width: 100%;
+    height:100%;
 }
 
 .blog .blog-item .blog_cat {
-    margin-bottom:25px;
+    margin-bottom:5px;
     display: inline-block;
     font-weight: 600;
+    font-size:14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
 }
 
 .blog .blog-item .blog-content h2 {
-    margin-top: 0;
-    font-size: 22px;
+    margin: 0;
+    padding: 10px 0 20px 0;
+    font: bold 26px Lato, sans-serif;
+    font-size: 26px;
+    line-height: 1.4;
 }
 
 
 .blog .blog-item .blog-content h2 a{
-    color: #333;
+    color: #FFF;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -1824,11 +1832,9 @@ ul.faq li>div h3 {
     line-height: 33px;
 } 
 .blog .blog-item .blog-content h3 {
-    color: #989898;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 26px;
-    margin-bottom: 20px;
+    color:#929498;
+    padding-bottom: 15px;
+    font-size: 18px;
 }
 
 .blog .blog-item .blog-content h4 {
@@ -2066,19 +2072,26 @@ ul.sidebar-gallery{
 
 
 .post-meta{
+    justify-content: space-between!important;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
     overflow: hidden;
-    margin-top: 20px;
 }
 .post-meta p{
     display: inline-block;
     margin-right: 15px;
-    color: #989898;
+    color: #6b7075;
+    margin:0;
+    padding-top:15px;
+    margin-right:10px;
 }
 .post-meta p i{
-    color: #EC5538;
+    color: #6b7075;
 }
 .post-meta p a{
-    color: #989898;
+    color: #6b7075;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -2365,7 +2378,7 @@ shortcodes page css
     padding-top: 30px;
     padding-bottom: 30px;
     color: #fff;
-    background: #2e2e2e;
+    background: #131517;
     font-weight: 300;
 }
 
@@ -2444,4 +2457,9 @@ shortcodes page css
 }
 #more_link:hover {
     background-color:rgb(182, 72, 50);
+}
+#copyright {
+    font-size:18px;
+    line-height: 1;
+
 }

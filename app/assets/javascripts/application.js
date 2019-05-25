@@ -43,6 +43,7 @@
 //= require highlight.pack
 //= require jquery.turbolinks
 //= require turbolinks
+//= require imagesloaded
 //= require masonry.pkgd 
 //= require_tree .
 

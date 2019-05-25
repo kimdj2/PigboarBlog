@@ -2,195 +2,74 @@
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a href="#">pro sidebar</a>
+        <a href="#"></a>
         <div id="close-sidebar">
           <i class="fa fa-times"></i>
         </div>
       </div>
-      <div class="sidebar-header">
-        <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-            alt="User picture">
-        </div>
-        <div class="user-info">
-          <span class="user-name">Jhon
-            <strong>Smith</strong>
-          </span>
-          <span class="user-role">Administrator</span>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-        </div>
+      <div class="sidebar-search">
+        <% if current_user.has_role?('superadmin') %>
+          <%= link_to(new_board_path, 'data-no-turbolink' => true) do %>
+            <button type="submit" id="new-post">ポスト作成</button>
+          <% end %>
+        <% end %> 
       </div>
       <!-- sidebar-header  -->
       <div class="sidebar-search">
+        <div class="sidebar-content-title">
+          <span>検索</span>
+        </div>
         <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
+          <%= form_tag("/boards", :method => "get", role:"form") do %>
+            <div class="input-group">
+              <%= text_field_tag :search, params[:search], placeholder: "Search for...",class:"form-control search-menu",autocomplete:"off", 'aria-describedby'=> "search-button"%>              
+              <div class="input-group-append">
+                  <button type="submit" id="search-button" class="btn btn-outline-secondary"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
             </div>
-          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="sidebar-search">
+        <div class="sidebar-content-title">
+          <span>ソーシャル</span>
+        </div>
+        <div class="social" >
+            <ul style="text-align:center;">
+              <li><a href="javascript:window.open('https://www.facebook.com/kimdongjin2')"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="javascript:window.open('https://twitter.com/inoshishi30')"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="javascript:window.open('https://plus.google.com/109400383928994891321')"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="javascript:window.open('https://github.com/kimdj2')"><i class="fa fa-github"></i></a></li>
+              <li><a href="javascript:window.open('/feed.rss')"><i class="fa fa-rss"></i></a></li>
+            </ul>
         </div>
       </div>
       <!-- sidebar-search  -->
-      <div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Products
-
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="far fa-gem"></i>
-              <span>Components</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">General</a>
-                </li>
-                <li>
-                  <a href="#">Panels</a>
-                </li>
-                <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Pie chart</a>
-                </li>
-                <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="header-menu">
-            <span>Extra</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
-        </ul>
+      <div class="sidebar-search">
+        <div class="sidebar-content-title">
+          <span>カテゴリー</span>
+        </div>
+        <div>
+          <% @tags.each do |tag| %>
+            <%= link_to(tag_path(tag.name), class:"sidebar-category") do %>
+             <span class="sidebar-category-name"><%=tag.name%></span>
+             <span class="sidebar-category-count">(<%=tag.taggings_count%>)</span>
+            <% end %> 
+          <%end%>
+        </div>
       </div>
-      <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a href="#">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-envelope"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-cog"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a href="#">
-        <i class="fa fa-power-off"></i>
-      </a>
+      <div class="sidebar-search">
+        <div class="sidebar-content-title">
+          <span>アーカイブ</span>
+        </div>
+        <div>
+          <% @board_month.each do |board_month| %>
+              <%= link_to(created_path(board_month.month.strftime('%Y-%m')), class:"sidebar-category") do %>
+                <span class="sidebar-category-name"><%=board_month.month.strftime('%Y-%m')%></span>
+                <span class="sidebar-category-count">(<%=board_month.total_month%>)</span>
+              <% end %> 
+          <%end%>
+        </div>
+      </div>
     </div>
   </nav>
