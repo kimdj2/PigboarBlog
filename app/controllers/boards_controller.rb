@@ -41,6 +41,7 @@ class BoardsController < ApplicationController
     # 作成・修正画面が共通のため、ボタン名を作成とする。
     @board = Board.new
     @buttonName = "作成"
+    @title = "作成"
   end
 
   # GET /boards/1/edit
@@ -48,6 +49,7 @@ class BoardsController < ApplicationController
     # データ修正ページへ遷移。
     # 作成・修正画面が共通のため、ボタン名を修正とする。
     @buttonName = "修正"
+    @title = "修正"
   end
 
   # POST /boards
