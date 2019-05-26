@@ -112,19 +112,21 @@ class BoardsController < ApplicationController
         #検索よりページ活性化
         if params[:search]
           @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
-          @title = "'"+params[:search]+"'の検索結果"
+          @title = "入力: <span style='color:#EC5538;'>'"+params[:search]+"'</span>の検索結果"
         #タグボタンよりページ活性化
         elsif params[:tag]
-          @title = "Category:"+params[:tag]
+          @title = "カテゴリー: <span style='color:#EC5538;'>'"+params[:tag]+"'</span>の検索結果"
           @boards = Board.tagged_with(params[:tag])
         #アーカイブボタンよりページ活性化
         elsif params[:created]
-          @title = "Archive:"+params[:created]
+          @title = "アーカイブ: <span style='color:#EC5538;'>'"+params[:created]+"'</span>の検索結果"
           @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
         #その他
         else 
+          @title = "main"
           @boards = Board.all
         end
+          @title = @title.html_safe
         if params[:page]
           @boards = @boards.order(created_at:"DESC").page(params[:page]).per(6)
         else

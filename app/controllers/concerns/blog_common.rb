@@ -55,7 +55,7 @@ module BlogCommon
         elsif controller_name == "etc"
             @header_image = "about-bg.jpg"
         else 
-            @header_image = "post_header.jpg"
+            @header_image = "main-image2.jpg"
         end    
     end
 end

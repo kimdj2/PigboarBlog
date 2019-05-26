@@ -1,0 +1,29 @@
+<div id="headimage">
+    <!-- イメージを表示する。 -->
+    <header class="masthead">
+    <% if !get_content_img(@board.contents).blank? %>
+      <div id="masthead-image" style="background-image: url('<%=get_content_img(@board.contents)%>');">
+    <% else %>
+      <div id="masthead-image" style="background-image: url('<%= asset_path(@header_image)%>');">>
+    <% end %>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="site-heading">
+            <% @board.tag_list.map do |tag| %>  
+              <%= link_to(tag_path(tag),class:"head-category") do %>
+                #<%=tag%>&nbsp;
+              <% end %>
+            <% end %>
+            <h1><%= @board.title %></h1>
+            <span class="subheading"><p>By <%= @board.author %></p></span>
+            <p style="display:inline-block"><i class="fa fa-clock-o"></i> <%= @board.created_at.strftime('%d %b %Y') %>&nbsp;</p>
+            <p style="display:inline-block"><i class="fa fa-comment"></i>&nbsp;<span class="disqus-comment-count" data-turbolinks=false data-disqus-url="<%=board_url(@board)%>"></span></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+</header>
+</div>

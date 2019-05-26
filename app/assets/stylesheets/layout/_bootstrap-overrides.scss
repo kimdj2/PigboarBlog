@@ -50,12 +50,12 @@
   background-color: #fff;
 }
 .navbar-toggle .icon-bar+.icon-bar {
-  margin-top: 4px;
+  margin-top: 5px;
 }
 .navbar-toggle .icon-bar {
   display: block;
-  width: 22px;
-  height: 2px;
+  width: 26px;
+  height: 3px;
   border-radius: 1px;
 }
 .navbar-toggle{
@@ -156,10 +156,8 @@ body {
 
 
 .page-wrapper.toggled .page-content {
-  background-color: rgba(0,0,0,0.5); /*dim the background*/
-  @media screen and (min-width: 768px) {
-    padding-right: 450px;
-  }
+  background-color: #131517;
+  opacity:0.3; 
   @media screen and (max-width: 768px) {
     padding-right: 100%;
   }

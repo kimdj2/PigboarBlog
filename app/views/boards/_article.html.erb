@@ -16,9 +16,15 @@
       <h2><%= link_to(board_path(board.id)) do %><%= truncate(board.title, length: 20) %><% end %></h2>
       <h3><%= truncate(Sanitize.clean(board.contents), length: 200) %></h3>
       <div class="post-meta">
-        <p>By <%= board.author %></p>
-        <p><i class="fa fa-clock-o"></i> <%= board.created_at.strftime('%d %b %Y') %></p>
-        <p><i class="fa fa-comment"></i><%= link_to "", board, data: { "disqus-url": board_path(board) } %></p>
+        <p>By <%= board.author %></p><br>
+        <p>
+          <i class="fa fa-clock-o"></i>
+          <%= board.created_at.strftime('%d %b %Y') %>
+        </p>
+        <p>
+          <i class="fa fa-comment"></i>
+          <span class="disqus-comment-count" data-turbolinks=false data-disqus-url="<%=board_url(board)%>"></span>
+        </p>
       </div>
     </div>
   </div>

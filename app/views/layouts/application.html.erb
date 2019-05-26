@@ -11,12 +11,19 @@
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
     <div id="toggleside" class="page-wrapper chiller-theme">
-      <!-- ナビゲーション -->
+      <!-- サイドバー -->
       <%= render "layouts/navigation" %>
       <main class="page-content">
-        
+        <!-- ナビゲーション -->
+        <%= render "layouts/headnav" %>
         <!-- ヘッダ -->
-        <%= render "layouts/main_header" %>
+        <% if controller_name == 'boards' && action_name == 'index' && @title=="main"%>
+          <%= render "layouts/main_header" %>
+        <% elsif controller_name == 'boards' && action_name == 'show'%>
+          <%= render "boards/title", board: @boards %>
+        <% else %>
+          <%= render "layouts/header" %>
+        <% end%>
         <!-- メイン表示 -->
         <section id="blog">
           <div class="blog container">

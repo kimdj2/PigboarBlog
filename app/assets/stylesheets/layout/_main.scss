@@ -4,7 +4,7 @@
 **************************/
 
 body {
-    background: #fff;
+    background-color: #131517;
     font-family: "Sawarabi Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #4e4e4e;
     line-height: 22px;
@@ -1791,10 +1791,7 @@ ul.faq li>div h3 {
 .blog .blog-item .blog_cat {
     margin-bottom:5px;
     display: inline-block;
-    font-weight: 600;
     font-size:14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     line-height: 1;
 }
 
@@ -1805,8 +1802,36 @@ ul.faq li>div h3 {
     font-size: 26px;
     line-height: 1.4;
 }
-
-
+.blog .blog-item .blog-content .board-contents{
+    color: #FFF;
+    font-size:16px;
+    padding-bottom: 10px;
+}
+.blog .blog-item .blog-content .inner-meta {
+    h2{
+        color: #FFF;
+        margin: 0;
+        font: bold 15px Lato, sans-serif;
+        font-size: 15px;
+        padding-bottom:10px;
+        letter-spacing: 2px;    
+    }
+    .content-category{
+        margin-bottom: 5px;
+        font: bold 15px Lato, sans-serif;
+        display: inline-block;
+        font-size: 15px;
+        line-height: 1;
+    }
+}
+$size: 24px;
+.social-share-button {
+    .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+    }
+}
 .blog .blog-item .blog-content h2 a{
     color: #FFF;
     -webkit-transition: .4s;

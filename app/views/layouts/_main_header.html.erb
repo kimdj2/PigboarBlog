@@ -1,44 +1,21 @@
-
-<!--<header id="header">
-  <nav class="navbar navbar-inverse" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-              <button type="button" id="show-sidebar2" class="navbar-toggle">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <%= link_to("/",class:"navbar-brand") do %>
-                <h2>Pig<span style="color:#EC5538;">&</span>Boar Blog</h2>
-              <% end %>
-      </div>
-    </div>
-  </nav>
-</header>-->
 <div id="headimage">
-<nav id="mainNav" class="navbar navbar-inverse fixed-top" role="banner">
-      <div class="container">
-        <div class="navbar-header">
-                <button type="button" id="show-sidebar2" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <%= link_to("/",class:"navbar-brand") do %>
-                  <h2>Pig<span style="color:#EC5538;">&</span>Boar Blog</h2>
-                <% end %>
-        </div>
-      </div>
-    </nav>
-<header class="masthead" style="background-image: url('<%= asset_path(@header_image)%>');opacity:0.5;">
+<header class="masthead">
+    <div id="masthead-image-main" style="background-image: url('<%= asset_path(@header_image)%>');"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-10 mx-auto">
           <div class="site-heading">
-            <h1>Welcome to Pig&Boar Blog!</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1>Change before you have to.</h1>
+            <span class="subheading">変革せよ。変革を迫られる前に。-Jack Welch</span>
+            <div class="social" >
+                <ul style="text-align:center;">
+                  <li><a href="javascript:window.open('https://www.facebook.com/kimdongjin2')"><i class="fa fa-lg fa-facebook"></i></a></li>
+                  <li><a href="javascript:window.open('https://twitter.com/inoshishi30')"><i class="fa fa-lg fa-twitter"></i></a></li>
+                  <li><a href="javascript:window.open('https://plus.google.com/109400383928994891321')"><i class="fa fa-lg fa-google-plus"></i></a></li>
+                  <li><a href="javascript:window.open('https://github.com/kimdj2')"><i class="fa fa-lg fa-github"></i></a></li>
+                  <li><a href="javascript:window.open('/feed.rss')"><i class="fa fa-lg fa-rss"></i></a></li>
+                </ul>
+            </div>
           </div>
         </div>
       </div>

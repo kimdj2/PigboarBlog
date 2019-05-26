@@ -374,11 +374,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 }
 
-
-.row {
-    margin-right:0 !important;
-}
-
 .card.left_side {
     margin-left: -15px;
     padding: 20px;
@@ -769,7 +764,7 @@
 }
 
 body {
-    background: #f1f1f1;
+    background-color: #131517;
     margin: 2rem;
 }
 
@@ -1534,7 +1529,6 @@ pre{
               }
   }
   .mas-box {
-    margin:.5em;
     border-radius: 4px;
     box-sizing: border-box;
     float: left;
@@ -1604,7 +1598,6 @@ pre{
   }
   .sidebar-category-name {
     color: #c5c8ce !important;
-    text-transform: uppercase;
     font-size: 13px;
   }
   .sidebar-category-count {

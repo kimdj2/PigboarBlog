@@ -1,41 +1,20 @@
-<% breadcrumb :board, @board %>
 <div class="row">
 	<!-- Post Content Column -->
 	<div class="col-md-12">
-		<div class="blog-item">
-			<div class="blog-content">
-				<!--<a href="#" class="blog_cat">UI/UX DESIGN</a>-->
-				<h2><%= @board.title %></h2>
-				<div class="post-meta">
-					<p>By <%= @board.author %></p>
-					<p><i class="fa fa-clock-o"></i> <%= @board.created_at.strftime('%d %b %Y') %></p>
-					<p><i class="fa fa-eye"></i> <%= get_board_view_count(@board)%></p>
-					<p><i class="fa fa-comment"></i> <%= get_board_comment_count(@board)%></p>
-					<p><i class="fa fa-thumbs-up"></i> <%= get_board_like_count(@board)%></p>
-				</div>
-				<hr>
+		<div class="blog-item" style="background-color:transparent;padding:0;">
+			<div class="blog-content" style="padding:0;">
 				<%= content_tag(:div, @board.contents.html_safe, :class => "board-contents") %>
-				<hr>
 				<!-- シェアボタン -->
+				<hr>
 				<div class="inner-meta">
-                    <ul class="tags">
-						<% @board.tag_list.map do |tag| %>
-							<li>
-								<%= link_to(tag_path(tag)) do %>
-									<i class="fa fa-tags"></i>
-									<span class="wf-sawarabigothic maintag">#<%=tag%></span>
-								<% end %>
-							</li>
-						<% end %>
-                    </ul>
 					<div style="text-align:center;">
-						<div class="social-btns">
-							<!-- いいね -->
-							<span id="likes_buttons_<%= @board.id %>">
-								<%= render partial: 'layouts/like', locals: { board: @board, likes: @likes} %>
-							</span>
-						</div>
-						<br>
+						<h2>カテゴリー</h2>
+						<% @board.tag_list.map do |tag| %>  
+							<%= link_to(tag_path(tag),class:"content-category") do %>
+								#<%=tag%>&nbsp;
+							<% end %>
+						<% end %>
+						<h2>シェア</h2>
 						<%= social_share_button_tag(@board.title, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
 					</div>
 				</div>
