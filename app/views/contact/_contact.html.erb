@@ -1,17 +1,15 @@
-<% breadcrumb :contact %>
-<section id="contact-page">
+<section id="contact-page" style="padding-top:70px;background-color:#191b1d;">
     <div class="container">
-        <div class="text-center">        
-            <h1 style='font-weight:900;'>Contact Us</h1>
-            <p>気になるところがありましたら、お問い合わせください。</p>
-        </div>
         <hr>
+        <div class="text-center">        
+            <h1 style='font-weight:700;color:#FFF'><span style="color:#EC5538;">C</span>ontact Me</h1>
+        </div>
         <div class="row contact-wrap"> 
         	<div class="col-sm-12">
             <%= form_for @contact , url: '/contact/send',id:"contactForm", name:"sentMessage", remote: true  do |f| %>
                 <div class="status alert alert-success" style="display: none"></div>
-                <div class="row"> 
-                    <div class="col-sm-6 col-sm-offset-1" id="contact-form-list">
+                <div class="row" id="contact-form-list"> 
+                    <div class="col-sm-6 col-sm-offset-1" >
                         <div class="form-group">
                             <label>Name *</label>
                             <%= f.text_field :name, class:"form-control", id:"contact_name", required:"required" %>

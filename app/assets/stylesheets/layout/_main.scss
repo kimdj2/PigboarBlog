@@ -2493,3 +2493,11 @@ shortcodes page css
 #toggleside{
     background: #131517;
 }
+.note-toolbar-wrapper {
+    height: auto !important;
+}
+.note-editor > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
