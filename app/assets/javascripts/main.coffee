@@ -58,32 +58,30 @@ $(document).on 'turbolinks:load', ->
     $(this).removeClass 'floating-label-form-group-with-focus'
     return
   # スクロールアップ時のナビゲーション表示制御
-  MQL = 992
   # PC環境の場合
   $('#mainNav').css({'background-color':'transparent'})
-  if $(window).width() > MQL
-    headerHeight = $('#mainNav').height()
-    $(window).on 'scroll', { previousTop: 0 }, ->
-      currentTop = $(window).scrollTop()
-      #スクロールアップをキャッチする。
-      if currentTop < 50
-        $('#mainNav').css({'background-color':'transparent'})
+  headerHeight = $('#mainNav').height()
+  $(window).on 'scroll', { previousTop: 0 }, ->
+    currentTop = $(window).scrollTop()
+    #スクロールアップをキャッチする。
+    if currentTop < 50
+      $('#mainNav').css({'background-color':'transparent'})
+    else
+      $('#mainNav').css({'background-color':'#2E2E2E'})
+    if currentTop < @previousTop
+      #スクロールアップの場合、最上階以外はfixed領域に設定する。
+      if currentTop > 0 and $('#mainNav').hasClass('fixed-top')
+      # 最上階の場合は固定とする。
+        $('#mainNav').slideDown()  
       else
-        $('#mainNav').css({'background-color':'#2E2E2E'})
-      if currentTop < @previousTop
-        #スクロールアップの場合、最上階以外はfixed領域に設定する。
-        if currentTop > 0 and $('#mainNav').hasClass('fixed-top')
-        # 最上階の場合は固定とする。
-          $('#mainNav').slideDown()  
-        else
-          $('#mainNav').slideDown()
-          $('#mainNav').addClass 'fixed-top'
-      else if currentTop > @previousTop
-        #スクロールダウンの場合
-        # ナビゲーションを非表示とする。
-        $('#mainNav').slideUp()
-      @previousTop = currentTop
-      return
+        $('#mainNav').slideDown()
+        $('#mainNav').addClass 'fixed-top'
+    else if currentTop > @previousTop
+      #スクロールダウンの場合
+      # ナビゲーションを非表示とする。
+      $('#mainNav').slideUp()
+    @previousTop = currentTop
+    return
     #スクロールしてトップ
     contactBtn.click ->
       $('body,html').stop().animate { scrollTop: $("#contact").offset().top }, 300  

@@ -1,7 +1,9 @@
 //もっと見る処理後の画面制御
 //データを画面下部に追加表示する。
 window.DISQUSWIDGETS = undefined;
-$("#masonry-container").append("<%= escape_javascript(render 'article', boards: @boards) %>").masonry('reloadItems').masonry('layout').hide();
+$("#masonry-container").append("<%= escape_javascript(render 'article', boards: @boards) %>").each(function(){                              
+   $('#masonry-container').masonry('reloadItems').masonry('layout');
+});         
   //もっと見るボタンを再表示する。
 
 $.getScript("//pigboars.disqus.com/count.js", function(){
@@ -9,5 +11,4 @@ $.getScript("//pigboars.disqus.com/count.js", function(){
     link_to_next_page(@boards, 'もっと見る', remote: true, id: 'more_link')
   ) %>");
   $('.ajax_loading').hide();
-  $("#masonry-container").fadeIn('slow');
 });
