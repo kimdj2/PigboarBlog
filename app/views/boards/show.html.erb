@@ -15,7 +15,11 @@
 							<% end %>
 						<% end %>
 						<h2>シェア</h2>
-						<%= social_share_button_tag(@board.title, :url => board_url(@board), desc: @board.title, style:"text-align:center;")%>
+						<% if !get_content_img(@board.contents).blank? %>
+							<%= social_share_button_tag(@board.title, :url => board_url(@board),:image => get_content_img(@board.contents), desc: @board.title, style:"text-align:center;")%>
+						<% else %>
+							<%= social_share_button_tag(@board.title, :url => board_url(@board),:image => asset_path(@header_image), desc: @board.title, style:"text-align:center;")%>
+						<% end %>
 					</div>
 				</div>
 				<!-- いいね -->
