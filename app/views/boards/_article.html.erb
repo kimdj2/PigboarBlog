@@ -14,7 +14,7 @@
         <% end %>
       <% end %>
       <h2><%= link_to(board_path(board.id)) do %><%= truncate(board.title, length: 20) %><% end %></h2>
-      <h3><%= truncate(Sanitize.clean(board.contents), length: 200) %></h3>
+      <h3><%= truncate(Sanitize.clean(board.contents), length: 120) %></h3>
       <div class="post-meta">
         <p>By <%= board.author %></p><br>
         <p>
