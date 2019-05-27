@@ -53,3 +53,6 @@
 		<% end %>
 	</div>
 </div>
+<% content_for :head do %>
+ <meta property="og:image" content="<%= get_content_img(@board.contents) %>" />
+<% end %>
