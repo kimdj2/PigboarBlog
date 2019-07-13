@@ -42,8 +42,8 @@ $(document).on 'turbolinks:load', ->
       isResizable: true
     $('.mas-box').each((i) ->
       $(this).animate({opacity: '1'}, 1000))
+    return
     $('#more_link').animate({opacity: '1'}, 1000)
-  return
   contactBtn = $('#contact_btn')
   $('body').on('input propertychange', '.floating-label-form-group', (e) ->
     $(this).toggleClass 'floating-label-form-group-with-value', ! !$(e.target).val()
