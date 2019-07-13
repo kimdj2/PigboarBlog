@@ -1,6 +1,6 @@
 menubar: true
 toolbar: 
-  - forecolor | bold italic | alignleft aligncenter alignright | fontselect | table | searchreplace |
+  - forecolor | fontsizeselect | bold italic strikethrough | alignleft aligncenter alignright | fontselect | table | searchreplace |
   - codesample | code | link | uploadimage image | media | fullscreen | preview |
 plugins:
   - link
@@ -38,6 +38,7 @@ codesample_languages:
     value: 'csharp'
   - text: 'C++'
     value: 'cpp'
+fontsize_formats: '10px 11px 12px 14px 15px 16px 18px 20px 22px 24px 36px 48px'
 autoresize_min_height: 500
 paste_merge_formats: true
 paste_retain_style_properties: all
