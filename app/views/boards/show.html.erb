@@ -27,7 +27,7 @@
 				<!-- ログインしているユーザーと作成者が一致する場合は修正ボタンと削除ボタンを表示する。 -->
 				<% if user_signed_in? && current_user.username == @board.author%>
 				<div style="text-align:right;">
-					<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true) do %>
+					<%= link_to(edit_board_path(@board), 'data-no-turbolink' => true ) do %>
 						<i class="fa fa-edit"></i>修正
 					<% end %>
 					<%= link_to(@board, method: :delete, data: { confirm: '内容を削除します。よろしいですか？' }) do %>

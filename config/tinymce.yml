@@ -1,7 +1,7 @@
 menubar: true
 toolbar: 
   - forecolor | bold italic | alignleft aligncenter alignright | fontselect | table | searchreplace |
-  - code | link | uploadimage image | media | googlemap |
+  - codesample | code | link | uploadimage image | media | fullscreen | preview |
 plugins:
   - link
   - textcolor
@@ -13,10 +13,33 @@ plugins:
   - imagetools
   - image
   - autoresize
-  - googlemap
+  - codesample
+  - fullscreen
+  - preview
 media_live_embeds: true
-autoresize_min_height: 350
+codesample_languages:
+  - text: 'HTML/XML'
+    value: 'markup'
+  - text: 'JavaScript'
+    value: 'javascript'
+  - text: 'CSS'
+    value: 'css'
+  - text: 'PHP'
+    value: 'php'
+  - text: 'Ruby'
+    value: 'ruby'
+  - text: 'Python'
+    value: 'python'
+  - text: 'Java'
+    value: 'java'
+  - text: 'C'
+    value: 'c'
+  - text: 'C#'
+    value: 'csharp'
+  - text: 'C++'
+    value: 'cpp'
+autoresize_min_height: 500
 paste_merge_formats: true
 paste_retain_style_properties: all
 body_class: tinymce-editor
-language : ja
+language : en

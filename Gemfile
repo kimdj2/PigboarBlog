@@ -64,6 +64,9 @@ gem 'bootstrap-social-rails'
 gem 'gretel'
 gem 'jquery-masonry-rails' 
 gem 'imagesLoaded_rails'
+gem "tinymce-rails"
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+gem 'prism-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

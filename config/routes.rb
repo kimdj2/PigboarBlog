@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   #post
   post '/image_upload' => 'images#create'
+  post '/tinymce_assets' => 'images#create'
+
   post '/contact/send' => 'contact#create'
   resources :boards do
     resources :likes, only: [:create, :destroy]

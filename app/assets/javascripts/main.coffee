@@ -1,8 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$(window).on 'load', ->
-  
+$(window).on 'load', ->  
   
 $(document).on 'turbolinks:load', ->
   'use strict'
@@ -41,12 +40,10 @@ $(document).on 'turbolinks:load', ->
       itemSelector: '.mas-box'
       gutter: '.gutter-sizer'
       isResizable: true
-    $('.mas-box').hide()
     $('.mas-box').each((i) ->
-      $(this).delay(i * 100).fadeIn(1000))
-    return
-  $('pre code').each (i, block) ->
-    hljs.highlightBlock block
+      $(this).animate({opacity: '1'}, 1000))
+    $('#more_link').animate({opacity: '1'}, 1000)
+  return
   contactBtn = $('#contact_btn')
   $('body').on('input propertychange', '.floating-label-form-group', (e) ->
     $(this).toggleClass 'floating-label-form-group-with-value', ! !$(e.target).val()

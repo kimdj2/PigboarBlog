@@ -4,16 +4,18 @@ class ImagesController < ApplicationController
   #イメージ登録
   def create
     @image = Image.new(image_params)
-    respond_to do |format|
       #イメージを登録する。
       if @image.save
         #イメージURLを戻り値として返す。
-        format.json { render :json => { url: @image.file.url } }
+        render json: {
+          image: {
+            url: @image.file.url
+          }
+        }, content_type: "text/html"
       else
         #登録に失敗した場合
-        format.json { render :json　=> { error: "イメージアップロードに失敗しました。" }, status: :unprocessable_entity }
+        render :json　=> { error: "イメージアップロードに失敗しました。" }, status: :unprocessable_entity
       end
-    end
   end
 
   def new
@@ -28,7 +30,7 @@ class ImagesController < ApplicationController
   #パラメータを取得する。
   def image_params
     puts "5"
-    params.require(:upload).permit(
+    params.permit(
       :file,
       :hint,
       :alt

@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all'%>
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
-    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag 'application' %>
     <%= content_for?(:head) ? yield(:head) : '' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="E_inh42Pepb-wvs9s5CI8UU-i6qSyzs_799_tRsdsCs" />
@@ -28,6 +28,7 @@
         <% end%>
         <!-- メイン表示 -->
         <section id="blog">
+         <%= tinymce_assets %>
           <div class="blog container">
             <%= yield %>
           </div>
@@ -46,7 +47,4 @@
     <%= render "layouts/login" %>
   </body>
   <script id="dsq-count-scr" src="//pigboars.disqus.com/count.js" async></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-  </script>
 </html>

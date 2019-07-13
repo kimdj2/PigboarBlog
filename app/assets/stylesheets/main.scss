@@ -1500,7 +1500,6 @@ pre{
 }
 
 #masonry-container {
-
             .blog-item,
             .grid-sizer,.mas-box {
                 // default width (set to maximal columns within maxiaml screen width, 5 columns)
@@ -1535,6 +1534,7 @@ pre{
     margin-bottom: .5em;
     padding: .5em;
     overflow:auto;
+    opacity: 0;
   }
   .gutter-sizer {
     width: 10px;
@@ -1608,4 +1608,13 @@ pre{
     font-size:30px !important;
     color:#ffffff;
     font-weight: 700;
+}
+.mce-fullscreen{
+    z-index: 1500 !important;
+}
+p{
+    margin-bottom:0;
+}
+#more_link{
+    opacity: 0;
 }
