@@ -5,6 +5,7 @@ class Board < ActiveRecord::Base
     validates :title, presence: true
     # 内容
     validates :contents, presence: true, content_input: true
+    validates :contents_html, presence: true, content_input: true
     # カテゴリ（タグリスト）
     validates :tag_list, presence: true
     # 関係定義
@@ -21,7 +22,7 @@ class Board < ActiveRecord::Base
 
     #直後のレコードを取得する。
     def next_post
-        Board.order(created_at: :desc, id: :desc).where("created_at >= ? and id > ?", created_at, id).first
+        Board.order(created_at: :asc, id: :asc).where("created_at >= ? and id > ?", created_at, id).first
     end
 
     #既にいいねしたか確認する。

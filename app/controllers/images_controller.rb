@@ -1,41 +1,20 @@
 class ImagesController < ApplicationController
-  protect_from_forgery :except => [:create]
-  
-  #イメージ登録
-  def create
-    @image = Image.new(image_params)
-      #イメージを登録する。
-      if @image.save
-        #イメージURLを戻り値として返す。
-        render json: {
-          image: {
-            url: @image.file.url
-          }
-        }, content_type: "text/html"
-      else
-        #登録に失敗した場合
-        render :json　=> { error: "イメージアップロードに失敗しました。" }, status: :unprocessable_entity
-      end
+  protect_from_forgery :except => [:image_upload]
+  before_action :authenticate_request!, only: [:image_upload]
+
+  def image_upload
+    image_param = params[:image]
+    if image_param["file"].present?
+      @image_path = Imgur.new('97261fb9958613a').anonymous_upload(image_param["file"])
+    end
+    render json: {image_url: @image_path}, status: :ok
   end
 
-  def new
+
+  def image_upload
     @image = Image.build.params(image_params)
   end
 
-  def show
-    @image = Image.find(params[:id])
-  end
-
-  private
-  #パラメータを取得する。
-  def image_params
-    puts "5"
-    params.permit(
-      :file,
-      :hint,
-      :alt
-      )
-  end
 end
   
   

@@ -283,7 +283,4 @@ Devise.setup do |config|
   config.scoped_views = true
   config.http_authenticatable_on_xhr = false
   config.navigational_formats = ["*/*", :html, :json]
-  config.omniauth :facebook, '191965264767178', 'b7849c8765a1749961d3e5573ce1fe6c'
-  config.omniauth :twitter, 'wqYEa5eNu0oBJeaR4m5TQiGHR', 'K7zoAbjYVf0sJ4wyyLn2k8zHe0zq6mSkAXQAyQPGuU4FbmuFhP'
-  #config.omniauth :github, '8542c6a950b6a66b080a', 'db9d2bdc8691f5c4f331d4db9fc36fc6337bade5'
 end

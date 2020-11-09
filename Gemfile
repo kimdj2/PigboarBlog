@@ -7,13 +7,14 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>5.2.1'
+gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg'
+# gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -30,43 +31,21 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
+gem 'listen'
+gem 'rails-i18n', '~> 6.0.0' 
 
-gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+gem 'devise'
+gem 'jwt'
+
 gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'jquery-ui-rails'
-gem 'carrierwave'
-gem 'popper_js', '~> 1.11', '>= 1.11.1'
-gem 'devise'
-gem 'bootstrap', '>= 4.1.3'
-gem 'sass-rails', '~> 5.0'
-gem 'kaminari'
-gem 'kaminari-bootstrap', '~> 3.0.1'
+
 gem 'sanitize'
-gem 'social-share-button'
-gem 'bootstrap-tagsinput-rails'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 6.5'
 gem 'ransack'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-github'
-gem 'cancancan'
-gem 'rails_admin'
-gem 'ancestry'
-gem "font-awesome-rails"
-gem 'summernote-rails'
-gem 'jquery-turbolinks'
-gem 'simple_form', '>= 3.5.1'
-gem 'codemirror-rails'
-gem 'bootstrap-social-rails'
-gem 'gretel'
-gem 'jquery-masonry-rails' 
-gem 'imagesLoaded_rails'
-gem "tinymce-rails"
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
-gem 'prism-rails'
+gem 'httpclient'
+gem 'kaminari'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -88,8 +67,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 group :production do
-  gem 'fog', '>= 1.15.0'
-  gem 'rmagick', require: 'RMagick'
+  #gem 'fog', '>= 1.15.0'
+  #gem 'rmagick', require: 'RMagick'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

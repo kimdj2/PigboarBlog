@@ -1,11 +1,12 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, only: [:edit, :new, :destroy]
-  before_action :setTagAndCategory, only: [:show, :index,:edit, :new]
+  before_action :authenticate_request!, only: [:edit, :create, :new, :destroy]
   # GET /boards
   # GET /boards.json
   def index
     set_data_from_param
+    @page_info = resources_with_pagination(@boards)
+    render formats: :json, handlers: "jbuilder"
   end
 
   # GET /boards/1
@@ -30,59 +31,60 @@ class BoardsController < ApplicationController
     @next_post = @board.next_post
 
     # 画面タイトルのデータを設定する。
-    @title = @board.title
-    @subTitle = 'by ' + @board.author
-    @date = ' on ' + @board.created_at.strftime('%Y/%m/%d')
-  end
-
-  # GET /boards/new
-  def new
-    # データ修正ページへ遷移。
-    # 作成・修正画面が共通のため、ボタン名を作成とする。
-    @board = Board.new
-    @buttonName = "作成"
-    @title = "作成"
-  end
-
-  # GET /boards/1/edit
-  def edit
-    # データ修正ページへ遷移。
-    # 作成・修正画面が共通のため、ボタン名を修正とする。
-    @buttonName = "修正"
-    @title = "修正"
+    render formats: :json, handlers: "jbuilder"
   end
 
   # POST /boards
   # POST /boards.json
   def create
     # データを作成する。
-    @board = Board.new(board_params)
-    respond_to do |format|
-      if @board.save
-        format.html { redirect_to action: :index}
-        format.json { render :index, status: :created, location: @board }
-      else
-        @buttonName = "作成"
-        format.html { render :new }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      board_param = params[:board]
+      if board_param["image"].present?
+        @image_path = Imgur.new('97261fb9958613a').anonymous_upload(board_param["image"])
       end
+      @board = Board.new(
+        title: board_param[:title],
+        description: board_param[:description],
+        image_path: @image_path,
+        tag_list: board_param[:tagList],
+        contents: board_param[:contents],
+        contents_html: board_param[:contentsHtml],
+        author: @current_user.username
+      )
+      @board.save!
     end
+    render :index, formats: :json, handlers: "jbuilder", status: :created
   end
 
   # PATCH/PUT /boards/1
   # PATCH/PUT /boards/1.json
   def update
-    respond_to do |format|
-      # データを更新する。
-      if @board.update(board_params)
-        format.html { redirect_to action: :index}
-        format.json { render :index, status: :ok, location: @board }
-      else
-        @buttonName = "修正"
-        format.html { render :edit }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      board_param = params[:board]
+
+      if board_param["image_path"].present?
+        @image_path = board_param["image_path"]
       end
+      if board_param["image"].present?
+        @image_path = Imgur.new('97261fb9958613a').anonymous_upload(board_param["image"])
+      end
+
+      @board = @board.update(
+        title: board_param[:title],
+        description: board_param[:description],
+        image_path: @image_path,
+        tag_list: board_param[:tagList],
+        contents: board_param[:contents],
+        contents_html: board_param[:contentsHtml]
+      )
     end
+    render :index, formats: :json, handlers: "jbuilder", status: :created
+  end
+
+  def archive
+    @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month')
+    render :archive, formats: :json, handlers: "jbuilder"
   end
 
   # DELETE /boards/1
@@ -97,50 +99,57 @@ class BoardsController < ApplicationController
   end
 
   private
+    PER = 9
+
     # Use callbacks to share common setup or constraints between actions.
     def set_board
       #ページに表示するデータを取得する。
       @board = Board.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def board_params
-      params.require(:board).permit(:title, :contents, :author, :tag_list, :image_path)
-    end
     
     #パラメータより画面のタイトルと当てはまるデータを設定する。
     def set_data_from_param 
       begin
+        @boards = Board.all
+
         #検索よりページ活性化
         if params[:search]
-          @boards = Board.where("title LIKE :name OR contents LIKE :name", name: "%#{params[:search]}%")
-          @title = "入力: <span style='color:#EC5538;'>'"+params[:search]+"'</span>の検索結果"
-        #タグボタンよりページ活性化
-        elsif params[:tag]
-          @title = "カテゴリー: <span style='color:#EC5538;'>'"+params[:tag]+"'</span>の検索結果"
-          @boards = Board.tagged_with(params[:tag])
-        #アーカイブボタンよりページ活性化
-        elsif params[:created]
-          @title = "アーカイブ: <span style='color:#EC5538;'>'"+params[:created]+"'</span>の検索結果"
-          @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:created]}")
-        #その他
-        else 
-          @title = "main"
-          @boards = Board.all
+          search_param = {title_or_contents_cont: params[:search]}
+          search = @boards.ransack(search_param)
+          @boards = search.result(distinct: true)
+          puts search.result(distinct: true).to_sql
         end
-          @title = @title.html_safe
+        #タグボタンよりページ活性化
+        if params[:tag]
+          @boards = Board.tagged_with(params[:tag])
+        end
+        #アーカイブボタンよりページ活性化
+        if params[:month]
+          @boards = Board.where("to_char(created_at,'yyyy-mm') = :created", created: "#{params[:month]}")
+        #その他
+        end
+          
         if params[:page]
-          @boards = @boards.order(created_at:"DESC").page(params[:page]).per(6)
+          @boards = @boards.order(created_at:"DESC").page(params[:page]).per(PER)
         else
-          @boards = @boards.order(created_at:"DESC").page(1).per(6)
+          @boards = @boards.order(created_at:"DESC").page(1).per(PER)
         end
       rescue => e
         #例外が発生
         #エラーログ出力
         ErrorUtility.errorLogger(e,"データ取得に失敗しました。")
-        #データを空に設定する。
-        @boards = Board.new(board_params)
-        @title = ""
       end
     end
+
+    def resources_with_pagination(resources)
+      {
+        current:  resources.current_page,
+        previous: resources.prev_page,
+        next:     resources.next_page,   
+        limit_value: resources.limit_value,
+        pages:    resources.total_pages,
+        count:    resources.total_count
+      }
+    end
+
 end

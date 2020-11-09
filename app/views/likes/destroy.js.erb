@@ -1,3 +1,0 @@
-//likeレイアウトを再描画する。
-$('#likes_buttons_<%= @board.id %>').html("<%= j(render partial: 'layouts/like', locals: {board: @board}) %>");
-$('.ajax_loading').hide();

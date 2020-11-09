@@ -1,9 +1,0 @@
-//コメント削除後の処理
-$comments_count = $("#comments-count-of-commentable-<%= @commentable.id %>");
-<% if @comment.errors.empty? %>
-  $comments_count.html("<%= @commentable.comments.size %>").effect('highlight',{}, 1000);
-  $("#comment_<%= @comment.id %>").effect("highlight", { color: '#f7937c' }, 500).slideUp('fast');
-<% else %>
-  alert("このコメントは既に削除されています。");
-<% end %>
-$('.ajax_loading').hide();

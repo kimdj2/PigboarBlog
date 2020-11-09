@@ -1,5 +1,7 @@
 {
   "name": "pigboar",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "vuex": "^3.3.0"
+  }
 }
