@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     #取得したデータと関連データを取得する。
-    @related_articles = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(3) 
+    @related_posts = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(3) 
     #照会数がnilの場合
     if @board.view.nil?
       #照会数を１とする。
@@ -64,9 +64,13 @@ class BoardsController < ApplicationController
       board_param = params[:board]
 
       if board_param["image_path"].present?
+        puts 'aaa'
+        puts board_param["image_path"]
         @image_path = board_param["image_path"]
       end
       if board_param["image"].present?
+        puts 'bbb'
+        puts board_param["image"]
         @image_path = Imgur.new('97261fb9958613a').anonymous_upload(board_param["image"])
       end
 
@@ -87,13 +91,17 @@ class BoardsController < ApplicationController
     render :archive, formats: :json, handlers: "jbuilder"
   end
 
+  def recent_posts
+    @recent_posts = Board.order(created_at:"DESC").limit(3) 
+    render :recent_posts, formats: :json, handlers: "jbuilder"
+  end
+
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
     # データを削除する。
     @board.destroy
     respond_to do |format|
-      format.html { redirect_to action: :index}
       format.json { head :no_content }
     end
   end

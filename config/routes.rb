@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :boards
     get 'taglist', {:format => :json}, to: 'tags#taglist'
     get 'archive', {:format => :json}, to: 'boards#archive'
+    get 'recent_posts', {:format => :json}, to: 'boards#recent_posts'
     post 'auth_user', to: 'auth#authenticate_user'
     get 'get_auth', to: 'auth#get_auth'
   end

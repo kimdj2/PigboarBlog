@@ -8,3 +8,7 @@ end
 json.nextPost do
   json.merge! @next_post
 end
+json.relatedPosts do 
+  json.array! @related_posts
+end
+
