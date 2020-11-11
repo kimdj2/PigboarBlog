@@ -21,11 +21,11 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
-  password: pig
 
 development:
   <<: *default
   database: pigboar
+  password: pig
   host: db
 
   # The specified database role being used to connect to postgres.
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: pigboar_test
-
+  password: pig
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -83,5 +83,9 @@ test:
 #
 production:
   <<: *default
-  database: pigboar
-  
+  host: <%= Rails.application.credentials.rds[:host] %>
+  database: <%= Rails.application.credentials.rds[:database] %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>
+
+

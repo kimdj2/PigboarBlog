@@ -21,3 +21,5 @@
 /public/uploads/image
 /.metadata/
 /.recommenders/
+
+/config/master.key

@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   def upload_image
     image_param = params[:image]
     if image_param.present?
-      @image_path = Imgur.new('97261fb9958613a').anonymous_upload(image_param)
+      @image_path = Imgur.new(Rails.application.credentials.imgur_key).anonymous_upload(image_param)
     end
     render json: {image_url: @image_path}, status: :ok
   end
