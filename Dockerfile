@@ -14,3 +14,5 @@ ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
 RUN bundle install
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
