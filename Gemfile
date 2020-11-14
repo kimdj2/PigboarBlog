@@ -46,6 +46,7 @@ gem 'ransack'
 gem 'httpclient'
 gem 'kaminari'
 gem 'devise'
+gem 'rack-cors'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -59,7 +60,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails' 
   gem 'rails-controller-testing' 
-  gem 'rack-cors'
 end
 
 group :development do
