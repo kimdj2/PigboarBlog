@@ -6,7 +6,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # 許可するヘッダとメソッドの種類
     resource "*",
               headers: :any,
-              methods: [:get, :post, :patch, :delete, :head, :options]
+              methods: [:get, :post, :patch, :delete, :head, :options],
+              credentials: true
+
   end
 end
 # ここまでrack-cors
