@@ -87,7 +87,7 @@ class BoardsController < ApplicationController
   end
 
   def archive
-    @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month')
+    @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month').order('month DESC')
     render :archive, formats: :json, handlers: "jbuilder"
   end
 
