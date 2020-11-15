@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   protect_from_forgery :except => [:image_upload]
   before_action :authenticate_request!, only: [:image_upload]
 
+  # imageアップロードのコントローラー
   def upload_image
     image_param = params[:image]
     if image_param.present?
