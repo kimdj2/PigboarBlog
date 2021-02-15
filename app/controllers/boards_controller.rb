@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     #取得したデータと関連データを取得する。
-    @related_posts = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(3) 
+    @related_posts = Board.tagged_with(@board.tag_list, any: true).where.not(id:@board.id).limit(2) 
     #照会数がnilの場合
     if @board.view.nil?
       #照会数を１とする。
