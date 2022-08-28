@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 7.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # gem 'pg', '>= 0.18', '< 2.0'
@@ -19,6 +19,8 @@ gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem "sprockets-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -32,16 +34,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
 gem 'listen'
-gem 'rails-i18n', '~> 6.0.0' 
+gem 'rails-i18n', '~> 7.0.0' 
 
 gem 'devise'
 gem 'jwt'
 
-gem 'bcrypt', '~> 3.1.11'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt', '~> 3.1.18'
+gem 'bcrypt-ruby', '~> 3.1.5'
 
 gem 'sanitize'
-gem 'acts-as-taggable-on', '~> 6.5'
+gem 'acts-as-taggable-on', '~> 9.0'
 gem 'ransack'
 gem 'httpclient'
 gem 'kaminari'
@@ -55,7 +57,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem "letter_opener"
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails' 
