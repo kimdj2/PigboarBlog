@@ -4,4 +4,4 @@ build:
   config:
     WORKDIR: app
 run:
-  web: bundle exec unicorn -c ./config/unicorn.rb
+  web: bundle exec rails server -b 0.0.0.0
