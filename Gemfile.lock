@@ -291,7 +291,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   httpclient
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.11.5)
   jwt
   kaminari
   letter_opener

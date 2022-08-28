@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
   def index
     set_data_from_param
     @page_info = resources_with_pagination(@boards)
-    render formats: :json, handlers: "jbuilder"
+    render formats: :json
   end
 
   # GET /boards/1
@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
     @next_post = @board.next_post
 
     # 画面タイトルのデータを設定する。
-    render formats: :json, handlers: "jbuilder"
+    render formats: :json
   end
 
   # POST /boards
@@ -54,7 +54,7 @@ class BoardsController < ApplicationController
       )
       @board.save!
     end
-    render :index, formats: :json, handlers: "jbuilder", status: :created
+    render :index, formats: :json, status: :created
   end
 
   # PATCH/PUT /boards/1
@@ -64,13 +64,9 @@ class BoardsController < ApplicationController
       board_param = params[:board]
 
       if board_param["image_path"].present?
-        puts 'aaa'
-        puts board_param["image_path"]
         @image_path = board_param["image_path"]
       end
       if board_param["image"].present?
-        puts 'bbb'
-        puts board_param["image"]
         @image_path = Imgur.new('97261fb9958613a').anonymous_upload(board_param["image"])
       end
 
@@ -83,17 +79,17 @@ class BoardsController < ApplicationController
         contents_html: board_param[:contentsHtml]
       )
     end
-    render :index, formats: :json, handlers: "jbuilder", status: :created
+    render :index, formats: :json, status: :created
   end
 
   def archive
     @board_month = Board.select("date_trunc( 'month', created_at ) as month, count(*) as total_month").group('month').order('month DESC')
-    render :archive, formats: :json, handlers: "jbuilder"
+    render :archive, formats: :json
   end
 
   def recent_posts
     @recent_posts = Board.order(created_at:"DESC").limit(3) 
-    render :recent_posts, formats: :json, handlers: "jbuilder"
+    render :recent_posts, formats: :json
   end
 
   # DELETE /boards/1
