@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "localhost", "https://pullog.herokuapp.com", "https://www.pullog.tokyo"
+    origins "localhost", "https://pullog.herokuapp.com", "https://www.pullog.tokyo", "http://localhost:5000"
 
     resource "*",
       headers: :any,
