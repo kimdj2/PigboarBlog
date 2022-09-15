@@ -32,4 +32,5 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
+      run: bundle lock --add-platform x86_64-linux
       run: bundle exec rake
