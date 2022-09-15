@@ -90,6 +90,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    committee (4.4.0)
+      json_schema (~> 0.14, >= 0.14.3)
+      openapi_parser (>= 0.11.1, < 1.0)
+      rack (>= 1.5)
+    committee-rails (0.6.1)
+      actionpack
+      activesupport
+      committee (>= 4.4.0)
+      railties
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     devise (4.8.1)
@@ -116,6 +125,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json_schema (0.21.0)
     jwt (2.5.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -163,6 +173,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
+    openapi_parser (0.15.0)
     orm_adapter (0.5.0)
     pg (1.4.3)
     public_suffix (5.0.0)
@@ -218,23 +229,23 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rspec-core (3.9.3)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.4)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-rails (3.9.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.4)
+      rspec-support (~> 3.11.0)
+    rspec-rails (5.0.3)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-support (3.11.0)
     sanitize (6.0.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -293,6 +304,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  committee-rails
   devise
   factory_bot_rails
   httpclient
@@ -308,7 +320,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n (~> 7.0.0)
   ransack
-  rspec-rails (~> 3.8)
+  rspec-rails (~> 5.0.0)
   sanitize
   sass-rails (~> 6.0)
   sprockets-rails
