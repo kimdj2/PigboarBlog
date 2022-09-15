@@ -38,75 +38,11 @@ RSpec.describe BoardsController, type: :controller do
         end
     end
 
-    describe 'GET #new' do
-        context '認証されていない場合' do
-            before { get :new, params: {}, session: {} }
-            it '401ステータスコードが返されること。' do
-                expect(response).to have_http_status(:unauthorized)
-            end
-
-            it 'データがnilであること。' do
-                expect(assigns(:board)).to eq(nil)
-            end
-
-            it '認証エラーページに遷移すること。' do
-                expect(response).to render_template "etc/user_error"
-            end
-        end
-        context '認証されている場合' do
-            before do 
-                login_user @user
-            end    
-            before { get :new, params: {}, session: {} }
-            it 'ステータスコード200が返されること。' do
-                expect(response).to have_http_status(:ok)
-            end
-    
-            it 'formデータが正しく取得できること。' do
-                expect(assigns(:board)).to be_a_new Board
-            end
-        
-            it '作成ページへ遷移すること。' do
-                expect(response).to render_template :new
-            end
-        end
-    end
-
-    describe 'GET #edit' do
-        let(:board) { create(:board) }
-        context '認証されていない場合' do
-            before { get :edit, params: { id: board.id }, session: {} }
-            it '401ステータスコードが返されること。' do
-                expect(response).to have_http_status(:unauthorized)
-            end
-        
-            it '認証エラーページに遷移すること。' do
-                expect(response).to render_template "etc/user_error"
-            end
-        end
-        context '認証されている場合' do
-            before do 
-                login_user @user
-            end    
-            before { get :edit, params: { id: board.id }, session: {} }
-            it 'ステータスコード200が返されること。' do
-                expect(response).to have_http_status(:ok)
-            end
-    
-            it 'formデータが正しく取得できること。' do
-                expect(assigns(:board)).to eq board
-            end
-        
-            it '修正ページへ遷移すること。' do
-                expect(response).to render_template :edit
-            end
-        end
-    end
     describe 'POST #create' do
         let(:board_attr) { attributes_for(:board) }
         context 'postを作成する。' do
             before do 
-                login_user @user
+                login_admin @user
             end    
             it 'postが正しく登録されること。' do
                 expect do
@@ -157,7 +93,7 @@ RSpec.describe BoardsController, type: :controller do
         let(:board_attr) { attributes_for(:board) }
         context 'postを削除する。' do
             before do 
-                login_user @user
+                login_admin @user
             end    
             it 'postが正しく削除されること。' do
                 expect do

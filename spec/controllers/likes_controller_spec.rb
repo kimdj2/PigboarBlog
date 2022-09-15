@@ -26,7 +26,7 @@ RSpec.describe LikesController, type: :controller do
         end    
         context '認証されている場合' do
             before do 
-                login_user @user
+                login_admin @user
             end
             it 'ステータスコード200が返されること。' do
                 post :create, params: {board_id: @board.id, board: like_attr }, session: {},:format => :js
@@ -44,7 +44,7 @@ RSpec.describe LikesController, type: :controller do
         let!(:like) { @board }
         let(:like_attr) { @board.attributes }
         before do 
-            login_user @user
+            login_admin @user
             post :create, params: {board_id: @board.id, board: like_attr }, session: {},:format => :js
             @board.reload
             sign_out @user
@@ -61,7 +61,7 @@ RSpec.describe LikesController, type: :controller do
         end
         context '認証されている場合' do
             before do 
-                login_user @user
+                login_admin @user
             end
             it 'ステータスコード200が返されること。' do
                 delete :destroy, params: {board_id: @board.id, id: like.id }, session: {}, :format=>:js
