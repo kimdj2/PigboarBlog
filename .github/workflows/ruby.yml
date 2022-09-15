@@ -24,7 +24,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
-      run: bundle lock --add-platform x86_64-linux
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
     # uses: ruby/setup-ruby@v1
